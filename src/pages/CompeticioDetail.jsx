@@ -1,57 +1,108 @@
-import { competicions, grupsPerPais } from '../data/mockData'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { api } from '../services/api'
 
 function CompeticioDetail() {
-    const competicio = competicions[0]
+    const { id } = useParams()
+
+    const [competicio, setCompeticio] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+        const carregarCompeticio = async () => {
+            try {
+                setLoading(true)
+                setError('')
+
+                const response = await api.getCompeticio(id)
+                const data = response?.data || response
+
+                setCompeticio(data)
+            } catch (err) {
+                console.error(err)
+                setError('No s’ha pogut carregar el detall de la competició.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        carregarCompeticio()
+    }, [id])
+
+    if (loading) {
+        return (
+            <div className="container mt-4">
+                <p>Carregant detall...</p>
+            </div>
+        )
+    }
+
+    if (error) {
+        return (
+            <div className="container mt-4">
+                <div className="alert alert-danger">{error}</div>
+            </div>
+        )
+    }
+
+    if (!competicio) {
+        return (
+            <div className="container mt-4">
+                <p>No s’ha trobat la competició.</p>
+            </div>
+        )
+    }
+
+    const equips = competicio.equips_reals || []
+    const jornades = competicio.jornades || []
 
     return (
         <div className="container mt-4">
             <div className="mb-4">
                 <h2>{competicio.nom}</h2>
-                <p className="mb-1"><strong>Temporada:</strong> {competicio.temporada}</p>
-                <p className="mb-0"><strong>Format:</strong> {competicio.format}</p>
+                <p className="mb-1">
+                    <strong>Temporada:</strong> {competicio.temporada || '2025/2026'}
+                </p>
+                <p className="mb-1">
+                    <strong>Equips participants:</strong> {equips.length}
+                </p>
+                <p className="mb-0">
+                    <strong>Jornades:</strong> {jornades.length}
+                </p>
             </div>
 
             <h3 className="mb-3">Equips participants</h3>
 
-            <div className="row">
-                {grupsPerPais.map((grup) => (
-                    <div className="col-md-6 col-lg-4 mb-4" key={grup.pais}>
+            <div className="row mb-4">
+                {equips.map((equip) => (
+                    <div className="col-md-6 col-lg-4 mb-4" key={equip.id}>
                         <div className="card h-100 shadow-sm">
                             <div className="card-body">
-                                <h5 className="card-title d-flex align-items-center gap-2">
-                                    <img
-                                        src={grup.bandera}
-                                        alt={`Bandera de ${grup.pais}`}
-                                        width="24"
-                                        height="18"
-                                        style={{ objectFit: 'cover', borderRadius: '3px' }}
-                                        onError={(e) => {
-                                            e.currentTarget.src = '/assets/banderes/placeholder.png'
-                                        }}
-                                    />
-                                    <span>{grup.pais}</span>
-                                </h5>
+                                <h5 className="card-title">{equip.nom}</h5>
+                                <p className="mb-0">
+                                    <strong>País:</strong> {equip.pais}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
+            </div>
 
-                                <ul className="mb-0 list-unstyled">
-                                    {grup.equips.map((equip) => (
-                                        <li
-                                            key={equip.nom}
-                                            className="d-flex align-items-center gap-2 mb-2"
-                                        >
-                                            <img
-                                                src={equip.escut}
-                                                alt={`Escut de ${equip.nom}`}
-                                                width="22"
-                                                height="22"
-                                                style={{ objectFit: 'contain' }}
-                                                onError={(e) => {
-                                                    e.currentTarget.src = '/assets/escuts/placeholder.png'
-                                                }}
-                                            />
-                                            <span>{equip.nom}</span>
-                                        </li>
-                                    ))}
-                                </ul>
+            <h3 className="mb-3">Jornades</h3>
+
+            <div className="row">
+                {jornades.map((jornada) => (
+                    <div className="col-md-6 col-lg-4 mb-4" key={jornada.id}>
+                        <div className="card h-100 shadow-sm">
+                            <div className="card-body">
+                                <h5 className="card-title">Jornada {jornada.numero}</h5>
+                                <p className="mb-1">
+                                    <strong>Inici:</strong> {formatData(jornada.data_inici)}
+                                </p>
+                                <p className="mb-0">
+                                    <strong>Fi:</strong> {formatData(jornada.data_fi)}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -59,6 +110,20 @@ function CompeticioDetail() {
             </div>
         </div>
     )
+}
+
+function formatData(dataIso) {
+    if (!dataIso) return '-'
+
+    const data = new Date(dataIso)
+
+    if (Number.isNaN(data.getTime())) return dataIso
+
+    return data.toLocaleString('ca-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+    })
 }
 
 export default CompeticioDetail

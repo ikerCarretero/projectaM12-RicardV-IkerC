@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { alineacioInfo, alineacioSquad } from '../data/mockData'
 import './Alineacio.css'
+import { Link } from 'react-router-dom'
 
 const ESQUEMES = {
     '4-3-3': { defenses: 4, migcampistes: 3, davanters: 3 },
@@ -70,6 +71,10 @@ function Alineacio() {
             </div>
 
             <div className="d-flex gap-2 flex-wrap mb-4">
+                <Link to="/plantilla" className="btn btn-outline-primary">
+                    Veure plantilla
+                </Link>
+
                 <select
                     className="form-select w-auto"
                     value={esquema}
