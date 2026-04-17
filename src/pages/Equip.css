@@ -1,0 +1,44 @@
+.equip-resum--porter {
+    color: #d4a300;
+}
+
+.equip-resum--defensa {
+    color: #2563eb;
+}
+
+.equip-resum--migcampista {
+    color: #16a34a;
+}
+
+.equip-resum--davanter {
+    color: #dc2626;
+}
+
+.position-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.position-badge--porter {
+    background: #facc15;
+    color: #1f2937;
+}
+
+.position-badge--defensa {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.position-badge--migcampista {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.position-badge--davanter {
+    background: #dc2626;
+    color: #ffffff;
+}
