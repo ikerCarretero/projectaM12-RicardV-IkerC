@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->enum('posicio_base', ['Porter', 'Defensa', 'Migcampista', 'Davanter']);
+            $table->string('img')->nullable();
             $table->decimal('valor_mercat', 15, 2);
             $table->integer('puntuacio_total')->default(0);
             $table->foreignId('equip_real_id')->constrained('equips_reals')->onDelete('cascade');

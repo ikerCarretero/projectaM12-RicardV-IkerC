@@ -139,13 +139,7 @@ class JugadorSeeder extends Seeder
             'equip_real_id' => $arsenal->id,
         ]);
 
-        Jugador::create([
-            'nom' => 'Viktor Gyökeres',
-            'posicio_base' => 'Davanter',
-            'valor_mercat' => 55000000,
-            'puntuacio_total' => 0,
-            'equip_real_id' => $arsenal->id,
-        ]);
+        // FIX: Viktor Gyökeres eliminat d'Arsenal (duplicat — apareix a Sporting CP)
 
         Jugador::create([
             'nom' => 'Noni Madueke',
@@ -154,6 +148,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $arsenal->id,
         ]);
+
         // ───────────────────────────────────────────────
         // PREMIER LEAGUE — LIVERPOOL FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -299,7 +294,7 @@ class JugadorSeeder extends Seeder
             'equip_real_id' => $liverpool->id,
         ]);
 
-                // ───────────────────────────────────────────────
+        // ───────────────────────────────────────────────
         // PREMIER LEAGUE — TOTTENHAM HOTSPUR FC (2025-2026)
         // ───────────────────────────────────────────────
         $tottenham = EquipReal::where('nom', 'Tottenham Hotspur FC')->first();
@@ -435,6 +430,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $tottenham->id,
         ]);
+
         // ───────────────────────────────────────────────
         // PREMIER LEAGUE — CHELSEA FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -571,6 +567,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $chelsea->id,
         ]);
+
         // ───────────────────────────────────────────────
         // PREMIER LEAGUE — MANCHESTER CITY FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -723,6 +720,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $mancity->id,
         ]);
+
         // ───────────────────────────────────────────────
         // PREMIER LEAGUE — NEWCASTLE UNITED FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -867,6 +865,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $newcastle->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LALIGA — FC BARCELONA (2025-2026)
         // ───────────────────────────────────────────────
@@ -938,6 +937,7 @@ class JugadorSeeder extends Seeder
             'equip_real_id' => $barca->id,
         ]);
 
+        // FIX: Centrocampistes i davanters del Barça ara dins del mètode run()
         // Centrocampistas
         Jugador::create([
             'nom' => 'Pedri',
@@ -1019,6 +1019,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $barca->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LALIGA — REAL MADRID CF (2025-2026)
         // ───────────────────────────────────────────────
@@ -1171,6 +1172,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $madrid->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LALIGA — ATLÉTICO DE MADRID (2025-2026)
         // ───────────────────────────────────────────────
@@ -1299,6 +1301,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $atleti->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LALIGA — ATHLETIC CLUB (2025-2026)
         // ───────────────────────────────────────────────
@@ -1419,6 +1422,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $athletic->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LALIGA — VILLARREAL CF (2025-2026)
         // ───────────────────────────────────────────────
@@ -1523,6 +1527,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $villarreal->id,
         ]);
+
         // ───────────────────────────────────────────────
         // SERIE A — ATALANTA BC (2025-2026)
         // ───────────────────────────────────────────────
@@ -1619,6 +1624,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $atalanta->id,
         ]);
+
         // ───────────────────────────────────────────────
         // SERIE A — JUVENTUS FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -1715,6 +1721,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $juve->id,
         ]);
+
         // ───────────────────────────────────────────────
         // SERIE A — FC INTERNAZIONALE MILANO (2025-2026)
         // ───────────────────────────────────────────────
@@ -1811,6 +1818,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $inter->id,
         ]);
+
         // ───────────────────────────────────────────────
         // BUNDESLIGA — FC BAYERN MÜNCHEN (2025-2026)
         // ───────────────────────────────────────────────
@@ -1939,6 +1947,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $bayern->id,
         ]);
+
         // ───────────────────────────────────────────────
         // BUNDESLIGA — BORUSSIA DORTMUND (2025-2026)
         // ───────────────────────────────────────────────
@@ -2027,6 +2036,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $dortmund->id,
         ]);
+
         // ───────────────────────────────────────────────
         // BUNDESLIGA — BAYER 04 LEVERKUSEN (2025-2026)
         // ───────────────────────────────────────────────
@@ -2107,6 +2117,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $leverkusen->id,
         ]);
+
         // ───────────────────────────────────────────────
         // BUNDESLIGA — EINTRACHT FRANKFURT (2025-2026)
         // ───────────────────────────────────────────────
@@ -2171,8 +2182,9 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $eintracht->id,
         ]);
+
         // ───────────────────────────────────────────────
-        // LIGUE 1 — PARIS SAINT‑GERMAIN (2025-2026)
+        // LIGUE 1 — PARIS SAINT-GERMAIN (2025-2026)
         // ───────────────────────────────────────────────
         $psg = EquipReal::where('nom', 'Paris Saint-Germain')->first();
 
@@ -2291,6 +2303,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $psg->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LIGUE 1 — AS MONACO FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -2371,6 +2384,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $monaco->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LIGUE 1 — OLYMPIQUE DE MARSEILLE (2025-2026)
         // ───────────────────────────────────────────────
@@ -2451,6 +2465,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $marseille->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LIGA PORTUGAL — SPORTING CP (2025-2026)
         // ───────────────────────────────────────────────
@@ -2547,6 +2562,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $sporting->id,
         ]);
+
         // ───────────────────────────────────────────────
         // LIGA PORTUGAL — SL BENFICA (2025-2026)
         // ───────────────────────────────────────────────
@@ -2635,6 +2651,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $benfica->id,
         ]);
+
         // ───────────────────────────────────────────────
         // EREDIVISIE — PSV EINDHOVEN (2025-2026)
         // ───────────────────────────────────────────────
@@ -2739,6 +2756,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $psv->id,
         ]);
+
         // ───────────────────────────────────────────────
         // EREDIVISIE — AFC AJAX (2025-2026)
         // ───────────────────────────────────────────────
@@ -2835,6 +2853,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $ajax->id,
         ]);
+
         // ───────────────────────────────────────────────
         // BELGIAN PRO LEAGUE — CLUB BRUGGE KV (2025-2026)
         // ───────────────────────────────────────────────
@@ -2931,8 +2950,9 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $brugge->id,
         ]);
+
         // ───────────────────────────────────────────────
-        // BELGIAN PRO LEAGUE — UNION SAINT‑GILLOISE (2025-2026)
+        // BELGIAN PRO LEAGUE — UNION SAINT-GILLOISE (2025-2026)
         // ───────────────────────────────────────────────
         $usg = EquipReal::where('nom', 'Union Saint-Gilloise')->first();
 
@@ -3011,6 +3031,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $usg->id,
         ]);
+
         // ───────────────────────────────────────────────
         // SUPER LIG — GALATASARAY SK (2025-2026)
         // ───────────────────────────────────────────────
@@ -3115,6 +3136,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $galatasaray->id,
         ]);
+
         // ───────────────────────────────────────────────
         // SUPER LEAGUE GREECE — OLYMPIACOS FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -3219,6 +3241,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $olympiacos->id,
         ]);
+
         // ───────────────────────────────────────────────
         // CYPRUS FIRST DIVISION — PAFOS FC (2025-2026)
         // ───────────────────────────────────────────────
@@ -3315,6 +3338,7 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $pafos->id,
         ]);
+
         // ───────────────────────────────────────────────
         // KAZAKHSTAN PREMIER LEAGUE — KAIRAT ALMATY (2025-2026)
         // ───────────────────────────────────────────────
@@ -3411,3 +3435,5 @@ class JugadorSeeder extends Seeder
             'puntuacio_total' => 0,
             'equip_real_id' => $kairat->id,
         ]);
+    }
+}
