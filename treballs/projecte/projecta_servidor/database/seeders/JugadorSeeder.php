@@ -2954,7 +2954,7 @@ class JugadorSeeder extends Seeder
         // ───────────────────────────────────────────────
         // BELGIAN PRO LEAGUE — UNION SAINT-GILLOISE (2025-2026)
         // ───────────────────────────────────────────────
-        $usg = EquipReal::where('nom', 'Union Saint-Gilloise')->first();
+        $usg = EquipReal::where('nom', 'Royale Union Saint-Gilloise')->first();
 
         // Porteros
         Jugador::create([
@@ -3342,7 +3342,7 @@ class JugadorSeeder extends Seeder
         // ───────────────────────────────────────────────
         // KAZAKHSTAN PREMIER LEAGUE — KAIRAT ALMATY (2025-2026)
         // ───────────────────────────────────────────────
-        $kairat = EquipReal::where('nom', 'Kairat Almaty')->first();
+        $kairat = EquipReal::where('nom', 'FC Kairat Almaty')->first();
 
         // Porteros
         Jugador::create([
