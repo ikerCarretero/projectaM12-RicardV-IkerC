@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { api } from '../services/api'
 
 function CompeticioDetail() {
@@ -77,14 +77,19 @@ function CompeticioDetail() {
             <div className="row mb-4">
                 {equips.map((equip) => (
                     <div className="col-md-6 col-lg-4 mb-4" key={equip.id}>
-                        <div className="card h-100 shadow-sm">
-                            <div className="card-body">
-                                <h5 className="card-title">{equip.nom}</h5>
-                                <p className="mb-0">
-                                    <strong>País:</strong> {equip.pais}
-                                </p>
+                        <Link
+                            to={`/equips-reals/${equip.id}`}
+                            className="text-decoration-none text-dark"
+                        >
+                            <div className="card h-100 shadow-sm">
+                                <div className="card-body">
+                                    <h5 className="card-title">{equip.nom}</h5>
+                                    <p className="mb-0">
+                                        <strong>País:</strong> {equip.pais}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>

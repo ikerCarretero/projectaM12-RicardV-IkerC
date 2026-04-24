@@ -27,7 +27,7 @@ function Competicions() {
                 setCompeticions(competicionsAdaptades)
             } catch (err) {
                 console.error(err)
-                setError('No s’han pogut carregar les competicions.')
+                setError(`No s’han pogut carregar les competicions: ${err.message}`)
             } finally {
                 setLoading(false)
             }
@@ -62,15 +62,12 @@ function Competicions() {
                         <div className="card h-100 shadow-sm rounded-4">
                             <div className="card-body">
                                 <h5 className="card-title">{competicio.nom}</h5>
-
                                 <p className="card-text mb-1">
                                     <strong>Temporada:</strong> {competicio.temporada}
                                 </p>
-
                                 <p className="card-text mb-1">
                                     <strong>Equips:</strong> {competicio.nombreEquips}
                                 </p>
-
                                 <p className="card-text mb-3">
                                     <strong>Jornades:</strong> {competicio.nombreJornades}
                                 </p>

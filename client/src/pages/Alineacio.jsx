@@ -1,7 +1,7 @@
-import { useMemo, useState } from 'react'
-import { alineacioInfo, alineacioSquad } from '../data/mockData'
-import './Alineacio.css'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { api } from '../services/api'
+import './Alineacio.css'
 
 const ESQUEMES = {
     '4-3-3': { defenses: 4, migcampistes: 3, davanters: 3 },
@@ -10,21 +10,52 @@ const ESQUEMES = {
 }
 
 function Alineacio() {
-    const [esquema, setEsquema] = useState(alineacioInfo.esquema || '4-3-3')
+    const [alineacio, setAlineacio] = useState(null)
+    const [equip, setEquip] = useState(null)
+    const [esquema, setEsquema] = useState('4-3-3')
     const [capitaId, setCapitaId] = useState(null)
     const [seleccionantCapita, setSeleccionantCapita] = useState(false)
     const [missatge, setMissatge] = useState('')
+    const [error, setError] = useState('')
+    const [loading, setLoading] = useState(true)
 
+    useEffect(() => {
+        const carregar = async () => {
+            try {
+                setLoading(true)
+                setError('')
+                const meuEquip = await api.getMeuEquipFantasy()
+                const mevaAlineacio = await api.getMevaAlineacio()
+
+                setEquip(meuEquip)
+                setAlineacio(mevaAlineacio)
+                setEsquema(mevaAlineacio?.esquema || '4-3-3')
+            } catch (err) {
+                setError(err.message || 'No s’ha pogut carregar l’alineació.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        carregar()
+    }, [])
+
+    const jugadors = equip?.jugadors || []
     const formacioActual = ESQUEMES[esquema]
 
     const alineacioActual = useMemo(() => {
+        const porters = jugadors.filter((j) => j.posicio_base === 'Porter')
+        const defenses = jugadors.filter((j) => j.posicio_base === 'Defensa')
+        const migcampistes = jugadors.filter((j) => j.posicio_base === 'Migcampista')
+        const davanters = jugadors.filter((j) => j.posicio_base === 'Davanter')
+
         return {
-            porter: alineacioSquad.porter.slice(0, 1),
-            defenses: alineacioSquad.defenses.slice(0, formacioActual.defenses),
-            migcampistes: alineacioSquad.migcampistes.slice(0, formacioActual.migcampistes),
-            davanters: alineacioSquad.davanters.slice(0, formacioActual.davanters)
+            porter: porters.slice(0, 1),
+            defenses: defenses.slice(0, formacioActual.defenses),
+            migcampistes: migcampistes.slice(0, formacioActual.migcampistes),
+            davanters: davanters.slice(0, formacioActual.davanters)
         }
-    }, [esquema, formacioActual])
+    }, [jugadors, formacioActual])
 
     const handleAssignarCapita = () => {
         setSeleccionantCapita((prev) => !prev)
@@ -33,14 +64,43 @@ function Alineacio() {
 
     const handleSeleccionarJugador = (jugadorId) => {
         if (!seleccionantCapita) return
-
         setCapitaId(jugadorId)
         setSeleccionantCapita(false)
-        setMissatge('Capità assignat correctament.')
+        setMissatge('Capità assignat visualment.')
     }
 
-    const handleGuardar = () => {
-        setMissatge(`Alineació ${esquema} guardada correctament.`)
+    const handleGuardar = async () => {
+        try {
+            setMissatge('')
+            setError('')
+
+            if (!alineacio?.id) {
+                setError('No existeix cap alineació per guardar.')
+                return
+            }
+
+            await api.updateAlineacio(alineacio.id, {
+                esquema,
+                equip_fantasy_id: alineacio.equip_fantasy_id,
+                jornada_id: alineacio.jornada_id
+            })
+
+            setMissatge(`Alineació ${esquema} guardada correctament.`)
+        } catch (err) {
+            setError(err.message || 'No s’ha pogut guardar l’alineació.')
+        }
+    }
+
+    if (loading) {
+        return <div className="container mt-4"><p>Carregant alineació...</p></div>
+    }
+
+    if (error) {
+        return <div className="container mt-4"><div className="alert alert-danger">{error}</div></div>
+    }
+
+    if (!equip) {
+        return <div className="container mt-4"><div className="alert alert-warning">No s’ha trobat cap equip fantasy.</div></div>
     }
 
     return (
@@ -51,20 +111,20 @@ function Alineacio() {
                 <div className="card-body">
                     <div className="row text-center text-md-start">
                         <div className="col-md-3 mb-2">
-                            <strong>Fitxes</strong><br />
-                            {alineacioInfo.fitxes}
+                            <strong>Equip</strong><br />
+                            {equip.nom_equip}
                         </div>
                         <div className="col-md-3 mb-2">
                             <strong>Jornada</strong><br />
-                            {alineacioInfo.jornada} · {alineacioInfo.dataHora}
+                            {alineacio?.jornada?.numero || '-'}
                         </div>
                         <div className="col-md-3 mb-2">
                             <strong>Valor equip</strong><br />
-                            € {alineacioInfo.valorEquip}
+                            {equip.pressupost}
                         </div>
                         <div className="col-md-3 mb-2">
-                            <strong>Recompensa</strong><br />
-                            {alineacioInfo.recompensa}
+                            <strong>Jugadors</strong><br />
+                            {jugadors.length}
                         </div>
                     </div>
                 </div>
@@ -166,15 +226,6 @@ function JugadorPitchCard({ jugador, esCapita, seleccionantCapita, onSeleccionar
                 <div className="player-avatar">
                     {jugador.nom.charAt(0)}
                 </div>
-
-                <img
-                    src={jugador.escut}
-                    alt={jugador.equip}
-                    className="player-crest"
-                    onError={(e) => {
-                        e.currentTarget.src = '/assets/escuts/placeholder.png'
-                    }}
-                />
 
                 {esCapita && <div className="captain-badge">C</div>}
             </div>

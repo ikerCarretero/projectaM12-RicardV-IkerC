@@ -1,6 +1,58 @@
-import { equipFantasy, partits, jugadors } from '../data/mockData'
+import { useEffect, useState } from 'react'
+import { api } from '../services/api'
 
 function DashboardHome() {
+    const [resum, setResum] = useState(null)
+    const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
+
+    useEffect(() => {
+        const carregarDashboard = async () => {
+            try {
+                setLoading(true)
+                setError('')
+
+                const user = await api.getMe()
+                const equips = await api.getEquipsFantasy()
+                const partits = await api.getPartits()
+
+                const llistaEquips = Array.isArray(equips) ? equips : []
+                const llistaPartits = Array.isArray(partits) ? partits : []
+
+                const meuEquip =
+                    llistaEquips.find((equip) => equip.usuari_id === user?.id) ||
+                    llistaEquips.find((equip) => equip.usuari?.id === user?.id) ||
+                    null
+
+                setResum({
+                    user,
+                    equip: meuEquip,
+                    partits: llistaPartits,
+                    alineacio: null
+                })
+            } catch (err) {
+                console.error(err)
+                setError(err.message || 'No s’ha pogut carregar el dashboard.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        carregarDashboard()
+    }, [])
+
+    if (loading) {
+        return <p>Carregant dashboard...</p>
+    }
+
+    if (error) {
+        return <div className="alert alert-danger">{error}</div>
+    }
+
+    const equip = resum?.equip
+    const alineacio = resum?.alineacio
+    const jugadors = equip?.jugadors || []
+
     return (
         <div>
             <h1 className="fw-bold mb-4">Dashboard</h1>
@@ -10,7 +62,7 @@ function DashboardHome() {
                     <div className="card shadow-sm h-100">
                         <div className="card-body">
                             <h6 className="text-muted">Punts totals</h6>
-                            <h3>{equipFantasy.puntsTotals}</h3>
+                            <h3>{equip?.punts_totals ?? 0}</h3>
                         </div>
                     </div>
                 </div>
@@ -19,7 +71,7 @@ function DashboardHome() {
                     <div className="card shadow-sm h-100">
                         <div className="card-body">
                             <h6 className="text-muted">Pressupost</h6>
-                            <h3>{equipFantasy.pressupost} M€</h3>
+                            <h3>{equip?.pressupost ?? 0} €</h3>
                         </div>
                     </div>
                 </div>
@@ -36,8 +88,8 @@ function DashboardHome() {
                 <div className="col-md-6 col-lg-3 mb-3">
                     <div className="card shadow-sm h-100">
                         <div className="card-body">
-                            <h6 className="text-muted">Partits mock</h6>
-                            <h3>{partits.length}</h3>
+                            <h6 className="text-muted">Partits</h6>
+                            <h3>{resum?.partits?.length ?? 0}</h3>
                         </div>
                     </div>
                 </div>
@@ -47,13 +99,16 @@ function DashboardHome() {
                 <div className="card-body">
                     <h4 className="fw-bold mb-3">Resum ràpid</h4>
                     <p className="mb-2">
-                        <strong>Equip:</strong> {equipFantasy.nom}
+                        <strong>Equip:</strong> {equip?.nom_equip || 'Sense equip fantasy'}
                     </p>
                     <p className="mb-2">
-                        <strong>Esquema actual:</strong> {equipFantasy.esquema}
+                        <strong>Usuari:</strong> {resum?.user?.nom || resum?.user?.name || '-'}
+                    </p>
+                    <p className="mb-2">
+                        <strong>Esquema actual:</strong> {alineacio?.esquema || 'Sense alineació'}
                     </p>
                     <p className="mb-0">
-                        Aquí després hi podreu posar notícies, alertes, pròxims partits i resum de puntuació.
+                        Dashboard connectat a backend.
                     </p>
                 </div>
             </div>

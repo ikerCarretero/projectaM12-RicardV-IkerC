@@ -7,8 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute.jsx'
 import DashboardHome from './pages/DashboardHome.jsx'
 import Competicions from './pages/Competicions.jsx'
 import CompeticioDetail from './pages/CompeticioDetail.jsx'
-import Jugadors from './pages/Jugadors.jsx'
-import Partits from './pages/Partits.jsx'
+import EquipRealDetail from './pages/EquipRealDetail.jsx'
 import Equip from './pages/Equip.jsx'
 import Plantilla from './pages/Plantilla.jsx'
 import Alineacio from './pages/Alineacio.jsx'
@@ -38,8 +37,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardHome />} />
         <Route path="/competicions" element={<Competicions />} />
         <Route path="/competicions/:id" element={<CompeticioDetail />} />
-        <Route path="/jugadors" element={<Jugadors />} />
-        <Route path="/partits" element={<Partits />} />
+        <Route path="/equips-reals/:id" element={<EquipRealDetail />} />
         <Route path="/rankings" element={<Rankings />} />
       </Route>
 

@@ -29,7 +29,7 @@ function Jugadors() {
                 setJugadors(jugadorsAdaptats)
             } catch (err) {
                 console.error(err)
-                setError('No s’han pogut carregar els jugadors.')
+                setError(`No s’han pogut carregar els jugadors: ${err.message}`)
             } finally {
                 setLoading(false)
             }
