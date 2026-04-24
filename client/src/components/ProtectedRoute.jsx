@@ -1,11 +1,19 @@
 import { Navigate } from 'react-router-dom'
 
 function ProtectedRoute({ children, allowGuest = false }) {
-    const user = JSON.parse(localStorage.getItem('ffe_user') || 'null')
+    let user = null
+
+    try {
+        user = JSON.parse(localStorage.getItem('ffe_user') || 'null')
+    } catch {
+        user = null
+    }
+
+    const token = localStorage.getItem('ffe_token')
     const isGuest = localStorage.getItem('ffe_guest') === 'true'
 
-    if (!user && !isGuest) {
-        return <Navigate to="/" replace />
+    if (!user && !token && !isGuest) {
+        return <Navigate to="/login" replace />
     }
 
     if (!allowGuest && isGuest) {

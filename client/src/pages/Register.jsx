@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { api } from '../services/api'
 import './Auth.css'
 
 function Register() {
@@ -23,7 +24,7 @@ function Register() {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setError('')
 
@@ -39,19 +40,32 @@ function Register() {
 
         setLoading(true)
 
-        setTimeout(() => {
-            localStorage.setItem(
-                'ffe_user',
-                JSON.stringify({
-                    nom: formData.nom,
-                    email: formData.email
-                })
+        try {
+            const result = await api.register(
+                formData.nom,
+                formData.email,
+                formData.password,
+                formData.confirmPassword
             )
 
+            const token = result?.token || result?.access_token
+            const user = result?.user || null
+
+            if (token) {
+                localStorage.setItem('ffe_token', token)
+            }
+
+            if (user) {
+                localStorage.setItem('ffe_user', JSON.stringify(user))
+            }
+
             localStorage.removeItem('ffe_guest')
-            setLoading(false)
             navigate('/dashboard')
-        }, 800)
+        } catch (err) {
+            setError(err.message || 'Error en registrar el compte.')
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (

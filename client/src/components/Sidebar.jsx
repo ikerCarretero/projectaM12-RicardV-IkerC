@@ -10,6 +10,7 @@ function Sidebar() {
     const handleLogout = () => {
         localStorage.removeItem('ffe_user')
         localStorage.removeItem('ffe_guest')
+        localStorage.removeItem('ffe_token')
         navigate('/')
     }
 
@@ -20,6 +21,7 @@ function Sidebar() {
                     <div className="sidebar-avatar">
                         {usuari?.nom?.charAt(0) || 'G'}
                     </div>
+
                     <div>
                         <div className="sidebar-user-name">
                             {usuari?.nom || (esGuest ? 'Guest' : 'Usuari')}
@@ -37,14 +39,6 @@ function Sidebar() {
 
                     <NavLink to="/competicions" className="sidebar-link">
                         Competicions
-                    </NavLink>
-
-                    <NavLink to="/jugadors" className="sidebar-link">
-                        Jugadors
-                    </NavLink>
-
-                    <NavLink to="/partits" className="sidebar-link">
-                        Partits
                     </NavLink>
 
                     <NavLink to="/rankings" className="sidebar-link">

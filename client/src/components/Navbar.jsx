@@ -26,10 +26,7 @@ function Navbar() {
                             <Link className="nav-link" to="/competicions">Competicions</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/jugadors">Jugadors</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/partits">Partits</Link>
+                            <Link className="nav-link" to="/rankings">Rankings</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to="/equip">El meu equip</Link>

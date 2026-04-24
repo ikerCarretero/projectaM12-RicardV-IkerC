@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
+import { api } from '../services/api'
 import './Auth.css'
 
 function Login() {
@@ -21,7 +22,7 @@ function Login() {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         setError('')
 
@@ -32,19 +33,29 @@ function Login() {
 
         setLoading(true)
 
-        setTimeout(() => {
-            localStorage.setItem(
-                'ffe_user',
-                JSON.stringify({
-                    nom: 'Ricard',
-                    email: formData.email
-                })
-            )
+        try {
+            const result = await api.login(formData.email, formData.password)
+
+            const token = result?.token || result?.access_token
+            const user = result?.user || null
+
+            if (!token) {
+                throw new Error('El servidor no ha retornat cap token.')
+            }
+
+            localStorage.setItem('ffe_token', token)
+
+            if (user) {
+                localStorage.setItem('ffe_user', JSON.stringify(user))
+            }
 
             localStorage.removeItem('ffe_guest')
-            setLoading(false)
             navigate('/dashboard')
-        }, 800)
+        } catch (err) {
+            setError(err.message || 'Error en iniciar sessió.')
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -94,27 +105,15 @@ function Login() {
                     </div>
 
                     <div className="auth-social-buttons">
-                        <button
-                            className="btn btn-outline-dark w-100"
-                            onClick={() => navigate('/login')}
-                            type="button"
-                        >
+                        <button className="btn btn-outline-dark w-100" type="button" onClick={() => navigate('/login')}>
                             Google
                         </button>
 
-                        <button
-                            className="btn btn-outline-dark w-100"
-                            onClick={() => navigate('/login')}
-                            type="button"
-                        >
+                        <button className="btn btn-outline-dark w-100" type="button" onClick={() => navigate('/login')}>
                             Apple
                         </button>
 
-                        <button
-                            className="btn btn-outline-dark w-100"
-                            onClick={() => navigate('/login')}
-                            type="button"
-                        >
+                        <button className="btn btn-outline-dark w-100" type="button" onClick={() => navigate('/login')}>
                             Mail
                         </button>
                     </div>
