@@ -15,9 +15,7 @@ function CompeticioDetail() {
                 setLoading(true)
                 setError('')
 
-                const response = await api.getCompeticio(id)
-                const data = response?.data || response
-
+                const data = await api.getCompeticio(id)
                 setCompeticio(data)
             } catch (err) {
                 console.error(err)
@@ -54,7 +52,7 @@ function CompeticioDetail() {
         )
     }
 
-    const equips = competicio.equips_reals || []
+    const equips = competicio.equips_reals || competicio.equipsReals || []
     const jornades = competicio.jornades || []
 
     return (
@@ -99,17 +97,22 @@ function CompeticioDetail() {
             <div className="row">
                 {jornades.map((jornada) => (
                     <div className="col-md-6 col-lg-4 mb-4" key={jornada.id}>
-                        <div className="card h-100 shadow-sm">
-                            <div className="card-body">
-                                <h5 className="card-title">Jornada {jornada.numero}</h5>
-                                <p className="mb-1">
-                                    <strong>Inici:</strong> {formatData(jornada.data_inici)}
-                                </p>
-                                <p className="mb-0">
-                                    <strong>Fi:</strong> {formatData(jornada.data_fi)}
-                                </p>
+                        <Link
+                            to={`/jornades/${jornada.id}`}
+                            className="text-decoration-none text-dark"
+                        >
+                            <div className="card h-100 shadow-sm">
+                                <div className="card-body">
+                                    <h5 className="card-title">Jornada {jornada.numero}</h5>
+                                    <p className="mb-1">
+                                        <strong>Inici:</strong> {formatData(jornada.data_inici)}
+                                    </p>
+                                    <p className="mb-0">
+                                        <strong>Fi:</strong> {formatData(jornada.data_fi)}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                        </Link>
                     </div>
                 ))}
             </div>

@@ -67,6 +67,12 @@ export const api = {
 
   getMe: () => apiRequest('/me'),
 
+  updateUsuari: (id, payload) =>
+    apiRequest(`/usuaris/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(payload)
+    }),
+
   getCompeticions: () => apiRequest('/competicions'),
   getCompeticio: (id) => apiRequest(`/competicions/${id}`),
 

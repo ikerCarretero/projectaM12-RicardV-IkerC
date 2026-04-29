@@ -3,236 +3,336 @@ import { Link } from 'react-router-dom'
 import { api } from '../services/api'
 import './Alineacio.css'
 
-const ESQUEMES = {
-    '4-3-3': { defenses: 4, migcampistes: 3, davanters: 3 },
-    '4-4-2': { defenses: 4, migcampistes: 4, davanters: 2 },
-    '5-3-2': { defenses: 5, migcampistes: 3, davanters: 2 }
-}
+const ESQUEMES = ['5-4-1', '5-3-2', '4-5-1', '4-4-2', '4-3-3', '3-5-2', '3-4-3']
 
 function Alineacio() {
-    const [alineacio, setAlineacio] = useState(null)
     const [equip, setEquip] = useState(null)
-    const [esquema, setEsquema] = useState('4-3-3')
-    const [capitaId, setCapitaId] = useState(null)
-    const [seleccionantCapita, setSeleccionantCapita] = useState(false)
-    const [missatge, setMissatge] = useState('')
-    const [error, setError] = useState('')
     const [loading, setLoading] = useState(true)
+    const [error, setError] = useState('')
+    const [esquema, setEsquema] = useState('4-3-3')
 
     useEffect(() => {
-        const carregar = async () => {
+        const carregarDades = async () => {
             try {
                 setLoading(true)
                 setError('')
-                const meuEquip = await api.getMeuEquipFantasy()
-                const mevaAlineacio = await api.getMevaAlineacio()
+
+                const userResponse = await api.getMe()
+                const equipsResponse = await api.getEquipsFantasy()
+
+                const user = userResponse?.data || userResponse
+                const equips = equipsResponse?.data || equipsResponse || []
+
+                const meuEquip =
+                    equips.find((item) => item?.usuari_id === user?.id) ||
+                    equips.find((item) => item?.usuari?.id === user?.id) ||
+                    null
 
                 setEquip(meuEquip)
-                setAlineacio(mevaAlineacio)
-                setEsquema(mevaAlineacio?.esquema || '4-3-3')
             } catch (err) {
+                console.error(err)
                 setError(err.message || 'No s’ha pogut carregar l’alineació.')
             } finally {
                 setLoading(false)
             }
         }
 
-        carregar()
+        carregarDades()
     }, [])
 
     const jugadors = equip?.jugadors || []
-    const formacioActual = ESQUEMES[esquema]
 
-    const alineacioActual = useMemo(() => {
-        const porters = jugadors.filter((j) => j.posicio_base === 'Porter')
-        const defenses = jugadors.filter((j) => j.posicio_base === 'Defensa')
-        const migcampistes = jugadors.filter((j) => j.posicio_base === 'Migcampista')
-        const davanters = jugadors.filter((j) => j.posicio_base === 'Davanter')
+    const alineacio = useMemo(() => {
+        return construirAlineacio(jugadors, esquema)
+    }, [jugadors, esquema])
 
-        return {
-            porter: porters.slice(0, 1),
-            defenses: defenses.slice(0, formacioActual.defenses),
-            migcampistes: migcampistes.slice(0, formacioActual.migcampistes),
-            davanters: davanters.slice(0, formacioActual.davanters)
-        }
-    }, [jugadors, formacioActual])
-
-    const handleAssignarCapita = () => {
-        setSeleccionantCapita((prev) => !prev)
-        setMissatge('')
-    }
-
-    const handleSeleccionarJugador = (jugadorId) => {
-        if (!seleccionantCapita) return
-        setCapitaId(jugadorId)
-        setSeleccionantCapita(false)
-        setMissatge('Capità assignat visualment.')
-    }
-
-    const handleGuardar = async () => {
-        try {
-            setMissatge('')
-            setError('')
-
-            if (!alineacio?.id) {
-                setError('No existeix cap alineació per guardar.')
-                return
-            }
-
-            await api.updateAlineacio(alineacio.id, {
-                esquema,
-                equip_fantasy_id: alineacio.equip_fantasy_id,
-                jornada_id: alineacio.jornada_id
-            })
-
-            setMissatge(`Alineació ${esquema} guardada correctament.`)
-        } catch (err) {
-            setError(err.message || 'No s’ha pogut guardar l’alineació.')
-        }
-    }
+    const capitaId = useMemo(() => {
+        const millor = [...alineacio.titulars].sort(ordenarJugadors)[0]
+        return millor?.id || null
+    }, [alineacio])
 
     if (loading) {
-        return <div className="container mt-4"><p>Carregant alineació...</p></div>
+        return <p>Carregant alineació...</p>
     }
 
     if (error) {
-        return <div className="container mt-4"><div className="alert alert-danger">{error}</div></div>
+        return <div className="alert alert-danger">{error}</div>
     }
 
     if (!equip) {
-        return <div className="container mt-4"><div className="alert alert-warning">No s’ha trobat cap equip fantasy.</div></div>
-    }
+        return (
+            <div>
+                <div className="alineacio-page-header">
+                    <h1 className="fw-bold mb-2">Alineació</h1>
+                    <p className="alineacio-page-subtitle mb-0">
+                        Encara no tens equip fantasy creat.
+                    </p>
+                </div>
 
-    return (
-        <div className="container mt-4">
-            <h2 className="mb-4">Alineació</h2>
+                <div className="card shadow-sm border-0">
+                    <div className="card-body p-4">
+                        <h4 className="fw-bold mb-3">Sense equip fantasy</h4>
+                        <p className="text-muted mb-4">
+                            Quan tinguis un equip creat, aquí podràs preparar la teva alineació,
+                            escollir l’esquema i veure els titulars i la banqueta.
+                        </p>
 
-            <div className="card shadow-sm mb-4">
-                <div className="card-body">
-                    <div className="row text-center text-md-start">
-                        <div className="col-md-3 mb-2">
-                            <strong>Equip</strong><br />
-                            {equip.nom_equip}
-                        </div>
-                        <div className="col-md-3 mb-2">
-                            <strong>Jornada</strong><br />
-                            {alineacio?.jornada?.numero || '-'}
-                        </div>
-                        <div className="col-md-3 mb-2">
-                            <strong>Valor equip</strong><br />
-                            {equip.pressupost}
-                        </div>
-                        <div className="col-md-3 mb-2">
-                            <strong>Jugadors</strong><br />
-                            {jugadors.length}
+                        <div className="d-flex flex-wrap gap-3">
+                            <Link to="/competicions" className="btn btn-dark">
+                                Veure competicions
+                            </Link>
+
+                            <Link to="/equip" className="btn btn-outline-dark">
+                                Veure equip
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
+        )
+    }
 
-            <div className="d-flex gap-2 flex-wrap mb-4">
-                <Link to="/plantilla" className="btn btn-outline-primary">
-                    Veure plantilla
-                </Link>
-
-                <select
-                    className="form-select w-auto"
-                    value={esquema}
-                    onChange={(e) => setEsquema(e.target.value)}
-                >
-                    <option value="4-3-3">4-3-3</option>
-                    <option value="4-4-2">4-4-2</option>
-                    <option value="5-3-2">5-3-2</option>
-                </select>
-
-                <button
-                    className={`btn ${seleccionantCapita ? 'btn-warning' : 'btn-secondary'}`}
-                    onClick={handleAssignarCapita}
-                >
-                    {seleccionantCapita ? 'Selecciona un jugador' : 'Assignar capità'}
-                </button>
-
-                <button className="btn btn-danger" onClick={handleGuardar}>
-                    Guardar
-                </button>
+    return (
+        <div>
+            <div className="alineacio-page-header">
+                <h1 className="fw-bold mb-2">Alineació</h1>
+                <p className="alineacio-page-subtitle mb-0">
+                    {equip.nom_equip || 'El meu equip fantasy'} · Esquema actual {esquema}
+                </p>
             </div>
 
-            {missatge && (
-                <div className="alert alert-success mb-4" role="alert">
-                    {missatge}
+            {jugadors.length === 0 ? (
+                <div className="alert alert-info">
+                    Aquest equip encara no té jugadors assignats.
+                </div>
+            ) : (
+                <div className="alineacio-layout">
+                    <div>
+                        <div className="pitch">
+                            <div className="pitch-row-group">
+                                <div className="pitch-row-title">Porter</div>
+                                <div className="pitch-row porter-row">
+                                    {alineacio.porter.length > 0 ? (
+                                        alineacio.porter.map((jugador) => (
+                                            <PlayerCard
+                                                key={jugador.id}
+                                                jugador={jugador}
+                                                isCaptain={jugador.id === capitaId}
+                                            />
+                                        ))
+                                    ) : (
+                                        <div className="empty-row">Sense porter</div>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="pitch-row-group">
+                                <div className="pitch-row-title">Defenses</div>
+                                <div className="pitch-row">
+                                    {alineacio.defenses.length > 0 ? (
+                                        alineacio.defenses.map((jugador) => (
+                                            <PlayerCard
+                                                key={jugador.id}
+                                                jugador={jugador}
+                                                isCaptain={jugador.id === capitaId}
+                                            />
+                                        ))
+                                    ) : (
+                                        <div className="empty-row">Sense defenses</div>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="pitch-row-group">
+                                <div className="pitch-row-title">Migcampistes</div>
+                                <div className="pitch-row">
+                                    {alineacio.migcampistes.length > 0 ? (
+                                        alineacio.migcampistes.map((jugador) => (
+                                            <PlayerCard
+                                                key={jugador.id}
+                                                jugador={jugador}
+                                                isCaptain={jugador.id === capitaId}
+                                            />
+                                        ))
+                                    ) : (
+                                        <div className="empty-row">Sense migcampistes</div>
+                                    )}
+                                </div>
+                            </div>
+
+                            <div className="pitch-row-group">
+                                <div className="pitch-row-title">Davanters</div>
+                                <div className="pitch-row forwards-row">
+                                    {alineacio.davanters.length > 0 ? (
+                                        alineacio.davanters.map((jugador) => (
+                                            <PlayerCard
+                                                key={jugador.id}
+                                                jugador={jugador}
+                                                isCaptain={jugador.id === capitaId}
+                                            />
+                                        ))
+                                    ) : (
+                                        <div className="empty-row">Sense davanters</div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="alineacio-sidebar-panels">
+                        <div className="alineacio-panel">
+                            <h4 className="fw-bold mb-3">Esquemes</h4>
+
+                            <div className="esquemes-grid">
+                                {ESQUEMES.map((item) => (
+                                    <button
+                                        key={item}
+                                        type="button"
+                                        className={`esquema-btn ${esquema === item ? 'active' : ''}`}
+                                        onClick={() => setEsquema(item)}
+                                    >
+                                        {item}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="alineacio-panel">
+                            <h4 className="fw-bold mb-3">Entrenador</h4>
+
+                            <div className="coach-card-box">
+                                <div className="coach-card-label">TÈCNIC</div>
+                                <div className="coach-card-name">
+                                    {equip?.entrenador?.nom || 'Per assignar'}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="alineacio-panel">
+                            <h4 className="fw-bold mb-3">Banqueta / Reserves</h4>
+
+                            {alineacio.banqueta.length === 0 ? (
+                                <div className="text-muted">No hi ha reserves disponibles.</div>
+                            ) : (
+                                <div className="banqueta-list">
+                                    {alineacio.banqueta.map((jugador) => (
+                                        <div key={jugador.id} className="banqueta-item">
+                                            <div className="banqueta-name">{jugador.nom}</div>
+                                            <div className="banqueta-meta">
+                                                {normalitzarPosicio(jugador.posicio_base)} · {formatMercat(jugador.valor_mercat)}
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </div>
                 </div>
             )}
+        </div>
+    )
+}
 
-            <div className="pitch">
-                <div className="pitch-row porter-row">
-                    {alineacioActual.porter.map((jugador) => (
-                        <JugadorPitchCard
-                            key={jugador.id}
-                            jugador={jugador}
-                            esCapita={capitaId === jugador.id}
-                            seleccionantCapita={seleccionantCapita}
-                            onSeleccionar={handleSeleccionarJugador}
-                        />
-                    ))}
-                </div>
+function PlayerCard({ jugador, isCaptain = false }) {
+    return (
+        <div className={`player-card ${isCaptain ? 'capita' : ''}`}>
+            <div className="player-top">
+                {isCaptain && <div className="captain-badge">C</div>}
 
-                <div className="pitch-row defenses-row">
-                    {alineacioActual.defenses.map((jugador) => (
-                        <JugadorPitchCard
-                            key={jugador.id}
-                            jugador={jugador}
-                            esCapita={capitaId === jugador.id}
-                            seleccionantCapita={seleccionantCapita}
-                            onSeleccionar={handleSeleccionarJugador}
-                        />
-                    ))}
+                <div className="player-avatar">
+                    {obtenirInicials(jugador.nom)}
                 </div>
+            </div>
 
-                <div className="pitch-row mids-row">
-                    {alineacioActual.migcampistes.map((jugador) => (
-                        <JugadorPitchCard
-                            key={jugador.id}
-                            jugador={jugador}
-                            esCapita={capitaId === jugador.id}
-                            seleccionantCapita={seleccionantCapita}
-                            onSeleccionar={handleSeleccionarJugador}
-                        />
-                    ))}
-                </div>
-
-                <div className="pitch-row forwards-row">
-                    {alineacioActual.davanters.map((jugador) => (
-                        <JugadorPitchCard
-                            key={jugador.id}
-                            jugador={jugador}
-                            esCapita={capitaId === jugador.id}
-                            seleccionantCapita={seleccionantCapita}
-                            onSeleccionar={handleSeleccionarJugador}
-                        />
-                    ))}
-                </div>
+            <div className="player-name">
+                {jugador.nom}
             </div>
         </div>
     )
 }
 
-function JugadorPitchCard({ jugador, esCapita, seleccionantCapita, onSeleccionar }) {
-    return (
-        <div
-            className={`player-card ${esCapita ? 'capita' : ''} ${seleccionantCapita ? 'seleccionable' : ''}`}
-            onClick={() => onSeleccionar(jugador.id)}
-        >
-            <div className="player-top">
-                <div className="player-avatar">
-                    {jugador.nom.charAt(0)}
-                </div>
+function construirAlineacio(jugadors, esquema) {
+    const [defensesNum, migcampistesNum, davantersNum] = esquema.split('-').map(Number)
 
-                {esCapita && <div className="captain-badge">C</div>}
-            </div>
+    const ordenats = [...jugadors].sort(ordenarJugadors)
 
-            <div className="player-name">{jugador.nom}</div>
-        </div>
+    const porters = ordenats.filter((j) => normalitzarPosicio(j.posicio_base) === 'PORTER')
+    const defenses = ordenats.filter((j) => normalitzarPosicio(j.posicio_base) === 'DEFENSA')
+    const migcampistes = ordenats.filter((j) => normalitzarPosicio(j.posicio_base) === 'MIGCAMPISTA')
+    const davanters = ordenats.filter((j) => normalitzarPosicio(j.posicio_base) === 'DAVANTER')
+
+    const titularPorter = porters.slice(0, 1)
+    const titularDefenses = defenses.slice(0, defensesNum)
+    const titularMigcampistes = migcampistes.slice(0, migcampistesNum)
+    const titularDavanters = davanters.slice(0, davantersNum)
+
+    const idsTitulars = new Set(
+        [
+            ...titularPorter,
+            ...titularDefenses,
+            ...titularMigcampistes,
+            ...titularDavanters
+        ].map((j) => j.id)
     )
+
+    const titulars = [
+        ...titularPorter,
+        ...titularDefenses,
+        ...titularMigcampistes,
+        ...titularDavanters
+    ]
+
+    const banqueta = ordenats.filter((j) => !idsTitulars.has(j.id))
+
+    return {
+        porter: titularPorter,
+        defenses: titularDefenses,
+        migcampistes: titularMigcampistes,
+        davanters: titularDavanters,
+        titulars,
+        banqueta
+    }
+}
+
+function ordenarJugadors(a, b) {
+    const puntsA = Number(a.puntuacio_total || 0)
+    const puntsB = Number(b.puntuacio_total || 0)
+
+    if (puntsB !== puntsA) {
+        return puntsB - puntsA
+    }
+
+    const valorA = Number(a.valor_mercat || 0)
+    const valorB = Number(b.valor_mercat || 0)
+
+    return valorB - valorA
+}
+
+function normalitzarPosicio(posicio) {
+    const valor = (posicio || '').toLowerCase()
+
+    if (valor.includes('porter')) return 'PORTER'
+    if (valor.includes('defensa')) return 'DEFENSA'
+    if (valor.includes('mig')) return 'MIGCAMPISTA'
+    if (valor.includes('davanter')) return 'DAVANTER'
+
+    return posicio?.toUpperCase() || 'DESCONEGUDA'
+}
+
+function obtenirInicials(nom) {
+    if (!nom) return '?'
+
+    const parts = nom.trim().split(' ').filter(Boolean)
+
+    if (parts.length === 1) {
+        return parts[0].charAt(0).toUpperCase()
+    }
+
+    return `${parts[0].charAt(0)}${parts[1].charAt(0)}`.toUpperCase()
+}
+
+function formatMercat(valor) {
+    return `${(Number(valor || 0) / 1000000).toFixed(1)} M€`
 }
 
 export default Alineacio

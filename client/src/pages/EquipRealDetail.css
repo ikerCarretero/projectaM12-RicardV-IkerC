@@ -1,0 +1,297 @@
+.alineacio-zona {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 20px;
+    align-items: start;
+}
+
+.alineacio-camp {
+    background: linear-gradient(180deg, #0a1b5b 0%, #091649 100%);
+    border-radius: 24px;
+    padding: 24px;
+    min-height: 760px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 30px;
+    position: relative;
+    overflow: hidden;
+    border: 3px solid rgba(255, 255, 255, 0.12);
+}
+
+.alineacio-camp::before {
+    content: '';
+    position: absolute;
+    inset: 18px;
+    border: 2px dashed rgba(255, 255, 255, 0.28);
+    border-radius: 18px;
+    pointer-events: none;
+}
+
+.alineacio-camp::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 180px;
+    height: 180px;
+    border: 2px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.linia-jugadors {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.linia-porter {
+    padding-top: 6px;
+}
+
+.linia-defenses,
+.linia-migcampistes,
+.linia-davanters {
+    justify-content: space-evenly;
+}
+
+.jugador-camp-card {
+    width: 150px;
+    min-height: 96px;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.jugador-camp-nom {
+    font-weight: 800;
+    font-size: 15px;
+    color: #0a1b5b;
+    line-height: 1.2;
+    margin-bottom: 6px;
+}
+
+.jugador-camp-posicio {
+    font-size: 12px;
+    font-weight: 700;
+    color: #f659fd;
+    margin-bottom: 8px;
+}
+
+.jugador-camp-dades {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    color: #1f2937;
+}
+
+.sense-jugadors {
+    color: white;
+    opacity: 0.8;
+    font-weight: 600;
+}
+
+.alineacio-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.panel-bloc {
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 16px;
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.06);
+}
+
+.panel-titol {
+    font-size: 16px;
+    font-weight: 800;
+    margin-bottom: 12px;
+    color: #111827;
+}
+
+.esquemes-botons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-esquema {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #111827;
+    border-radius: 12px;
+    padding: 10px 12px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.btn-esquema:hover {
+    background: #eef2ff;
+    border-color: #8b5cf6;
+}
+
+.btn-esquema.actiu {
+    background: linear-gradient(135deg, #0a1b5b 0%, #f659fd 100%);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 18px rgba(99, 102, 241, 0.25);
+}
+
+.entrenador-box {
+    min-height: 120px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    text-align: center;
+    padding: 14px;
+}
+
+.entrenador-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.entrenador-nom {
+    font-size: 18px;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.2;
+}
+
+.reserves-llista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.reserva-item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px 12px;
+}
+
+.reserva-nom {
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 3px;
+}
+
+.reserva-info {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+@media (max-width: 1200px) {
+    .alineacio-zona {
+        grid-template-columns: 1fr;
+    }
+
+    .alineacio-panel {
+        order: -1;
+    }
+
+    .esquemes-botons {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .alineacio-camp {
+        min-height: auto;
+        padding: 18px 12px;
+        gap: 18px;
+    }
+
+    .jugador-camp-card {
+        width: 135px;
+        min-height: 90px;
+        padding: 10px;
+    }
+
+    .jugador-camp-nom {
+        font-size: 14px;
+    }
+
+    .esquemes-botons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.jugador-plantilla-card {
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.jugador-plantilla-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.10);
+}
+
+.jugador-posicio-text {
+    font-weight: 800;
+}
+
+/* PORTER - groc */
+.jugador-plantilla-card.posicio-porter {
+    border-color: #facc15;
+}
+
+.jugador-plantilla-card.posicio-porter .jugador-posicio-text {
+    color: #eab308;
+}
+
+/* DEFENSA - blau */
+.jugador-plantilla-card.posicio-defensa {
+    border-color: #3b82f6;
+}
+
+.jugador-plantilla-card.posicio-defensa .jugador-posicio-text {
+    color: #2563eb;
+}
+
+/* MIGCAMPISTA - verd */
+.jugador-plantilla-card.posicio-migcampista {
+    border-color: #22c55e;
+}
+
+.jugador-plantilla-card.posicio-migcampista .jugador-posicio-text {
+    color: #16a34a;
+}
+
+/* DAVANTER - vermell */
+.jugador-plantilla-card.posicio-davanter {
+    border-color: #ef4444;
+}
+
+.jugador-plantilla-card.posicio-davanter .jugador-posicio-text {
+    color: #dc2626;
+}
