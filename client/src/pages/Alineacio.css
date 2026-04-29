@@ -126,3 +126,164 @@
     align-items: center;
     justify-content: center;
 }
+
+.pitch-row-group {
+    position: relative;
+    z-index: 1;
+}
+
+.pitch-row-title {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.92);
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+}
+
+.empty-row {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+    text-align: center;
+}
+
+.alineacio-page-header {
+    margin-bottom: 24px;
+}
+
+.alineacio-page-subtitle {
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+.alineacio-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 24px;
+    align-items: start;
+}
+
+.alineacio-sidebar-panels {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.alineacio-panel {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+    border: 1px solid #e5e7eb;
+}
+
+.esquemes-grid {
+    display: grid;
+    gap: 10px;
+}
+
+.esquema-btn {
+    border: 1px solid #cbd5e1;
+    background: #f8fafc;
+    color: #0f172a;
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-weight: 700;
+    transition: all 0.2s ease;
+}
+
+.esquema-btn:hover {
+    background: #eef2ff;
+    border-color: #93c5fd;
+}
+
+.esquema-btn.active {
+    background: linear-gradient(90deg, #0a1b51 0%, #f659fd 100%);
+    color: white;
+    border-color: transparent;
+}
+
+.coach-card-box {
+    border: 2px dashed #cbd5e1;
+    border-radius: 18px;
+    padding: 26px 14px;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.coach-card-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.coach-card-name {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.banqueta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.banqueta-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: #f8fafc;
+}
+
+.banqueta-name {
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.banqueta-meta {
+    font-size: 0.9rem;
+    color: #64748b;
+}
+
+@media (max-width: 1200px) {
+    .alineacio-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .pitch {
+        min-height: auto;
+        padding: 24px 14px;
+    }
+
+    .pitch-row {
+        gap: 12px;
+        margin-bottom: 36px;
+    }
+
+    .player-card {
+        width: 96px;
+    }
+
+    .player-top {
+        height: 74px;
+    }
+
+    .player-avatar {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+    }
+
+    .player-name {
+        font-size: 0.82rem;
+        min-height: 42px;
+    }
+}

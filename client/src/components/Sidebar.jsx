@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from 'react-router-dom'
+import { NavLink, Link, useNavigate } from 'react-router-dom'
 import './Sidebar.css'
 
 function Sidebar() {
@@ -6,6 +6,10 @@ function Sidebar() {
 
     const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
     const esGuest = localStorage.getItem('ffe_guest') === 'true'
+    const avatarGuardat = localStorage.getItem('ffe_user_avatar')
+
+    const rolNormalitzat = (usuari?.rol || 'usuari').toLowerCase()
+    const esAdmin = rolNormalitzat === 'admin'
 
     const handleLogout = () => {
         localStorage.removeItem('ffe_user')
@@ -17,19 +21,46 @@ function Sidebar() {
     return (
         <aside className="sidebar">
             <div>
-                <div className="sidebar-user">
-                    <div className="sidebar-avatar">
-                        {usuari?.nom?.charAt(0) || 'G'}
+                <div className="sidebar-user sidebar-user-card">
+                    <div className="sidebar-user-main">
+                        <div className="sidebar-avatar">
+                            {avatarGuardat ? (
+                                <img
+                                    src={avatarGuardat}
+                                    alt="Avatar usuari"
+                                    className="sidebar-avatar-image"
+                                />
+                            ) : (
+                                usuari?.nom?.charAt(0) || 'G'
+                            )}
+                        </div>
+
+                        <div>
+                            <div className="sidebar-user-name">
+                                {usuari?.nom || (esGuest ? 'Guest' : 'Usuari')}
+                            </div>
+
+                            <div className="sidebar-user-role">
+                                {usuari
+                                    ? esAdmin
+                                        ? 'Administrador'
+                                        : 'Usuari registrat'
+                                    : esGuest
+                                        ? 'Mode convidat'
+                                        : 'Visitant'}
+                            </div>
+                        </div>
                     </div>
 
-                    <div>
-                        <div className="sidebar-user-name">
-                            {usuari?.nom || (esGuest ? 'Guest' : 'Usuari')}
-                        </div>
-                        <div className="sidebar-user-role">
-                            {usuari ? 'Usuari registrat' : esGuest ? 'Mode convidat' : 'Visitant'}
-                        </div>
-                    </div>
+                    {!esGuest && (
+                        <Link
+                            to="/configuracio"
+                            className="sidebar-settings-link"
+                            title="Configuració del compte"
+                        >
+                            ⚙️
+                        </Link>
+                    )}
                 </div>
 
                 <nav className="sidebar-nav">
@@ -53,10 +84,6 @@ function Sidebar() {
 
                             <NavLink to="/alineacio" className="sidebar-link">
                                 Alineació
-                            </NavLink>
-
-                            <NavLink to="/configuracio" className="sidebar-link">
-                                Configuració
                             </NavLink>
                         </>
                     )}

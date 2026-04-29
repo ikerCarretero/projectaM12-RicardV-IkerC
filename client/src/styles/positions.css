@@ -58,3 +58,19 @@
 .section-title--davanter {
     color: #dc2626;
 }
+
+.position-porter {
+    border-left: 4px solid #facc15 !important;
+}
+
+.position-defensa {
+    border-left: 4px solid #3b82f6 !important;
+}
+
+.position-migcampista {
+    border-left: 4px solid #22c55e !important;
+}
+
+.position-davanter {
+    border-left: 4px solid #ef4444 !important;
+}

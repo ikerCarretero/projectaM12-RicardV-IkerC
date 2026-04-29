@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import PublicLayout from './layouts/PublicLayout.jsx'
 import DashboardLayout from './layouts/DashboardLayout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import AdminRoute from './components/AdminRoute.jsx'
 
 import DashboardHome from './pages/DashboardHome.jsx'
 import Competicions from './pages/Competicions.jsx'
@@ -16,6 +17,7 @@ import Configuracio from './pages/Configuracio.jsx'
 import Welcome from './pages/Welcome.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
+import AdminPanel from './pages/AdminPanel.jsx'
 
 function App() {
   return (
@@ -52,6 +54,16 @@ function App() {
         <Route path="/plantilla" element={<Plantilla />} />
         <Route path="/alineacio" element={<Alineacio />} />
         <Route path="/configuracio" element={<Configuracio />} />
+      </Route>
+
+      <Route
+        element={
+          <AdminRoute>
+            <DashboardLayout />
+          </AdminRoute>
+        }
+      >
+        <Route path="/admin" element={<AdminPanel />} />
       </Route>
     </Routes>
   )
