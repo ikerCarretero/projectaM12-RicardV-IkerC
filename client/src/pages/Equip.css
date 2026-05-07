@@ -1,0 +1,192 @@
+.equip-page {
+    padding-bottom: 30px;
+}
+
+.equip-header {
+    margin-bottom: 24px;
+}
+
+.equip-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.equip-subtitle {
+    color: #6b7280;
+    font-size: 1.05rem;
+    margin-bottom: 0;
+}
+
+.equip-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.equip-stat-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.equip-stat-card span {
+    display: block;
+    color: #6b7280;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.equip-stat-card strong {
+    font-size: 1.55rem;
+    color: #111827;
+    font-weight: 800;
+}
+
+.equip-block,
+.equip-empty-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.equip-block-title {
+    font-size: 1.9rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 20px;
+}
+
+.equip-position-section {
+    margin-bottom: 24px;
+}
+
+.equip-position-title {
+    font-size: 1.2rem;
+    font-weight: 800;
+    margin-bottom: 14px;
+}
+
+.equip-position-title.porter {
+    color: #ca8a04;
+}
+
+.equip-position-title.defensa {
+    color: #2563eb;
+}
+
+.equip-position-title.migcampista {
+    color: #16a34a;
+}
+
+.equip-position-title.davanter {
+    color: #dc2626;
+}
+
+.equip-jugador-card {
+    border-radius: 18px;
+    border: 2px solid #e5e7eb;
+}
+
+.equip-player-position {
+    font-weight: 800;
+}
+
+.equip-jugador-card.pos-porter {
+    border-color: #facc15;
+}
+
+.equip-jugador-card.pos-defensa {
+    border-color: #3b82f6;
+}
+
+.equip-jugador-card.pos-migcampista {
+    border-color: #22c55e;
+}
+
+.equip-jugador-card.pos-davanter {
+    border-color: #ef4444;
+}
+
+.equip-player-position.pos-porter {
+    color: #ca8a04;
+}
+
+.equip-player-position.pos-defensa {
+    color: #2563eb;
+}
+
+.equip-player-position.pos-migcampista {
+    color: #16a34a;
+}
+
+.equip-player-position.pos-davanter {
+    color: #dc2626;
+}
+
+.equip-empty-box {
+    margin-top: 20px;
+    padding: 24px;
+    border: 1px dashed #cbd5e1;
+    border-radius: 18px;
+    background: #f8fafc;
+}
+
+.equip-empty-box h3 {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.equip-empty-box p {
+    color: #6b7280;
+    margin-bottom: 18px;
+}
+
+.equip-empty-info {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.equip-empty-mini {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.equip-empty-mini strong {
+    display: block;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+    color: #111827;
+}
+
+.equip-empty-mini span {
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 1100px) {
+    .equip-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .equip-empty-info {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .equip-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}

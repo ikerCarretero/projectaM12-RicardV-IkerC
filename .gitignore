@@ -1,0 +1,17 @@
+
+# Node
+node_modules/
+client/node_modules/
+
+# Laravel / Composer
+vendor/
+servidor/vendor/
+
+# Entorns
+.env
+client/.env
+servidor/.env
+
+# Logs i temporals
+storage/logs/*.log
+.DS_Store

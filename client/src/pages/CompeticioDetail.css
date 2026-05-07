@@ -1,0 +1,180 @@
+.competicio-detail-page {
+    padding-bottom: 30px;
+}
+
+.competicio-detail-header {
+    margin-bottom: 26px;
+}
+
+.competicio-detail-header-left {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.competicio-detail-visual {
+    width: 88px;
+    height: 88px;
+    flex: 0 0 88px;
+}
+
+.competicio-detail-logo {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    padding: 8px;
+}
+
+.competicio-detail-placeholder {
+    width: 88px;
+    height: 88px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #5425a0 0%, #d646ef 100%);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.competicio-detail-header h2 {
+    font-size: 2.4rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.competicio-detail-section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    margin-bottom: 22px;
+}
+
+.section-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.section-title-row h3 {
+    font-size: 1.7rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 0;
+}
+
+.section-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    background: rgba(84, 37, 160, 0.08);
+    color: #5425a0;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.competicio-team-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.competicio-team-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 18px;
+    height: 100%;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.competicio-team-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    border-color: #cbd5e1;
+}
+
+.competicio-team-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.competicio-team-crest,
+.competicio-team-crest-placeholder {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    border-radius: 14px;
+}
+
+.competicio-team-crest {
+    object-fit: contain;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    padding: 4px;
+}
+
+.competicio-team-crest-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eef2f7;
+    color: #374151;
+    font-weight: 800;
+    text-align: center;
+}
+
+.competicio-team-info {
+    min-width: 0;
+}
+
+.competicio-team-info h5 {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111827;
+}
+
+.competicio-team-info p {
+    color: #6b7280;
+}
+
+.competicio-jornada-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 18px;
+    height: 100%;
+}
+
+.competicio-jornada-number {
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 12px;
+}
+
+.competicio-jornada-card p {
+    color: #4b5563;
+}
+
+@media (max-width: 768px) {
+    .competicio-detail-header h2 {
+        font-size: 2rem;
+    }
+
+    .competicio-team-head {
+        align-items: flex-start;
+    }
+}
