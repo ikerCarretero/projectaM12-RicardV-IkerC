@@ -1,25 +1,12 @@
 .dashboard-layout {
-    display: flex;
     min-height: 100vh;
-    background-color: #f3f4f6;
-}
-
-.dashboard-main {
-    flex: 1;
-    margin-left: 220px;
-    min-width: 0;
+    background: #f4f5f7;
 }
 
 .dashboard-content {
-    padding: 32px;
-}
-
-@media (max-width: 992px) {
-    .dashboard-main {
-        margin-left: 200px;
-    }
-
-    .dashboard-content {
-        padding: 22px;
-    }
+    margin-left: 235px;
+    min-height: 100vh;
+    padding: 28px 32px;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }

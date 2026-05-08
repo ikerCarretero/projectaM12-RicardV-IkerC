@@ -1,129 +1,167 @@
 import { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { api } from '../services/api'
-import './Auth.css'
+import { Link, useNavigate } from 'react-router-dom'
+import './Login.css'
+
+import googleIcon from '../assets/icons/google.svg'
+import appleIcon from '../assets/icons/apple.svg'
 
 function Login() {
     const navigate = useNavigate()
 
-    const [formData, setFormData] = useState({
-        email: '',
-        password: ''
-    })
-
-    const [error, setError] = useState('')
+    const [email, setEmail] = useState('admin@fantasy.com')
+    const [password, setPassword] = useState('123456')
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData((prev) => ({
-            ...prev,
-            [name]: value
-        }))
-    }
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setError('')
-
-        if (!formData.email || !formData.password) {
-            setError('Has d’omplir tots els camps.')
-            return
-        }
-
         setLoading(true)
 
         try {
-            const result = await api.login(formData.email, formData.password)
+            const response = await fetch(`${apiUrl}/login`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password,
+                }),
+            })
 
-            const token = result?.token || result?.access_token
-            const user = result?.user || null
+            const data = await response.json()
 
-            if (!token) {
-                throw new Error('El servidor no ha retornat cap token.')
+            if (!response.ok) {
+                throw new Error(data.message || 'No s’ha pogut iniciar sessió')
             }
+
+            const token = data.token || data.access_token
+            const user = data.user || data.usuari
 
             localStorage.setItem('ffe_token', token)
-
-            if (user) {
-                localStorage.setItem('ffe_user', JSON.stringify(user))
-            }
-
+            localStorage.setItem('ffe_user', JSON.stringify(user))
             localStorage.removeItem('ffe_guest')
+
             navigate('/dashboard')
-        } catch (err) {
-            setError(err.message || 'Error en iniciar sessió.')
+        } catch (error) {
+            setError(error.message)
         } finally {
             setLoading(false)
         }
     }
 
+    const handleGuestAccess = () => {
+        localStorage.removeItem('ffe_token')
+        localStorage.removeItem('ffe_user')
+        localStorage.setItem('ffe_guest', 'true')
+
+        navigate('/dashboard')
+    }
+
     return (
-        <div className="auth-page">
-            <div className="auth-wrapper">
-                <div className="auth-box shadow-sm">
-                    <h1 className="auth-title">Iniciar sessió</h1>
+        <main className="login-page">
+            <section className="login-card">
 
-                    <form onSubmit={handleSubmit}>
-                        <div className="auth-inputs">
-                            <input
-                                type="email"
-                                name="email"
-                                className="auth-input"
-                                placeholder="Email"
-                                value={formData.email}
-                                onChange={handleChange}
-                            />
+                <h1>Iniciar sessió</h1>
 
-                            <input
-                                type="password"
-                                name="password"
-                                className="auth-input"
-                                placeholder="Password"
-                                value={formData.password}
-                                onChange={handleChange}
-                            />
-                        </div>
+                <p className="login-subtitle">
+                    Accedeix al teu compte per gestionar el teu equip fantasy,
+                    les teves lligues i la teva alineació.
+                </p>
 
-                        {error && (
-                            <div className="alert alert-danger mt-3 mb-0">
-                                {error}
-                            </div>
-                        )}
+                {error && (
+                    <div className="login-error">
+                        {error}
+                    </div>
+                )}
 
-                        <button
-                            type="submit"
-                            className="btn btn-dark w-100 mt-3"
-                            disabled={loading}
-                        >
-                            {loading ? 'Entrant...' : 'Entrar'}
-                        </button>
-                    </form>
-
-                    <div className="auth-divider">
-                        <span>Or</span>
+                <form className="login-form" onSubmit={handleSubmit}>
+                    <div className="login-field">
+                        <label htmlFor="email">Correu electrònic</label>
+                        <input
+                            id="email"
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            autoComplete="email"
+                            required
+                        />
                     </div>
 
-                    <div className="auth-social-buttons">
-                        <button className="btn btn-outline-dark w-100" type="button" onClick={() => navigate('/login')}>
-                            Google
-                        </button>
-
-                        <button className="btn btn-outline-dark w-100" type="button" onClick={() => navigate('/login')}>
-                            Apple
-                        </button>
-
-                        <button className="btn btn-outline-dark w-100" type="button" onClick={() => navigate('/login')}>
-                            Mail
-                        </button>
+                    <div className="login-field">
+                        <label htmlFor="password">Contrasenya</label>
+                        <input
+                            id="password"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            autoComplete="current-password"
+                            required
+                        />
                     </div>
 
-                    <p className="auth-bottom-text mt-4 mb-0">
-                        No tens compte? <Link to="/register" className="auth-link">Registra’t</Link>
-                    </p>
+                    <button
+                        type="submit"
+                        className="login-main-btn"
+                        disabled={loading}
+                    >
+                        {loading ? 'Entrant...' : 'Entrar'}
+                    </button>
+                </form>
+
+                <div className="login-divider">
+                    <span>o</span>
                 </div>
-            </div>
-        </div>
+
+                <div className="login-social-buttons">
+                    <button
+                        type="button"
+                        className="login-social-btn"
+                        onClick={() => alert('Login amb Google pendent d’implementar')}
+                    >
+                        <img
+                            src={googleIcon}
+                            alt="Google"
+                            className="login-social-icon"
+                        />
+                        <span>Continua amb Google</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        className="login-social-btn"
+                        onClick={() => alert('Login amb Apple pendent d’implementar')}
+                    >
+                        <img
+                            src={appleIcon}
+                            alt="Apple"
+                            className="login-social-icon"
+                        />
+                        <span>Continua amb Apple</span>
+                    </button>
+
+                    <button
+                        type="button"
+                        className="login-social-btn"
+                        onClick={handleGuestAccess}
+                    >
+                        <span className="login-mail-icon">✉</span>
+                        <span>Entrar com a convidat</span>
+                    </button>
+                </div>
+
+                <p className="login-register-text">
+                    No tens compte?{' '}
+                    <Link to="/register">
+                        Registra’t
+                    </Link>
+                </p>
+            </section>
+        </main>
     )
 }
 

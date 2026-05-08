@@ -1,0 +1,156 @@
+.lligues-page {
+    padding-bottom: 32px;
+}
+
+.lligues-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.lliga-card {
+    background: #ffffff;
+    border: 1px solid #e1e5ec;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    transition:
+        transform 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.lliga-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+}
+
+.lliga-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.lliga-card h2 {
+    margin: 10px 0 0 0;
+    color: #0f172a;
+    font-size: 1.45rem;
+    font-weight: 900;
+}
+
+.lliga-code {
+    min-width: 96px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    background: #f8fafc;
+    border: 1px solid #e1e5ec;
+    text-align: center;
+}
+
+.lliga-code span {
+    display: block;
+    margin-bottom: 4px;
+    color: #667085;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.lliga-code strong {
+    color: #5925a0;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.lliga-description {
+    margin: 0 0 18px 0;
+    color: #667085;
+    line-height: 1.55;
+}
+
+.lliga-info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.lliga-info-grid div {
+    padding: 13px 14px;
+    border-radius: 14px;
+    border: 1px solid #e1e5ec;
+    background: #f8fafc;
+}
+
+.lliga-info-grid span {
+    display: block;
+    margin-bottom: 4px;
+    color: #667085;
+    font-weight: 700;
+}
+
+.lliga-info-grid strong {
+    color: #0f172a;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.lligues-form-card {
+    max-width: 900px;
+}
+
+.lligues-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.lligues-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.lligues-field label {
+    color: #0f172a;
+    font-weight: 800;
+}
+
+.lligues-field input,
+.lligues-field textarea {
+    width: 100%;
+    border: 1px solid #d7dce5;
+    border-radius: 14px;
+    padding: 12px 14px;
+    color: #0f172a;
+    background: #ffffff;
+    outline: none;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.lligues-field textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.lligues-field input:focus,
+.lligues-field textarea:focus {
+    border-color: rgba(89, 37, 160, 0.5);
+    box-shadow: 0 0 0 4px rgba(89, 37, 160, 0.08);
+}
+
+.lliga-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+@media (max-width: 1100px) {
+    .lligues-grid,
+    .lliga-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}

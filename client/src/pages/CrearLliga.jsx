@@ -1,40 +1,64 @@
-import { useState } from "react";
-import { crearLliga } from "../services/lligaService";
-import { useNavigate } from "react-router-dom";
+import { Link } from 'react-router-dom'
+import PageHeader from '../components/ui/PageHeader'
+import './Lligues.css'
 
-export default function CrearLliga() {
-    const [nom, setNom] = useState("");
-    const [tipus, setTipus] = useState("privada");
-    const navigate = useNavigate();
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        await crearLliga({ nom, tipus });
-
-        navigate("/dashboard");
-    };
-
+function CrearLliga() {
     return (
-        <div>
-            <h2>Crear lliga</h2>
+        <main className="app-page lligues-page">
+            <PageHeader
+                kicker="Nova lliga privada"
+                title="Crear lliga d’amics"
+                subtitle="Crea una lliga fantasy privada i comparteix el codi només amb el teu grup."
+                actions={
+                    <Link to="/lligues" className="app-btn app-btn-secondary">
+                        Tornar a lligues
+                    </Link>
+                }
+            />
 
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Nom de la lliga"
-                    value={nom}
-                    onChange={(e) => setNom(e.target.value)}
-                    required
-                />
+            <section className="app-card app-card-large lligues-form-card">
+                <div className="app-info-grid mb-4">
+                    <div className="app-info-box">
+                        <strong>Privada</strong>
+                        <span>Només hi entrarà qui tingui el codi.</span>
+                    </div>
 
-                <select value={tipus} onChange={(e) => setTipus(e.target.value)}>
-                    <option value="privada">Privada</option>
-                    <option value="publica">Pública</option>
-                </select>
+                    <div className="app-info-box">
+                        <strong>Amics</strong>
+                        <span>Ideal per grups petits o coneguts.</span>
+                    </div>
 
-                <button type="submit">Crear</button>
-            </form>
-        </div>
-    );
+                    <div className="app-info-box">
+                        <strong>Administració</strong>
+                        <span>El creador podrà gestionar la lliga.</span>
+                    </div>
+                </div>
+
+                <form className="lligues-form">
+                    <div className="lligues-field">
+                        <label htmlFor="nom">Nom de la lliga</label>
+                        <input
+                            id="nom"
+                            type="text"
+                            placeholder="Ex: Lliga dels col·legues"
+                        />
+                    </div>
+
+                    <div className="lligues-field">
+                        <label htmlFor="descripcio">Descripció</label>
+                        <textarea
+                            id="descripcio"
+                            placeholder="Ex: Fantasy privat entre amics de classe"
+                        />
+                    </div>
+
+                    <button type="button" className="app-btn app-btn-primary">
+                        Crear lliga
+                    </button>
+                </form>
+            </section>
+        </main>
+    )
 }
+
+export default CrearLliga

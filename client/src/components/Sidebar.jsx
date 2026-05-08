@@ -15,32 +15,36 @@ function Sidebar() {
         navigate('/')
     }
 
+    const getLinkClass = ({ isActive }) =>
+        isActive ? 'sidebar-link active' : 'sidebar-link'
+
     return (
         <aside className="sidebar">
-            <div>
+            <div className="sidebar-top">
                 <div className="sidebar-user-card">
-                    <div className="sidebar-user-top">
+                    <div className="sidebar-user-header">
                         <div className="sidebar-avatar">
-                            {usuari?.nom?.charAt(0) || 'G'}
+                            {(usuari?.nom || 'G').charAt(0).toUpperCase()}
                         </div>
 
                         {!esGuest && (
-                            <NavLink
-                                to="/configuracio"
-                                className="sidebar-settings"
+                            <button
+                                type="button"
+                                className="sidebar-settings-btn"
+                                onClick={() => navigate('/configuracio')}
                                 title="Configuració"
                             >
                                 ⚙️
-                            </NavLink>
+                            </button>
                         )}
                     </div>
 
                     <div className="sidebar-user-info">
-                        <div className="sidebar-user-name">
+                        <strong>
                             {usuari?.nom || (esGuest ? 'Guest' : 'Usuari')}
-                        </div>
+                        </strong>
 
-                        <div className="sidebar-user-role">
+                        <span>
                             {usuari
                                 ? rol === 'admin'
                                     ? 'Administrador'
@@ -48,30 +52,36 @@ function Sidebar() {
                                 : esGuest
                                     ? 'Mode convidat'
                                     : 'Visitant'}
-                        </div>
+                        </span>
                     </div>
                 </div>
 
                 <nav className="sidebar-nav">
-                    <NavLink to="/dashboard" className="sidebar-link">
+                    <NavLink to="/dashboard" className={getLinkClass}>
                         Home
                     </NavLink>
 
-                    <NavLink to="/competicions" className="sidebar-link">
+                    {!esGuest && (
+                        <NavLink to="/lligues" className={getLinkClass}>
+                            Lligues
+                        </NavLink>
+                    )}
+
+                    <NavLink to="/competicions" className={getLinkClass}>
                         Competicions
                     </NavLink>
 
-                    <NavLink to="/rankings" className="sidebar-link">
+                    <NavLink to="/rankings" className={getLinkClass}>
                         Rankings
                     </NavLink>
 
                     {!esGuest && (
                         <>
-                            <NavLink to="/equip" className="sidebar-link">
+                            <NavLink to="/equip" className={getLinkClass}>
                                 Equip
                             </NavLink>
 
-                            <NavLink to="/alineacio" className="sidebar-link">
+                            <NavLink to="/alineacio" className={getLinkClass}>
                                 Alineació
                             </NavLink>
                         </>
@@ -79,7 +89,11 @@ function Sidebar() {
                 </nav>
             </div>
 
-            <button className="btn btn-danger w-100 mt-4" onClick={handleLogout}>
+            <button
+                type="button"
+                className="sidebar-logout-btn"
+                onClick={handleLogout}
+            >
                 Sortir
             </button>
         </aside>
