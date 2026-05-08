@@ -1,105 +1,105 @@
-const STORAGE_KEY = 'fantasy_lligues_privades'
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 
-function getStoredLligues() {
-  const data = localStorage.getItem(STORAGE_KEY)
+/*
+    Important:
+    Si al backend finalment feu les rutes com /api/lligues,
+    només canvia aquesta línia:
 
-  if (!data) {
-    return []
+    const BASE_ENDPOINT = '/lligues'
+
+    Ara ho deixo com /lligues-privades perquè encaixa millor
+    amb la idea de lliga d'amics.
+*/
+const BASE_ENDPOINT = '/lligues-privades'
+
+const getToken = () => {
+  return localStorage.getItem('ffe_token') || localStorage.getItem('token')
+}
+
+const getHeaders = () => {
+  const token = getToken()
+
+  const headers = {
+    Accept: 'application/json',
+    'Content-Type': 'application/json',
   }
+
+  if (token) {
+    headers.Authorization = `Bearer ${token}`
+  }
+
+  return headers
+}
+
+const request = async (endpoint, options = {}) => {
+  const response = await fetch(`${API_URL}${endpoint}`, {
+    ...options,
+    headers: {
+      ...getHeaders(),
+      ...(options.headers || {}),
+    },
+  })
+
+  const text = await response.text()
+  let data = null
 
   try {
-    return JSON.parse(data)
-  } catch {
-    return []
-  }
-}
-
-function saveStoredLligues(lligues) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(lligues))
-}
-
-function generarCodiInvitacio() {
-  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
-  let codi = ''
-
-  for (let i = 0; i < 6; i += 1) {
-    codi += chars.charAt(Math.floor(Math.random() * chars.length))
+    data = text ? JSON.parse(text) : null
+  } catch (error) {
+    data = null
   }
 
-  return codi
-}
+  if (!response.ok) {
+    const message =
+      data?.message ||
+      data?.error ||
+      'No s’ha pogut completar la petició'
 
-export function getLliguesPrivades() {
-  return getStoredLligues()
-}
-
-export function getLligaPrivadaById(id) {
-  const lligues = getStoredLligues()
-  return lligues.find((lliga) => String(lliga.id) === String(id)) || null
-}
-
-export function createLligaPrivada({ nom, descripcio, competicio, temporada }) {
-  const lligues = getStoredLligues()
-
-  const novaLliga = {
-    id: Date.now(),
-    nom,
-    descripcio,
-    competicio,
-    temporada,
-    codiInvitacio: generarCodiInvitacio(),
-    creador: 'Admin',
-    pressupost: 100000000,
-    membres: [
-      {
-        id: 1,
-        nom: 'Admin',
-        rol: 'Administrador',
-        punts: 0,
-      },
-    ],
-    createdAt: new Date().toISOString(),
+    throw new Error(message)
   }
 
-  const novesLligues = [novaLliga, ...lligues]
-  saveStoredLligues(novesLligues)
-
-  return novaLliga
+  return data
 }
 
-export function joinLligaPrivada(codiInvitacio) {
-  const lligues = getStoredLligues()
+export const getLliguesPrivades = async () => {
+  return request(BASE_ENDPOINT)
+}
 
-  const lligaIndex = lligues.findIndex(
-    (lliga) => lliga.codiInvitacio.toUpperCase() === codiInvitacio.toUpperCase()
-  )
+export const getLligaPrivada = async (id) => {
+  return request(`${BASE_ENDPOINT}/${id}`)
+}
 
-  if (lligaIndex === -1) {
-    throw new Error('No s’ha trobat cap lliga amb aquest codi.')
-  }
+export const crearLligaPrivada = async (lligaData) => {
+  return request(BASE_ENDPOINT, {
+    method: 'POST',
+    body: JSON.stringify(lligaData),
+  })
+}
 
-  const lliga = lligues[lligaIndex]
+export const unirLligaPrivada = async (codi) => {
+  return request(`${BASE_ENDPOINT}/unir`, {
+    method: 'POST',
+    body: JSON.stringify({ codi }),
+  })
+}
 
-  const jaExisteix = lliga.membres.some((membre) => membre.nom === 'Admin')
+export async function eliminarLligaPrivada(id) {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
+    const token = localStorage.getItem('ffe_token') || localStorage.getItem('token')
 
-  if (!jaExisteix) {
-    lliga.membres.push({
-      id: Date.now(),
-      nom: 'Admin',
-      rol: 'Participant',
-      punts: 0,
+    const response = await fetch(`${apiUrl}/lligues-privades/${id}`, {
+        method: 'DELETE',
+        headers: {
+            Accept: 'application/json',
+            Authorization: `Bearer ${token}`,
+        },
     })
-  }
 
-  lligues[lligaIndex] = lliga
-  saveStoredLligues(lligues)
+    const data = await response.json().catch(() => ({}))
 
-  return lliga
-}
+    if (!response.ok) {
+        throw new Error(data.message || 'No s’ha pogut eliminar la lliga.')
+    }
 
-export function deleteLligaPrivada(id) {
-  const lligues = getStoredLligues()
-  const novesLligues = lligues.filter((lliga) => String(lliga.id) !== String(id))
-
-  saveStoredLligues(novesLligues)
+    return data
 }
