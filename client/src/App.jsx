@@ -17,6 +17,7 @@ import Welcome from './pages/Welcome.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AdminPanel from './pages/AdminPanel.jsx'
+import AdminPuntuacions from './pages/AdminPuntuacions.jsx'
 
 import Lligues from './pages/Lligues.jsx'
 import CrearLliga from './pages/CrearLliga.jsx'
@@ -59,13 +60,14 @@ function App() {
         <Route path="/alineacio" element={<Alineacio />} />
         <Route path="/configuracio" element={<Configuracio />} />
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/puntuacions" element={<AdminPuntuacions />} />
 
         <Route path="/lligues" element={<Lligues />} />
         <Route path="/lligues/crear" element={<CrearLliga />} />
         <Route path="/lligues/unir" element={<UnirLliga />} />
         <Route path="/lligues/:id" element={<LligaPrivadaDetail />} />
       </Route>
-    </Routes>
+    </Routes >
   )
 }
 

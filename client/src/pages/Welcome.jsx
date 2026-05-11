@@ -105,7 +105,9 @@ function Welcome() {
                                 <div className="field-line field-line-mid"></div>
                                 <div className="field-circle"></div>
 
-                                <div className="player-chip player-gk">GK</div>
+                                <div className="player-row row-gk">
+                                    <div className="player-chip player-gk">PT</div>
+                                </div>
 
                                 <div className="player-row row-def">
                                     <div className="player-chip">DEF</div>
@@ -115,15 +117,15 @@ function Welcome() {
                                 </div>
 
                                 <div className="player-row row-mid">
-                                    <div className="player-chip">MID</div>
-                                    <div className="player-chip">MID</div>
-                                    <div className="player-chip">MID</div>
+                                    <div className="player-chip">MIG</div>
+                                    <div className="player-chip">MIG</div>
+                                    <div className="player-chip">MIG</div>
                                 </div>
 
                                 <div className="player-row row-att">
-                                    <div className="player-chip">ATT</div>
-                                    <div className="player-chip">ATT</div>
-                                    <div className="player-chip">ATT</div>
+                                    <div className="player-chip">DAV</div>
+                                    <div className="player-chip">DAV</div>
+                                    <div className="player-chip">DAV</div>
                                 </div>
                             </div>
                         </div>
@@ -131,11 +133,6 @@ function Welcome() {
                         <div className="hero-floating-card hero-floating-card-one">
                             <span className="floating-label">Alineació ideal</span>
                             <strong>4-3-3</strong>
-                        </div>
-
-                        <div className="hero-floating-card hero-floating-card-two">
-                            <span className="floating-label">Plantilles reals</span>
-                            <strong>Jugadors · Valor · Punts</strong>
                         </div>
                     </div>
                 </div>

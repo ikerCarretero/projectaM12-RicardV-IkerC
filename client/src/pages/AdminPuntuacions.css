@@ -1,0 +1,370 @@
+.admin-puntuacions-page {
+    padding-bottom: 36px;
+}
+
+.admin-puntuacions-header {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 18px;
+}
+
+.admin-puntuacions-kicker {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    margin-bottom: 10px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.1);
+    color: #6d28d9;
+    font-size: 0.82rem;
+    font-weight: 900;
+}
+
+.admin-puntuacions-header h1,
+.admin-puntuacions-denied h1 {
+    margin: 0 0 10px;
+    color: #0f172a;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.admin-puntuacions-header p,
+.admin-puntuacions-denied p {
+    margin: 0;
+    max-width: 760px;
+    color: #64748b;
+    line-height: 1.55;
+}
+
+.admin-puntuacions-back {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 14px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #111827;
+    font-size: 0.95rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.admin-puntuacions-back:hover {
+    background: #f8fafc;
+    border-color: #a855f7;
+    color: #111827;
+    transform: translateY(-1px);
+}
+
+.admin-puntuacions-alert {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    color: #9a3412;
+    font-weight: 800;
+}
+
+.admin-puntuacions-message {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    background: #ecfdf5;
+    border: 1px solid #bbf7d0;
+    color: #047857;
+    font-weight: 800;
+}
+
+.admin-puntuacions-toolbar {
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 22px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 18px;
+}
+
+.admin-puntuacions-search,
+.admin-puntuacions-filter {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.admin-puntuacions-search label,
+.admin-puntuacions-filter label {
+    color: #111827;
+    font-size: 0.92rem;
+    font-weight: 900;
+}
+
+.admin-puntuacions-search input,
+.admin-puntuacions-filter select {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 14px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 0.98rem;
+    outline: none;
+    box-sizing: border-box;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        background-color 0.18s ease;
+}
+
+.admin-puntuacions-search input:focus,
+.admin-puntuacions-filter select:focus {
+    border-color: #8b5cf6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.14);
+}
+
+.admin-puntuacions-stats {
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.admin-puntuacions-stats article {
+    padding: 20px;
+    border-radius: 20px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+}
+
+.admin-puntuacions-stats span {
+    display: block;
+    margin-bottom: 8px;
+    color: #64748b;
+    font-weight: 800;
+}
+
+.admin-puntuacions-stats strong {
+    color: #0f172a;
+    font-size: 1.7rem;
+    font-weight: 900;
+}
+
+.admin-puntuacions-loading,
+.admin-puntuacions-empty {
+    padding: 24px;
+    border-radius: 22px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    color: #64748b;
+    font-weight: 800;
+    text-align: center;
+}
+
+.admin-puntuacions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.admin-jugador-card {
+    padding: 20px;
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 34px rgba(15, 23, 42, 0.06);
+    display: grid;
+    grid-template-columns: 1.15fr 1fr 1.35fr;
+    gap: 18px;
+    align-items: center;
+}
+
+.admin-jugador-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 0;
+}
+
+.admin-jugador-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #d946ef 0%, #22d3ee 100%);
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.admin-jugador-info h2 {
+    margin: 0 0 4px;
+    color: #0f172a;
+    font-size: 1.25rem;
+    font-weight: 900;
+}
+
+.admin-jugador-info p {
+    margin: 0 0 6px;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.admin-jugador-info span {
+    display: inline-flex;
+    padding: 5px 10px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.1);
+    color: #6d28d9;
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.admin-jugador-current {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.admin-jugador-current div {
+    padding: 12px;
+    border-radius: 15px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+}
+
+.admin-jugador-current span {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.admin-jugador-current strong {
+    color: #0f172a;
+    font-size: 0.98rem;
+    font-weight: 900;
+}
+
+.admin-jugador-form {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 110px;
+    gap: 10px;
+    align-items: end;
+}
+
+.admin-jugador-form label {
+    color: #111827;
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.admin-jugador-form input {
+    width: 100%;
+    height: 42px;
+    margin-top: 6px;
+    padding: 0 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #f8fafc;
+    color: #0f172a;
+    font-size: 0.92rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.admin-jugador-form input:focus {
+    border-color: #8b5cf6;
+    background: #ffffff;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.14);
+}
+
+.admin-jugador-form button {
+    height: 42px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #5b21b6 0%, #d946ef 100%);
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 10px 24px rgba(168, 85, 247, 0.22);
+}
+
+.admin-jugador-form button:hover {
+    filter: brightness(1.04);
+}
+
+.admin-jugador-form button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.admin-puntuacions-denied {
+    max-width: 760px;
+    padding: 34px;
+    border-radius: 26px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08);
+}
+
+.admin-puntuacions-denied .admin-puntuacions-back {
+    margin-top: 22px;
+}
+
+@media (max-width: 1200px) {
+    .admin-jugador-card {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-jugador-form {
+        grid-template-columns: repeat(3, minmax(0, 1fr)) 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-puntuacions-header {
+        flex-direction: column;
+    }
+
+    .admin-puntuacions-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-puntuacions-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-jugador-current {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-jugador-form {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-jugador-form button {
+        width: 100%;
+    }
+}

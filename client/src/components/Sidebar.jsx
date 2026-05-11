@@ -7,6 +7,7 @@ function Sidebar() {
     const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
     const esGuest = localStorage.getItem('ffe_guest') === 'true'
     const rol = (usuari?.rol || '').toLowerCase()
+    const esAdmin = rol === 'admin'
 
     const handleLogout = () => {
         localStorage.removeItem('ffe_user')
@@ -84,6 +85,15 @@ function Sidebar() {
                             <NavLink to="/alineacio" className={getLinkClass}>
                                 Alineació
                             </NavLink>
+
+                            {esAdmin && (
+                                <NavLink
+                                    to="/admin/puntuacions"
+                                    className={getLinkClass}
+                                >
+                                    Puntuacions
+                                </NavLink>
+                            )}
                         </>
                     )}
                 </nav>
