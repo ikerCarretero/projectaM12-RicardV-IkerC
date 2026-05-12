@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom'
 import PublicLayout from './layouts/PublicLayout.jsx'
 import DashboardLayout from './layouts/DashboardLayout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
-
 import DashboardHome from './pages/DashboardHome.jsx'
 import Competicions from './pages/Competicions.jsx'
 import CompeticioDetail from './pages/CompeticioDetail.jsx'
@@ -18,11 +17,11 @@ import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import AdminPanel from './pages/AdminPanel.jsx'
 import AdminPuntuacions from './pages/AdminPuntuacions.jsx'
-
 import Lligues from './pages/Lligues.jsx'
 import CrearLliga from './pages/CrearLliga.jsx'
 import UnirLliga from './pages/UnirLliga.jsx'
 import LligaPrivadaDetail from './pages/LligaPrivadaDetail.jsx'
+import Mercat from './pages/Mercat.jsx'
 
 function App() {
   return (
@@ -55,17 +54,18 @@ function App() {
           </ProtectedRoute>
         }
       >
-        <Route path="/equip" element={<Equip />} />
-        <Route path="/plantilla" element={<Plantilla />} />
-        <Route path="/alineacio" element={<Alineacio />} />
-        <Route path="/configuracio" element={<Configuracio />} />
-        <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/admin/puntuacions" element={<AdminPuntuacions />} />
-
         <Route path="/lligues" element={<Lligues />} />
         <Route path="/lligues/crear" element={<CrearLliga />} />
         <Route path="/lligues/unir" element={<UnirLliga />} />
         <Route path="/lligues/:id" element={<LligaPrivadaDetail />} />
+
+        <Route path="/equip" element={<Equip />} />
+        <Route path="/plantilla" element={<Plantilla />} />
+        <Route path="/alineacio" element={<Alineacio />} />
+        <Route path="/mercat" element={<Mercat />} />
+        <Route path="/configuracio" element={<Configuracio />} />
+        <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/puntuacions" element={<AdminPuntuacions />} />
       </Route>
     </Routes >
   )

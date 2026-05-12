@@ -7,7 +7,10 @@ function Sidebar() {
     const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
     const esGuest = localStorage.getItem('ffe_guest') === 'true'
     const rol = (usuari?.rol || '').toLowerCase()
+
     const esAdmin = rol === 'admin'
+    const mostrarZonaPrivada = !esGuest
+    const mostrarZonaAdmin = mostrarZonaPrivada && esAdmin
 
     const handleLogout = () => {
         localStorage.removeItem('ffe_user')
@@ -19,16 +22,27 @@ function Sidebar() {
     const getLinkClass = ({ isActive }) =>
         isActive ? 'sidebar-link active' : 'sidebar-link'
 
+    const nomUsuari = usuari?.nom || (esGuest ? 'Guest' : 'Usuari')
+    const inicialUsuari = nomUsuari.charAt(0).toUpperCase()
+
+    const textRol = usuari
+        ? esAdmin
+            ? 'Administrador'
+            : 'Usuari registrat'
+        : esGuest
+            ? 'Mode convidat'
+            : 'Visitant'
+
     return (
         <aside className="sidebar">
             <div className="sidebar-top">
                 <div className="sidebar-user-card">
                     <div className="sidebar-user-header">
                         <div className="sidebar-avatar">
-                            {(usuari?.nom || 'G').charAt(0).toUpperCase()}
+                            {inicialUsuari}
                         </div>
 
-                        {!esGuest && (
+                        {mostrarZonaPrivada && (
                             <button
                                 type="button"
                                 className="sidebar-settings-btn"
@@ -41,19 +55,8 @@ function Sidebar() {
                     </div>
 
                     <div className="sidebar-user-info">
-                        <strong>
-                            {usuari?.nom || (esGuest ? 'Guest' : 'Usuari')}
-                        </strong>
-
-                        <span>
-                            {usuari
-                                ? rol === 'admin'
-                                    ? 'Administrador'
-                                    : 'Usuari registrat'
-                                : esGuest
-                                    ? 'Mode convidat'
-                                    : 'Visitant'}
-                        </span>
+                        <strong>{nomUsuari}</strong>
+                        <span>{textRol}</span>
                     </div>
                 </div>
 
@@ -62,7 +65,7 @@ function Sidebar() {
                         Home
                     </NavLink>
 
-                    {!esGuest && (
+                    {mostrarZonaPrivada && (
                         <NavLink to="/lligues" className={getLinkClass}>
                             Lligues
                         </NavLink>
@@ -76,25 +79,26 @@ function Sidebar() {
                         Rankings
                     </NavLink>
 
-                    {!esGuest && (
+                    {mostrarZonaPrivada && (
                         <>
                             <NavLink to="/equip" className={getLinkClass}>
                                 Equip
                             </NavLink>
 
+                            <NavLink to="/mercat" className={getLinkClass}>
+                                Mercat
+                            </NavLink>
+
                             <NavLink to="/alineacio" className={getLinkClass}>
                                 Alineació
                             </NavLink>
-
-                            {esAdmin && (
-                                <NavLink
-                                    to="/admin/puntuacions"
-                                    className={getLinkClass}
-                                >
-                                    Puntuacions
-                                </NavLink>
-                            )}
                         </>
+                    )}
+
+                    {mostrarZonaAdmin && (
+                        <NavLink to="/admin/puntuacions" className={getLinkClass}>
+                            Puntuacions
+                        </NavLink>
                     )}
                 </nav>
             </div>
