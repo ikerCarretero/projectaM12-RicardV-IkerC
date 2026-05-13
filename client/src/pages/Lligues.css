@@ -39,6 +39,42 @@
 }
 
 /* =========================
+   Banner lliga activa
+========================= */
+
+.lliga-active-banner {
+    margin-bottom: 22px;
+    padding: 18px 20px;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at top left, rgba(217, 70, 239, 0.12), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.12), transparent 34%),
+        #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.lliga-active-banner span {
+    display: block;
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.lliga-active-banner strong {
+    color: #0f172a;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+/* =========================
    Grid principal de lligues
 ========================= */
 
@@ -56,12 +92,18 @@
     box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
     transition:
         transform 0.18s ease,
-        box-shadow 0.18s ease;
+        box-shadow 0.18s ease,
+        border-color 0.18s ease;
 }
 
 .lliga-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 14px 34px rgba(15, 23, 42, 0.09);
+}
+
+.lliga-card-active {
+    border-color: rgba(168, 85, 247, 0.55);
+    box-shadow: 0 18px 42px rgba(168, 85, 247, 0.14);
 }
 
 .lliga-card-top {
@@ -133,6 +175,17 @@
     color: #0f172a;
     font-size: 1.2rem;
     font-weight: 900;
+}
+
+.lliga-card-actions {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 130px;
+    gap: 12px;
+}
+
+.lliga-card-actions .lligues-main-btn,
+.lliga-card-actions .lligues-secondary-btn {
+    width: 100%;
 }
 
 /* =========================
@@ -288,13 +341,15 @@
     text-decoration: none;
     transition:
         background-color 0.18s ease,
-        border-color 0.18s ease;
+        border-color 0.18s ease,
+        transform 0.18s ease;
 }
 
 .lligues-secondary-btn:hover {
     background: #f8fafc;
     border-color: #a855f7;
     color: #111827;
+    transform: translateY(-1px);
 }
 
 /* Botó vermell d'admin */
@@ -615,13 +670,19 @@
     }
 
     .lliga-header-actions .app-btn,
-    .lliga-header-actions button {
+    .lliga-header-actions button,
+    .lliga-header-actions a {
         width: 100%;
     }
 
     .lliga-admin-warning {
         align-items: flex-start;
         flex-direction: column;
+    }
+
+    .lliga-active-banner {
+        flex-direction: column;
+        align-items: stretch;
     }
 }
 
@@ -656,5 +717,9 @@
     .lligues-empty-actions .lligues-main-btn,
     .lligues-empty-actions .lligues-secondary-btn {
         width: 100%;
+    }
+
+    .lliga-card-actions {
+        grid-template-columns: 1fr;
     }
 }

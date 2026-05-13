@@ -1,30 +1,53 @@
 import { useEffect, useMemo, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { mercatService } from '../services/mercatService'
+import { lligaActivaService } from '../services/lligaActivaService'
+import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import './Mercat.css'
 
 function Mercat() {
-    const [jugadors, setJugadors] = useState([])
+    const navigate = useNavigate()
+
+    const [lligaActiva, setLligaActiva] = useState(null)
+    const [jugadorsMercat, setJugadorsMercat] = useState([])
+    const [jugadorsFitxats, setJugadorsFitxats] = useState([])
+    const [pressupost, setPressupost] = useState(0)
     const [loading, setLoading] = useState(true)
-    const [error, setError] = useState('')
-    const [success, setSuccess] = useState('')
-    const [cerca, setCerca] = useState('')
+    const [fitxantId, setFitxantId] = useState(null)
+    const [search, setSearch] = useState('')
     const [posicio, setPosicio] = useState('Totes')
-    const [pressupost, setPressupost] = useState(
-        mercatService.getPressupostActual()
-    )
+    const [missatge, setMissatge] = useState('')
+    const [error, setError] = useState('')
 
     useEffect(() => {
         const carregarMercat = async () => {
             try {
                 setLoading(true)
                 setError('')
-                setSuccess('')
+                setMissatge('')
+
+                const lliga = lligaActivaService.obtenir()
+                setLligaActiva(lliga)
+
+                if (!lliga) {
+                    setJugadorsMercat([])
+                    setJugadorsFitxats([])
+                    setPressupost(0)
+                    return
+                }
 
                 const data = await mercatService.getJugadorsMercat()
-                setJugadors(data)
-                setPressupost(mercatService.getPressupostActual())
-            } catch (error) {
-                setError('No s’ha pogut carregar el mercat')
+
+                const jugadors = normalitzarRespostaMercat(data)
+                const fitxats = equipFantasyLocalService.getJugadorsFitxats()
+                const pressupostActual = equipFantasyLocalService.getPressupost()
+
+                setJugadorsMercat(jugadors)
+                setJugadorsFitxats(fitxats)
+                setPressupost(pressupostActual)
+            } catch (err) {
+                console.error(err)
+                setError('No s’ha pogut carregar el mercat de fitxatges.')
             } finally {
                 setLoading(false)
             }
@@ -33,195 +56,255 @@ function Mercat() {
         carregarMercat()
     }, [])
 
-    const formatEuros = (valor) => {
-        return new Intl.NumberFormat('ca-ES', {
-            style: 'currency',
-            currency: 'EUR',
-            maximumFractionDigits: 0,
-        }).format(Number(valor || 0))
-    }
+    const jugadorsDisponibles = useMemo(() => {
+        const idsFitxats = jugadorsFitxats.map((jugador) => Number(jugador.id))
 
-    const posicions = useMemo(() => {
-        const llista = jugadors
-            .map((jugador) => jugador.posicio)
-            .filter(Boolean)
+        return jugadorsMercat.filter((jugador) => {
+            const jaFitxat = idsFitxats.includes(Number(jugador.id))
 
-        return ['Totes', ...new Set(llista)]
-    }, [jugadors])
+            if (jaFitxat) {
+                return false
+            }
 
-    const jugadorsFiltrats = useMemo(() => {
-        return jugadors.filter((jugador) => {
-            const text = `${jugador.nom} ${jugador.equip} ${jugador.posicio}`.toLowerCase()
+            const coincideixText =
+                jugador.nom?.toLowerCase().includes(search.toLowerCase()) ||
+                jugador.equip?.toLowerCase().includes(search.toLowerCase())
 
-            const coincideixCerca = text.includes(cerca.toLowerCase())
             const coincideixPosicio =
                 posicio === 'Totes' || jugador.posicio === posicio
 
-            return coincideixCerca && coincideixPosicio
+            return coincideixText && coincideixPosicio
         })
-    }, [jugadors, cerca, posicio])
+    }, [jugadorsMercat, jugadorsFitxats, search, posicio])
 
-    const handleFitxarJugador = async (jugador) => {
-        setError('')
-        setSuccess('')
-
-        if (jugador.fitxat) {
-            return
-        }
-
-        const valorJugador = Number(jugador.valor_mercat || 0)
-
-        if (valorJugador > pressupost) {
-            setError('No tens pressupost suficient per fitxar aquest jugador.')
-            return
-        }
-
+    const handleFitxar = (jugador) => {
         try {
-            const resultat = await mercatService.fitxarJugador(jugador)
+            setFitxantId(jugador.id)
+            setError('')
+            setMissatge('')
 
-            setJugadors((jugadorsActuals) =>
-                jugadorsActuals.map((item) =>
-                    item.id === jugador.id
-                        ? {
-                            ...item,
-                            fitxat: true,
-                            estat: 'Fitxat',
-                        }
-                        : item
-                )
-            )
+            const resultat = equipFantasyLocalService.fitxarJugador(jugador)
 
+            setJugadorsFitxats(resultat.jugadors)
             setPressupost(resultat.pressupost)
-            setSuccess(`${jugador.nom} fitxat correctament.`)
-        } catch (error) {
-            setError(error.message || 'No s’ha pogut fitxar el jugador.')
+
+            setMissatge(`${jugador.nom} fitxat correctament per ${lligaActiva.nom}.`)
+        } catch (err) {
+            setError(err.message || 'No s’ha pogut fitxar aquest jugador.')
+        } finally {
+            setFitxantId(null)
         }
+    }
+
+    if (!lligaActiva && !loading) {
+        return (
+            <main className="app-page mercat-page">
+                <section className="mercat-empty">
+                    <h2>Abans has d’escollir una lliga</h2>
+
+                    <p>
+                        Per entrar al mercat has de seleccionar una lliga privada activa.
+                        Així cada lliga tindrà el seu propi pressupost i els seus fitxatges.
+                    </p>
+
+                    <Link to="/lligues" className="mercat-btn mercat-empty-btn">
+                        Anar a les meves lligues
+                    </Link>
+                </section>
+            </main>
+        )
     }
 
     return (
         <main className="app-page mercat-page">
             <section className="mercat-header">
                 <div>
-                    <p className="mercat-kicker">Mercat de fitxatges</p>
+                    <span className="mercat-kicker">Mercat de fitxatges</span>
 
-                    <h1>Mercat</h1>
+                    <h1>Mercat fantasy</h1>
 
                     <p>
-                        Busca jugadors disponibles, consulta el seu valor de mercat
-                        i fitxa’ls per al teu equip fantasy.
+                        Fitxa jugadors per a la lliga activa. Cada lliga privada té el seu
+                        propi mercat, pressupost i plantilla.
                     </p>
                 </div>
 
                 <div className="mercat-header-card">
                     <span>Pressupost</span>
-                    <strong>{formatEuros(pressupost)}</strong>
+                    <strong>{formatMoney(pressupost)}</strong>
                 </div>
             </section>
 
+            {lligaActiva && (
+                <section className="mercat-active-league">
+                    <div>
+                        <span>Lliga activa</span>
+                        <strong>{lligaActiva.nom}</strong>
+                    </div>
+
+                    <button
+                        type="button"
+                        className="mercat-change-league-btn"
+                        onClick={() => navigate('/lligues')}
+                    >
+                        Canviar lliga
+                    </button>
+                </section>
+            )}
+
             <section className="mercat-toolbar">
                 <div className="mercat-search">
-                    <label>Buscar jugador</label>
-
+                    <label htmlFor="search">Buscar jugador</label>
                     <input
+                        id="search"
                         type="text"
-                        value={cerca}
-                        onChange={(event) => setCerca(event.target.value)}
-                        placeholder="Ex: Lamine, Madrid, defensa..."
+                        placeholder="Busca per nom o equip..."
+                        value={search}
+                        onChange={(event) => setSearch(event.target.value)}
                     />
                 </div>
 
                 <div className="mercat-filter">
-                    <label>Posició</label>
-
+                    <label htmlFor="posicio">Posició</label>
                     <select
+                        id="posicio"
                         value={posicio}
                         onChange={(event) => setPosicio(event.target.value)}
                     >
-                        {posicions.map((item) => (
-                            <option key={item} value={item}>
-                                {item}
-                            </option>
-                        ))}
+                        <option value="Totes">Totes</option>
+                        <option value="Porter">Porter</option>
+                        <option value="Defensa">Defensa</option>
+                        <option value="Migcampista">Migcampista</option>
+                        <option value="Davanter">Davanter</option>
                     </select>
                 </div>
             </section>
 
-            {success && <div className="mercat-success">{success}</div>}
+            {missatge && (
+                <section className="mercat-alert mercat-alert-success">
+                    {missatge}
+                </section>
+            )}
 
-            {error && <div className="mercat-error">{error}</div>}
+            {error && (
+                <section className="mercat-alert mercat-alert-error">
+                    {error}
+                </section>
+            )}
 
             {loading ? (
                 <section className="mercat-empty">
                     <h2>Carregant mercat...</h2>
                     <p>Estem preparant els jugadors disponibles.</p>
                 </section>
-            ) : jugadorsFiltrats.length === 0 ? (
+            ) : jugadorsDisponibles.length === 0 ? (
                 <section className="mercat-empty">
                     <h2>No hi ha jugadors disponibles</h2>
-                    <p>Prova amb una altra cerca o canvia el filtre de posició.</p>
+                    <p>
+                        Potser ja has fitxat tots els jugadors visibles o el filtre actual no
+                        retorna cap resultat.
+                    </p>
                 </section>
             ) : (
                 <section className="mercat-grid">
-                    {jugadorsFiltrats.map((jugador) => (
-                        <article
-                            key={jugador.id}
-                            className={
-                                jugador.fitxat
-                                    ? 'mercat-card mercat-player-card-fitxat'
-                                    : 'mercat-card'
-                            }
-                        >
-                            <div className="mercat-card-top">
-                                <div className="mercat-player-avatar">
-                                    {jugador.nom?.charAt(0).toUpperCase() || 'J'}
+                    {jugadorsDisponibles.map((jugador) => {
+                        const noHiHaPressupost =
+                            Number(jugador.valor_mercat || 0) > Number(pressupost || 0)
+
+                        return (
+                            <article className="mercat-card" key={jugador.id}>
+                                <div className="mercat-card-top">
+                                    <div className="mercat-player-avatar">
+                                        {jugador.nom?.charAt(0)?.toUpperCase() || 'J'}
+                                    </div>
+
+                                    <div>
+                                        <h2>{jugador.nom}</h2>
+                                        <p>{jugador.equip}</p>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <h2>{jugador.nom}</h2>
-                                    <p>{jugador.equip}</p>
-                                </div>
-                            </div>
+                                <div className="mercat-card-info">
+                                    <div>
+                                        <span>Posició</span>
+                                        <strong>{jugador.posicio}</strong>
+                                    </div>
 
-                            <div className="mercat-card-info">
-                                <div>
-                                    <span>Posició</span>
-                                    <strong>{jugador.posicio}</strong>
+                                    <div>
+                                        <span>Valor</span>
+                                        <strong>{formatMoney(jugador.valor_mercat)}</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Punts</span>
+                                        <strong>{jugador.punts || 0}</strong>
+                                    </div>
+
+                                    <div>
+                                        <span>Estat</span>
+                                        <strong>{jugador.estat || 'Disponible'}</strong>
+                                    </div>
                                 </div>
 
-                                <div>
-                                    <span>Valor</span>
-                                    <strong>{formatEuros(jugador.valor_mercat)}</strong>
-                                </div>
-
-                                <div>
-                                    <span>Punts</span>
-                                    <strong>{jugador.punts}</strong>
-                                </div>
-
-                                <div>
-                                    <span>Estat</span>
-                                    <strong>{jugador.estat}</strong>
-                                </div>
-                            </div>
-
-                            <button
-                                type="button"
-                                className={
-                                    jugador.fitxat
-                                        ? 'mercat-btn mercat-fitxar-btn-disabled'
-                                        : 'mercat-btn'
-                                }
-                                onClick={() => handleFitxarJugador(jugador)}
-                                disabled={jugador.fitxat}
-                            >
-                                {jugador.fitxat ? 'Fitxat' : 'Fitxar jugador'}
-                            </button>
-                        </article>
-                    ))}
+                                <button
+                                    type="button"
+                                    className={
+                                        noHiHaPressupost
+                                            ? 'mercat-btn mercat-fitxar-btn-disabled'
+                                            : 'mercat-btn'
+                                    }
+                                    disabled={fitxantId === jugador.id || noHiHaPressupost}
+                                    onClick={() => handleFitxar(jugador)}
+                                >
+                                    {fitxantId === jugador.id
+                                        ? 'Fitxant...'
+                                        : noHiHaPressupost
+                                            ? 'Pressupost insuficient'
+                                            : 'Fitxar jugador'}
+                                </button>
+                            </article>
+                        )
+                    })}
                 </section>
             )}
         </main>
     )
+}
+
+const normalitzarRespostaMercat = (data) => {
+    let jugadors = []
+
+    if (Array.isArray(data)) {
+        jugadors = data
+    } else if (Array.isArray(data?.jugadors)) {
+        jugadors = data.jugadors
+    } else if (Array.isArray(data?.data)) {
+        jugadors = data.data
+    }
+
+    return jugadors.map((jugador) => ({
+        id: jugador.id,
+        nom: jugador.nom,
+        equip:
+            jugador.equip ||
+            jugador.equip_real?.nom ||
+            jugador.equipReal?.nom ||
+            'Sense equip',
+        posicio: jugador.posicio,
+        valor_mercat: Number(jugador.valor_mercat || jugador.valorMercat || 0),
+        punts: Number(jugador.punts || jugador.puntuacio_total || 0),
+        estat: jugador.estat || 'Disponible',
+    }))
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default Mercat

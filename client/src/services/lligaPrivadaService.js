@@ -1,105 +1,152 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 
-/*
-    Important:
-    Si al backend finalment feu les rutes com /api/lligues,
-    només canvia aquesta línia:
+const getToken = () => localStorage.getItem('ffe_token')
 
-    const BASE_ENDPOINT = '/lligues'
-
-    Ara ho deixo com /lligues-privades perquè encaixa millor
-    amb la idea de lliga d'amics.
-*/
-const BASE_ENDPOINT = '/lligues-privades'
-
-const getToken = () => {
-  return localStorage.getItem('ffe_token') || localStorage.getItem('token')
-}
-
-const getHeaders = () => {
+const headers = () => {
   const token = getToken()
 
-  const headers = {
+  return {
     Accept: 'application/json',
     'Content-Type': 'application/json',
+    ...(token ? { Authorization: `Bearer ${token}` } : {}),
   }
-
-  if (token) {
-    headers.Authorization = `Bearer ${token}`
-  }
-
-  return headers
 }
 
-const request = async (endpoint, options = {}) => {
-  const response = await fetch(`${API_URL}${endpoint}`, {
-    ...options,
-    headers: {
-      ...getHeaders(),
-      ...(options.headers || {}),
-    },
-  })
-
-  const text = await response.text()
-  let data = null
-
-  try {
-    data = text ? JSON.parse(text) : null
-  } catch (error) {
-    data = null
+const normalitzarRespostaLligues = (data) => {
+  if (Array.isArray(data)) {
+    return data
   }
 
-  if (!response.ok) {
-    const message =
-      data?.message ||
-      data?.error ||
-      'No s’ha pogut completar la petició'
-
-    throw new Error(message)
+  if (Array.isArray(data?.lligues)) {
+    return data.lligues
   }
 
-  return data
+  if (Array.isArray(data?.data)) {
+    return data.data
+  }
+
+  return []
 }
+
+const lliguesDemo = [
+  {
+    id: 1,
+    nom: 'Lliga DAW',
+    descripcio: 'Lliga privada de prova per al projecte final.',
+    codi: 'DAW2026',
+    codi_invitacio: 'DAW2026',
+    membres_count: 1,
+    pressupost: 250000000,
+    pressupost_inicial: 250000000,
+  },
+]
 
 export const getLliguesPrivades = async () => {
-  return request(BASE_ENDPOINT)
+  try {
+    const response = await fetch(`${API_URL}/lligues`, {
+      method: 'GET',
+      headers: headers(),
+    })
+
+    if (!response.ok) {
+      throw new Error('No s’han pogut carregar les lligues.')
+    }
+
+    const data = await response.json()
+    return normalitzarRespostaLligues(data)
+  } catch (error) {
+    console.warn('Lligues en mode demo:', error.message)
+    return lliguesDemo
+  }
 }
 
 export const getLligaPrivada = async (id) => {
-  return request(`${BASE_ENDPOINT}/${id}`)
+  try {
+    const response = await fetch(`${API_URL}/lligues/${id}`, {
+      method: 'GET',
+      headers: headers(),
+    })
+
+    if (!response.ok) {
+      throw new Error('No s’ha pogut carregar la lliga.')
+    }
+
+    return await response.json()
+  } catch (error) {
+    console.warn('Detall de lliga en mode demo:', error.message)
+
+    return (
+      lliguesDemo.find((lliga) => Number(lliga.id) === Number(id)) || {
+        id,
+        nom: 'Lliga privada',
+        descripcio: 'Lliga privada de prova.',
+        codi: 'DEMO2026',
+        codi_invitacio: 'DEMO2026',
+        membres_count: 1,
+        pressupost: 250000000,
+        pressupost_inicial: 250000000,
+      }
+    )
+  }
 }
 
-export const crearLligaPrivada = async (lligaData) => {
-  return request(BASE_ENDPOINT, {
+export const crearLligaPrivada = async (payload) => {
+  const response = await fetch(`${API_URL}/lligues`, {
     method: 'POST',
-    body: JSON.stringify(lligaData),
+    headers: headers(),
+    body: JSON.stringify(payload),
   })
+
+  if (!response.ok) {
+    const data = await response.json().catch(() => null)
+    throw new Error(data?.message || 'No s’ha pogut crear la lliga.')
+  }
+
+  return await response.json()
 }
 
 export const unirLligaPrivada = async (codi) => {
-  return request(`${BASE_ENDPOINT}/unir`, {
+  const response = await fetch(`${API_URL}/lligues/unir`, {
     method: 'POST',
+    headers: headers(),
     body: JSON.stringify({ codi }),
   })
+
+  if (!response.ok) {
+    const data = await response.json().catch(() => null)
+    throw new Error(data?.message || 'No s’ha pogut unir a la lliga.')
+  }
+
+  return await response.json()
 }
 
-export async function eliminarLligaPrivada(id) {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
-    const token = localStorage.getItem('ffe_token') || localStorage.getItem('token')
+export const eliminarLligaPrivada = async (id) => {
+  const response = await fetch(`${API_URL}/lligues/${id}`, {
+    method: 'DELETE',
+    headers: headers(),
+  })
 
-    const response = await fetch(`${apiUrl}/lligues-privades/${id}`, {
-        method: 'DELETE',
-        headers: {
-            Accept: 'application/json',
-            Authorization: `Bearer ${token}`,
-        },
-    })
+  if (!response.ok) {
+    const data = await response.json().catch(() => null)
+    throw new Error(data?.message || 'No s’ha pogut eliminar la lliga.')
+  }
 
-    const data = await response.json().catch(() => ({}))
-
-    if (!response.ok) {
-        throw new Error(data.message || 'No s’ha pogut eliminar la lliga.')
-    }
-
-    return data
+  return true
 }
+
+export const lligaPrivadaService = {
+  getLligues: getLliguesPrivades,
+  getLliguesPrivades,
+  getLliga: getLligaPrivada,
+  getLligaPrivada,
+  crearLliga: crearLligaPrivada,
+  crearLligaPrivada,
+  unirLliga: unirLligaPrivada,
+  unirLligaPrivada,
+  eliminarLliga: eliminarLligaPrivada,
+  eliminarLligaPrivada,
+  index: getLliguesPrivades,
+  list: getLliguesPrivades,
+}
+
+export default lligaPrivadaService

@@ -291,6 +291,81 @@
     box-shadow: none !important;
 }
 
+.mercat-active-league {
+    margin-bottom: 22px;
+    padding: 18px 20px;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at top left, rgba(217, 70, 239, 0.12), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.12), transparent 34%),
+        #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.mercat-active-league span {
+    display: block;
+    margin-bottom: 4px;
+    color: #64748b;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.mercat-active-league strong {
+    color: #0f172a;
+    font-size: 1.2rem;
+    font-weight: 900;
+}
+
+.mercat-change-league-btn {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 14px;
+    border: 1px solid #d1d5db;
+    background: #ffffff;
+    color: #111827;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition:
+        background-color 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease;
+}
+
+.mercat-change-league-btn:hover {
+    background: #f8fafc;
+    border-color: #a855f7;
+    transform: translateY(-1px);
+}
+
+.mercat-empty-btn {
+    width: auto;
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 22px;
+}
+
+@media (max-width: 768px) {
+    .mercat-active-league {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mercat-change-league-btn {
+        width: 100%;
+    }
+}
+
 @media (max-width: 1200px) {
     .mercat-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -313,5 +388,14 @@
 
     .mercat-header h1 {
         font-size: 1.85rem;
+    }
+
+    .mercat-active-league {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mercat-change-league-btn {
+        width: 100%;
     }
 }

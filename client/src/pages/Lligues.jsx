@@ -1,167 +1,138 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import PageHeader from '../components/ui/PageHeader'
-import { getLliguesPrivades } from '../services/lligaPrivadaService'
+import { lligaPrivadaService } from '../services/lligaPrivadaService'
+import { lligaActivaService } from '../services/lligaActivaService'
 import './Lligues.css'
 
 function Lligues() {
+    const navigate = useNavigate()
+
     const [lligues, setLligues] = useState([])
+    const [lligaActiva, setLligaActiva] = useState(null)
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState('')
 
     useEffect(() => {
+        const carregarLligues = async () => {
+            try {
+                setLoading(true)
+                setError('')
+
+                const data = await obtenirLligues()
+
+                const lliguesNormalitzades = normalitzarLligues(data)
+
+                setLligues(lliguesNormalitzades)
+                setLligaActiva(lligaActivaService.obtenir())
+            } catch (err) {
+                console.error(err)
+                setError('No s’han pogut carregar les teves lligues.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
         carregarLligues()
     }, [])
 
-    const carregarLligues = async () => {
-        setLoading(true)
-        setError('')
-
-        try {
-            const data = await getLliguesPrivades()
-
-            const lliguesData =
-                data?.lligues ||
-                data?.lligues_privades ||
-                data?.data ||
-                data ||
-                []
-
-            setLligues(Array.isArray(lliguesData) ? lliguesData : [])
-        } catch (error) {
-            setError(error.message)
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    const getNomLliga = (lliga) => {
-        return lliga?.nom || lliga?.name || 'Lliga privada'
-    }
-
-    const getDescripcioLliga = (lliga) => {
-        return (
-            lliga?.descripcio ||
-            lliga?.description ||
-            'Lliga privada per competir amb amics dins del fantasy.'
-        )
-    }
-
-    const getCodiLliga = (lliga) => {
-        return (
-            lliga?.codi ||
-            lliga?.codi_invitacio ||
-            lliga?.codi_acces ||
-            lliga?.invite_code ||
-            'Pendent'
-        )
-    }
-
-    const getMembresActuals = (lliga) => {
-        if (Array.isArray(lliga?.membres)) {
-            return lliga.membres.length
+    const obtenirLligues = async () => {
+        if (typeof lligaPrivadaService.getLligues === 'function') {
+            return await lligaPrivadaService.getLligues()
         }
 
-        if (Array.isArray(lliga?.usuaris)) {
-            return lliga.usuaris.length
+        if (typeof lligaPrivadaService.getLliguesPrivades === 'function') {
+            return await lligaPrivadaService.getLliguesPrivades()
         }
 
-        if (Array.isArray(lliga?.participants)) {
-            return lliga.participants.length
+        if (typeof lligaPrivadaService.index === 'function') {
+            return await lligaPrivadaService.index()
         }
 
-        return (
-            lliga?.membres_count ||
-            lliga?.participants_count ||
-            lliga?.num_membres ||
-            0
-        )
+        if (typeof lligaPrivadaService.list === 'function') {
+            return await lligaPrivadaService.list()
+        }
+
+        return []
     }
 
-    const getMaxParticipants = (lliga) => {
-        return (
-            lliga?.max_participants ||
-            lliga?.participants_maxims ||
-            lliga?.limit_participants ||
-            lliga?.maxim_participants ||
-            null
-        )
+    const normalitzarLligues = (data) => {
+        if (Array.isArray(data)) {
+            return data
+        }
+
+        if (Array.isArray(data?.lligues)) {
+            return data.lligues
+        }
+
+        if (Array.isArray(data?.data)) {
+            return data.data
+        }
+
+        return []
     }
 
-    const getEquipsFantasy = (lliga) => {
-        if (Array.isArray(lliga?.equips_fantasy)) {
-            return lliga.equips_fantasy.length
+    const activarLliga = (lliga, desti = 'detall') => {
+        lligaActivaService.guardar(lliga)
+        setLligaActiva(lligaActivaService.obtenir())
+
+        if (desti === 'mercat') {
+            navigate('/mercat')
+            return
         }
 
-        if (Array.isArray(lliga?.equipsFantasy)) {
-            return lliga.equipsFantasy.length
-        }
-
-        if (Array.isArray(lliga?.equips)) {
-            return lliga.equips.length
-        }
-
-        return lliga?.equips_fantasy_count || lliga?.equips_count || 0
+        navigate(`/lligues/${lliga.id}`)
     }
 
-    const getPressupost = (lliga) => {
-        return lliga?.pressupost_inicial || lliga?.pressupost || null
-    }
-
-    const formatPressupost = (value) => {
-        if (!value) {
-            return 'Pendent'
-        }
-
-        return new Intl.NumberFormat('ca-ES', {
-            style: 'currency',
-            currency: 'EUR',
-            maximumFractionDigits: 0,
-        }).format(value)
+    const esLligaActiva = (lliga) => {
+        return Number(lligaActiva?.id) === Number(lliga.id)
     }
 
     return (
         <main className="app-page lligues-page">
             <PageHeader
                 kicker="Lligues privades"
-                title="Les meves lligues"
-                subtitle="Gestiona les teves lligues d’amics, crea una competició privada o uneix-te amb un codi d’invitació."
+                title="Les meves lligues fantasy"
+                subtitle="Gestiona les teves lligues d’amics, entra al mercat i prepara el teu equip fantasy dins de cada competició privada."
                 actions={
                     <div className="lliga-header-actions">
-                        <Link to="/lligues/crear" className="app-btn app-btn-primary">
-                            Crear lliga
+                        <Link to="/lligues/unir" className="lligues-secondary-btn">
+                            Unir-me a una lliga
                         </Link>
 
-                        <Link to="/lligues/unir" className="app-btn app-btn-secondary">
-                            Unir-me amb codi
+                        <Link to="/lligues/crear" className="lligues-main-btn">
+                            Crear lliga
                         </Link>
                     </div>
                 }
             />
 
-            {loading && (
-                <section className="app-card">
-                    <div className="lliga-loading-box">
-                        Carregant les teves lligues...
+            {lligaActiva && (
+                <section className="lliga-active-banner">
+                    <div>
+                        <span>Lliga activa</span>
+                        <strong>{lligaActiva.nom}</strong>
                     </div>
+
+                    <button
+                        type="button"
+                        className="lligues-secondary-btn"
+                        onClick={() => navigate('/mercat')}
+                    >
+                        Anar al mercat
+                    </button>
+                </section>
+            )}
+
+            {loading && (
+                <section className="lliga-loading-box">
+                    Carregant les teves lligues...
                 </section>
             )}
 
             {!loading && error && (
-                <section className="app-card">
-                    <div className="lliga-error">
-                        {error}
-                    </div>
-
-                    <p className="lliga-description">
-                        Si aquesta pantalla encara no carrega dades, segurament falta
-                        preparar la ruta del backend:
-                    </p>
-
-                    <div className="app-info-box">
-                        <strong>Ruta esperada</strong>
-                        <span>GET /api/lligues-privades</span>
-                    </div>
+                <section className="lliga-error">
+                    {error}
                 </section>
             )}
 
@@ -170,13 +141,13 @@ function Lligues() {
                     <h2>Encara no formes part de cap lliga</h2>
 
                     <p>
-                        Crea una lliga privada per jugar amb els teus amics o uneix-te
-                        a una lliga existent introduint el codi d’invitació.
+                        Crea una lliga privada per jugar amb els teus amics o uneix-te a una
+                        lliga existent amb un codi d’invitació.
                     </p>
 
                     <div className="lligues-empty-actions">
                         <Link to="/lligues/crear" className="lligues-main-btn">
-                            Crear la meva lliga
+                            Crear primera lliga
                         </Link>
 
                         <Link to="/lligues/unir" className="lligues-secondary-btn">
@@ -188,73 +159,97 @@ function Lligues() {
 
             {!loading && !error && lligues.length > 0 && (
                 <section className="lligues-grid">
-                    {lligues.map((lliga) => {
-                        const membresActuals = getMembresActuals(lliga)
-                        const maxParticipants = getMaxParticipants(lliga)
-                        const equipsFantasy = getEquipsFantasy(lliga)
-                        const pressupost = getPressupost(lliga)
+                    {lligues.map((lliga) => (
+                        <article
+                            key={lliga.id}
+                            className={
+                                esLligaActiva(lliga)
+                                    ? 'lliga-card lliga-card-active'
+                                    : 'lliga-card'
+                            }
+                        >
+                            <div className="lliga-card-top">
+                                <div>
+                                    <p className="lligues-kicker">
+                                        {esLligaActiva(lliga) ? 'Lliga activa' : 'Lliga privada'}
+                                    </p>
 
-                        return (
-                            <article className="lliga-card" key={lliga.id}>
-                                <div className="lliga-card-top">
-                                    <div>
-                                        <p className="app-page-kicker">
-                                            Lliga d’amics
-                                        </p>
-
-                                        <h2>{getNomLliga(lliga)}</h2>
-                                    </div>
-
-                                    <div className="lliga-code">
-                                        <span>Codi</span>
-                                        <strong>{getCodiLliga(lliga)}</strong>
-                                    </div>
+                                    <h2>{lliga.nom || 'Lliga privada'}</h2>
                                 </div>
 
-                                <p className="lliga-description">
-                                    {getDescripcioLliga(lliga)}
-                                </p>
+                                <div className="lliga-code">
+                                    <span>Codi</span>
+                                    <strong>
+                                        {lliga.codi ||
+                                            lliga.codi_invitacio ||
+                                            lliga.codigo ||
+                                            '---'}
+                                    </strong>
+                                </div>
+                            </div>
 
-                                <div className="lliga-info-grid">
-                                    <div>
-                                        <span>Membres</span>
-                                        <strong>
-                                            {membresActuals}
-                                            {maxParticipants ? ` / ${maxParticipants}` : ''}
-                                        </strong>
-                                    </div>
+                            <p className="lliga-description">
+                                {lliga.descripcio ||
+                                    lliga.descripcion ||
+                                    'Lliga privada per competir amb amics, gestionar el teu equip fantasy i fitxar jugadors al mercat.'}
+                            </p>
 
-                                    <div>
-                                        <span>Equips fantasy</span>
-                                        <strong>{equipsFantasy}</strong>
-                                    </div>
-
-                                    <div>
-                                        <span>Pressupost</span>
-                                        <strong>{formatPressupost(pressupost)}</strong>
-                                    </div>
-
-                                    <div>
-                                        <span>Estat</span>
-                                        <strong>
-                                            {lliga?.estat || lliga?.status || 'Activa'}
-                                        </strong>
-                                    </div>
+                            <div className="lliga-info-grid">
+                                <div>
+                                    <span>Membres</span>
+                                    <strong>
+                                        {lliga.membres_count ||
+                                            lliga.usuaris_count ||
+                                            lliga.membres?.length ||
+                                            0}
+                                    </strong>
                                 </div>
 
-                                <Link
-                                    to={`/lligues/${lliga.id}`}
+                                <div>
+                                    <span>Pressupost</span>
+                                    <strong>
+                                        {formatMoney(
+                                            lliga.pressupost_inicial ||
+                                            lliga.pressupost ||
+                                            250000000
+                                        )}
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div className="lliga-card-actions">
+                                <button
+                                    type="button"
                                     className="lligues-main-btn"
+                                    onClick={() => activarLliga(lliga, 'detall')}
                                 >
                                     Entrar a la lliga
-                                </Link>
-                            </article>
-                        )
-                    })}
+                                </button>
+
+                                <button
+                                    type="button"
+                                    className="lligues-secondary-btn"
+                                    onClick={() => activarLliga(lliga, 'mercat')}
+                                >
+                                    Mercat
+                                </button>
+                            </div>
+                        </article>
+                    ))}
                 </section>
             )}
         </main>
     )
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default Lligues

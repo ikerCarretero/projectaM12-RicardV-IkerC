@@ -1,175 +1,97 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { mercatService } from '../services/mercatService'
+import { Link, useNavigate } from 'react-router-dom'
+import { lligaActivaService } from '../services/lligaActivaService'
+import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import './Alineacio.css'
 
+const formacions = {
+    '4-3-3': {
+        defenses: 4,
+        migcampistes: 3,
+        davanters: 3,
+    },
+    '4-4-2': {
+        defenses: 4,
+        migcampistes: 4,
+        davanters: 2,
+    },
+    '3-5-2': {
+        defenses: 3,
+        migcampistes: 5,
+        davanters: 2,
+    },
+    '5-3-2': {
+        defenses: 5,
+        migcampistes: 3,
+        davanters: 2,
+    },
+}
+
 function Alineacio() {
+    const navigate = useNavigate()
+
+    const [lligaActiva, setLligaActiva] = useState(null)
     const [jugadorsFitxats, setJugadorsFitxats] = useState([])
-    const [loading, setLoading] = useState(true)
-
-    const [formacio, setFormacio] = useState(
-        localStorage.getItem('ffe_formacio') || '4-3-3'
-    )
-
-    const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
+    const [formacio, setFormacio] = useState('4-3-3')
 
     useEffect(() => {
-        const carregarJugadorsFitxats = async () => {
-            try {
-                setLoading(true)
-                const data = await mercatService.getJugadorsFitxats()
-                setJugadorsFitxats(Array.isArray(data) ? data : [])
-            } catch (error) {
-                console.error('Error carregant alineació:', error)
-                setJugadorsFitxats([])
-            } finally {
-                setLoading(false)
-            }
-        }
+        const lliga = lligaActivaService.obtenir()
+        const jugadors = equipFantasyLocalService.getJugadorsFitxats()
 
-        carregarJugadorsFitxats()
+        setLligaActiva(lliga)
+        setJugadorsFitxats(jugadors)
     }, [])
 
-    useEffect(() => {
-        localStorage.setItem('ffe_formacio', formacio)
-    }, [formacio])
-
-    const formatEuros = (valor) => {
-        return new Intl.NumberFormat('ca-ES', {
-            style: 'currency',
-            currency: 'EUR',
-            maximumFractionDigits: 0,
-        }).format(Number(valor || 0))
-    }
-
-    const totalValor = useMemo(() => {
-        return jugadorsFitxats.reduce(
-            (total, jugador) => total + Number(jugador.valor_mercat || 0),
-            0
-        )
+    const jugadorsPerPosicio = useMemo(() => {
+        return {
+            porters: jugadorsFitxats.filter((jugador) =>
+                esPosicio(jugador.posicio, ['porter', 'portero', 'pt'])
+            ),
+            defenses: jugadorsFitxats.filter((jugador) =>
+                esPosicio(jugador.posicio, ['defensa', 'def', 'defender'])
+            ),
+            migcampistes: jugadorsFitxats.filter((jugador) =>
+                esPosicio(jugador.posicio, ['migcampista', 'mig', 'centrocampista'])
+            ),
+            davanters: jugadorsFitxats.filter((jugador) =>
+                esPosicio(jugador.posicio, ['davanter', 'delantero', 'dav', 'forward'])
+            ),
+        }
     }, [jugadorsFitxats])
 
-    const totalPunts = useMemo(() => {
-        return jugadorsFitxats.reduce(
-            (total, jugador) => total + Number(jugador.punts || 0),
-            0
-        )
-    }, [jugadorsFitxats])
+    const alineacioActual = useMemo(() => {
+        const esquema = formacions[formacio]
 
-    const porters = useMemo(
-        () => jugadorsFitxats.filter((j) => j.posicio === 'Porter'),
-        [jugadorsFitxats]
-    )
-
-    const defenses = useMemo(
-        () => jugadorsFitxats.filter((j) => j.posicio === 'Defensa'),
-        [jugadorsFitxats]
-    )
-
-    const migcampistes = useMemo(
-        () => jugadorsFitxats.filter((j) => j.posicio === 'Migcampista'),
-        [jugadorsFitxats]
-    )
-
-    const davanters = useMemo(
-        () => jugadorsFitxats.filter((j) => j.posicio === 'Davanter'),
-        [jugadorsFitxats]
-    )
-
-    const renderJugadorMini = (jugador) => (
-        <article className="alineacio-player-card" key={jugorKey(jugador)}>
-            <div className="alineacio-player-avatar">
-                {jugador.nom?.charAt(0).toUpperCase() || 'J'}
-            </div>
-
-            <div className="alineacio-player-info">
-                <strong>{jugador.nom}</strong>
-                <span>{jugador.equip}</span>
-            </div>
-
-            <div className="alineacio-player-value">
-                {formatEuros(jugador.valor_mercat)}
-            </div>
-        </article>
-    )
-
-    const jugorKey = (jugador) => {
-        return `${jugador.id}-${jugador.nom}`
-    }
-
-    const renderPitchPlayer = (jugador, fallbackText, index) => {
-        if (!jugador) {
-            return (
-                <div className="pitch-player pitch-player-empty" key={`${fallbackText}-${index}`}>
-                    {fallbackText}
-                </div>
-            )
+        return {
+            porter: jugadorsPerPosicio.porters.slice(0, 1),
+            defenses: jugadorsPerPosicio.defenses.slice(0, esquema.defenses),
+            migcampistes: jugadorsPerPosicio.migcampistes.slice(0, esquema.migcampistes),
+            davanters: jugadorsPerPosicio.davanters.slice(0, esquema.davanters),
         }
+    }, [formacio, jugadorsPerPosicio])
 
+    const totalTitulars =
+        alineacioActual.porter.length +
+        alineacioActual.defenses.length +
+        alineacioActual.migcampistes.length +
+        alineacioActual.davanters.length
+
+    if (!lligaActiva) {
         return (
-            <div
-                className="pitch-player"
-                key={`${jugador.id}-${jugador.nom}-${index}`}
-                title={`${jugador.nom} - ${jugador.equip}`}
-            >
-                <span>{jugador.nom?.split(' ')[0]}</span>
-                <small>{jugador.posicio}</small>
-            </div>
-        )
-    }
+            <main className="app-page alineacio-page">
+                <section className="alineacio-empty">
+                    <h1>Abans has d’escollir una lliga</h1>
 
-    const renderRow = (players, slots, fallbackText, className) => {
-        return (
-            <div className={`pitch-row ${className}`}>
-                {Array.from({ length: slots }).map((_, index) =>
-                    renderPitchPlayer(players[index], fallbackText, index)
-                )}
-            </div>
-        )
-    }
+                    <p>
+                        Per preparar l’alineació has de seleccionar una lliga privada activa.
+                        Així veurem només els jugadors fitxats dins d’aquella lliga.
+                    </p>
 
-    const renderFormacio = () => {
-        if (formacio === '4-4-2') {
-            return (
-                <>
-                    {renderRow(porters, 1, 'PT', 'pitch-row-gk')}
-                    {renderRow(defenses, 4, 'DEF', 'pitch-row-def')}
-                    {renderRow(migcampistes, 4, 'MIG', 'pitch-row-mid')}
-                    {renderRow(davanters, 2, 'DAV', 'pitch-row-att')}
-                </>
-            )
-        }
-
-        if (formacio === '3-5-2') {
-            return (
-                <>
-                    {renderRow(porters, 1, 'PT', 'pitch-row-gk')}
-                    {renderRow(defenses, 3, 'DEF', 'pitch-row-def')}
-                    {renderRow(migcampistes, 5, 'MIG', 'pitch-row-mid')}
-                    {renderRow(davanters, 2, 'DAV', 'pitch-row-att')}
-                </>
-            )
-        }
-
-        if (formacio === '4-2-3-1') {
-            return (
-                <>
-                    {renderRow(porters, 1, 'PT', 'pitch-row-gk')}
-                    {renderRow(defenses, 4, 'DEF', 'pitch-row-def')}
-                    {renderRow(migcampistes.slice(0, 2), 2, 'MIG', 'pitch-row-mid-small')}
-                    {renderRow(migcampistes.slice(2, 5), 3, 'MIG', 'pitch-row-mid')}
-                    {renderRow(davanters, 1, 'DAV', 'pitch-row-att')}
-                </>
-            )
-        }
-
-        return (
-            <>
-                {renderRow(porters, 1, 'PT', 'pitch-row-gk')}
-                {renderRow(defenses, 4, 'DEF', 'pitch-row-def')}
-                {renderRow(migcampistes, 3, 'MIG', 'pitch-row-mid')}
-                {renderRow(davanters, 3, 'DAV', 'pitch-row-att')}
-            </>
+                    <Link to="/lligues" className="alineacio-main-btn">
+                        Anar a les meves lligues
+                    </Link>
+                </section>
+            </main>
         )
     }
 
@@ -177,52 +99,58 @@ function Alineacio() {
         <main className="app-page alineacio-page">
             <section className="alineacio-header">
                 <div>
-                    <p className="alineacio-kicker">Alineació fantasy</p>
+                    <span className="alineacio-kicker">Alineació fantasy</span>
 
                     <h1>Alineació</h1>
 
                     <p>
-                        Gestiona els jugadors que has fitxat i prepara una primera
-                        estructura visual del teu equip.
+                        Prepara el teu onze inicial amb els jugadors fitxats a la lliga activa.
                     </p>
                 </div>
 
                 <div className="alineacio-header-card">
-                    <span>Jugadors fitxats</span>
-                    <strong>{jugadorsFitxats.length}</strong>
+                    <span>Lliga activa</span>
+                    <strong>{lligaActiva.nom}</strong>
+
+                    <button
+                        type="button"
+                        onClick={() => navigate('/lligues')}
+                    >
+                        Canviar lliga
+                    </button>
                 </div>
             </section>
 
-            {loading ? (
-                <section className="alineacio-empty-card">
-                    <h2>Carregant alineació...</h2>
-                    <p>Estem consultant els teus jugadors fitxats.</p>
-                </section>
-            ) : jugadorsFitxats.length === 0 ? (
-                <section className="alineacio-empty-card">
-                    <h2>Alineació no disponible</h2>
+            <section className="alineacio-stats-grid">
+                <article>
+                    <span>Jugadors fitxats</span>
+                    <strong>{jugadorsFitxats.length}</strong>
+                </article>
+
+                <article>
+                    <span>Titulars actuals</span>
+                    <strong>{totalTitulars}/11</strong>
+                </article>
+
+                <article>
+                    <span>Porters</span>
+                    <strong>{jugadorsPerPosicio.porters.length}</strong>
+                </article>
+
+                <article>
+                    <span>Formació</span>
+                    <strong>{formacio}</strong>
+                </article>
+            </section>
+
+            {jugadorsFitxats.length === 0 ? (
+                <section className="alineacio-empty">
+                    <h2>Encara no tens jugadors fitxats</h2>
 
                     <p>
-                        Encara no tens cap jugador fitxat. Ves al mercat i fitxa alguns
-                        jugadors per començar a construir el teu equip.
+                        Ves al mercat de la lliga activa i fitxa jugadors per començar a preparar
+                        la teva alineació.
                     </p>
-
-                    <div className="alineacio-empty-info">
-                        <div>
-                            <strong>Usuari</strong>
-                            <span>{usuari?.nom || 'Usuari'}</span>
-                        </div>
-
-                        <div>
-                            <strong>Estat</strong>
-                            <span>Pendent d’equip fantasy</span>
-                        </div>
-
-                        <div>
-                            <strong>Mòdul</strong>
-                            <span>Connectat amb mercat demo</span>
-                        </div>
-                    </div>
 
                     <Link to="/mercat" className="alineacio-main-btn">
                         Anar al mercat
@@ -230,85 +158,89 @@ function Alineacio() {
                 </section>
             ) : (
                 <>
-                    <section className="alineacio-summary-grid">
-                        <article className="alineacio-summary-card">
-                            <span>Porters</span>
-                            <strong>{porters.length}</strong>
-                        </article>
+                    <section className="alineacio-controls">
+                        <div>
+                            <span>Configuració tàctica</span>
+                            <h2>Escull formació</h2>
+                        </div>
 
-                        <article className="alineacio-summary-card">
-                            <span>Defenses</span>
-                            <strong>{defenses.length}</strong>
-                        </article>
-
-                        <article className="alineacio-summary-card">
-                            <span>Migcampistes</span>
-                            <strong>{migcampistes.length}</strong>
-                        </article>
-
-                        <article className="alineacio-summary-card">
-                            <span>Davanters</span>
-                            <strong>{davanters.length}</strong>
-                        </article>
+                        <select
+                            value={formacio}
+                            onChange={(event) => setFormacio(event.target.value)}
+                        >
+                            {Object.keys(formacions).map((item) => (
+                                <option key={item} value={item}>
+                                    {item}
+                                </option>
+                            ))}
+                        </select>
                     </section>
 
                     <section className="alineacio-main-grid">
-                        <article className="alineacio-card alineacio-field-card">
-                            <div className="alineacio-card-header">
+                        <article className="alineacio-field-card">
+                            <div className="alineacio-field-header">
                                 <div>
-                                    <p className="alineacio-kicker">Vista tàctica</p>
-                                    <h2>Onze inicial</h2>
-                                </div>
-
-                                <div className="alineacio-formation-box">
-                                    <label htmlFor="formacio">Formació</label>
-
-                                    <select
-                                        id="formacio"
-                                        value={formacio}
-                                        onChange={(event) => setFormacio(event.target.value)}
-                                    >
-                                        <option value="4-3-3">4-3-3</option>
-                                        <option value="4-4-2">4-4-2</option>
-                                        <option value="3-5-2">3-5-2</option>
-                                        <option value="4-2-3-1">4-2-3-1</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="alineacio-pitch">
-                                {renderFormacio()}
-                            </div>
-                        </article>
-
-                        <article className="alineacio-card alineacio-stats-card">
-                            <p className="alineacio-kicker">Resum</p>
-                            <h2>Estat de la plantilla</h2>
-
-                            <div className="alineacio-stats-list">
-                                <div>
-                                    <span>Formació</span>
+                                    <span>Onze inicial</span>
                                     <strong>{formacio}</strong>
                                 </div>
 
+                                <small>{totalTitulars}/11 titulars</small>
+                            </div>
+
+                            <div className="alineacio-field">
+                                <div className="field-zone field-zone-gk">
+                                    {renderFilaJugadors(alineacioActual.porter, 1, 'PT')}
+                                </div>
+
+                                <div className="field-zone field-zone-def">
+                                    {renderFilaJugadors(
+                                        alineacioActual.defenses,
+                                        formacions[formacio].defenses,
+                                        'DEF'
+                                    )}
+                                </div>
+
+                                <div className="field-zone field-zone-mid">
+                                    {renderFilaJugadors(
+                                        alineacioActual.migcampistes,
+                                        formacions[formacio].migcampistes,
+                                        'MIG'
+                                    )}
+                                </div>
+
+                                <div className="field-zone field-zone-att">
+                                    {renderFilaJugadors(
+                                        alineacioActual.davanters,
+                                        formacions[formacio].davanters,
+                                        'DAV'
+                                    )}
+                                </div>
+                            </div>
+                        </article>
+
+                        <article className="alineacio-side-card">
+                            <span className="alineacio-kicker">Resum</span>
+                            <h2>Estat de l’equip</h2>
+
+                            <div className="alineacio-position-summary">
                                 <div>
-                                    <span>Valor total</span>
-                                    <strong>{formatEuros(totalValor)}</strong>
+                                    <span>Porters</span>
+                                    <strong>{jugadorsPerPosicio.porters.length}</strong>
                                 </div>
 
                                 <div>
-                                    <span>Punts totals</span>
-                                    <strong>{totalPunts}</strong>
+                                    <span>Defenses</span>
+                                    <strong>{jugadorsPerPosicio.defenses.length}</strong>
                                 </div>
 
                                 <div>
-                                    <span>Usuari</span>
-                                    <strong>{usuari?.nom || 'Usuari'}</strong>
+                                    <span>Migcampistes</span>
+                                    <strong>{jugadorsPerPosicio.migcampistes.length}</strong>
                                 </div>
 
                                 <div>
-                                    <span>Estat</span>
-                                    <strong>En construcció</strong>
+                                    <span>Davanters</span>
+                                    <strong>{jugadorsPerPosicio.davanters.length}</strong>
                                 </div>
                             </div>
 
@@ -318,61 +250,144 @@ function Alineacio() {
                         </article>
                     </section>
 
-                    <section className="alineacio-content-grid">
+                    <section className="alineacio-lists-grid">
                         <article className="alineacio-card">
-                            <p className="alineacio-kicker">Plantilla actual</p>
+                            <span className="alineacio-kicker">Plantilla actual</span>
                             <h2>Jugadors fitxats</h2>
 
-                            <div className="alineacio-players-list">
-                                {jugadorsFitxats.map(renderJugadorMini)}
+                            <div className="alineacio-player-list">
+                                {jugadorsFitxats.map((jugador) => (
+                                    <JugadorItem jugador={jugador} key={jugador.id} />
+                                ))}
                             </div>
                         </article>
 
                         <article className="alineacio-card">
-                            <p className="alineacio-kicker">Distribució</p>
+                            <span className="alineacio-kicker">Distribució</span>
                             <h2>Equip per posicions</h2>
 
-                            <div className="alineacio-position-block">
-                                <h3>Porters</h3>
-                                {porters.length > 0 ? (
-                                    porters.map(renderJugadorMini)
-                                ) : (
-                                    <p>Cap porter fitxat.</p>
-                                )}
-                            </div>
+                            <BlocPosicio
+                                titol="Porters"
+                                jugadors={jugadorsPerPosicio.porters}
+                            />
 
-                            <div className="alineacio-position-block">
-                                <h3>Defenses</h3>
-                                {defenses.length > 0 ? (
-                                    defenses.map(renderJugadorMini)
-                                ) : (
-                                    <p>Cap defensa fitxat.</p>
-                                )}
-                            </div>
+                            <BlocPosicio
+                                titol="Defenses"
+                                jugadors={jugadorsPerPosicio.defenses}
+                            />
 
-                            <div className="alineacio-position-block">
-                                <h3>Migcampistes</h3>
-                                {migcampistes.length > 0 ? (
-                                    migcampistes.map(renderJugadorMini)
-                                ) : (
-                                    <p>Cap migcampista fitxat.</p>
-                                )}
-                            </div>
+                            <BlocPosicio
+                                titol="Migcampistes"
+                                jugadors={jugadorsPerPosicio.migcampistes}
+                            />
 
-                            <div className="alineacio-position-block">
-                                <h3>Davanters</h3>
-                                {davanters.length > 0 ? (
-                                    davanters.map(renderJugadorMini)
-                                ) : (
-                                    <p>Cap davanter fitxat.</p>
-                                )}
-                            </div>
+                            <BlocPosicio
+                                titol="Davanters"
+                                jugadors={jugadorsPerPosicio.davanters}
+                            />
                         </article>
                     </section>
                 </>
             )}
         </main>
     )
+}
+
+function renderFilaJugadors(jugadors, total, placeholder) {
+    const slots = Array.from({ length: total }, (_, index) => jugadors[index] || null)
+
+    return (
+        <div className="alineacio-row">
+            {slots.map((jugador, index) =>
+                jugador ? (
+                    <div className="alineacio-player-chip" key={`${jugador.id}-${index}`}>
+                        <strong>{obtenirNomCurt(jugador.nom)}</strong>
+                        <span>{normalitzarTextPosicio(jugador.posicio)}</span>
+                    </div>
+                ) : (
+                    <div className="alineacio-player-chip empty" key={`empty-${placeholder}-${index}`}>
+                        {placeholder}
+                    </div>
+                )
+            )}
+        </div>
+    )
+}
+
+function BlocPosicio({ titol, jugadors }) {
+    return (
+        <div className="alineacio-position-block">
+            <h3>{titol}</h3>
+
+            {jugadors.length === 0 ? (
+                <p>Cap jugador en aquesta posició.</p>
+            ) : (
+                <div className="alineacio-player-list compact">
+                    {jugadors.map((jugador) => (
+                        <JugadorItem jugador={jugador} key={jugador.id} />
+                    ))}
+                </div>
+            )}
+        </div>
+    )
+}
+
+function JugadorItem({ jugador }) {
+    return (
+        <div className="alineacio-player-item">
+            <div className="alineacio-player-avatar">
+                {jugador.nom?.charAt(0)?.toUpperCase() || 'J'}
+            </div>
+
+            <div>
+                <strong>{jugador.nom}</strong>
+                <span>{jugador.equip || 'Sense equip'}</span>
+            </div>
+
+            <em>{formatMoney(jugador.valor_mercat)}</em>
+        </div>
+    )
+}
+
+const esPosicio = (posicio, valors) => {
+    const posicioNormalitzada = String(posicio || '')
+        .trim()
+        .toLowerCase()
+
+    return valors.includes(posicioNormalitzada)
+}
+
+const normalitzarTextPosicio = (posicio) => {
+    const value = String(posicio || '').toLowerCase()
+
+    if (value.includes('porter') || value.includes('portero')) return 'Porter'
+    if (value.includes('def')) return 'Defensa'
+    if (value.includes('mig') || value.includes('centro')) return 'Mig'
+    if (value.includes('dav') || value.includes('delantero')) return 'Davanter'
+
+    return posicio || 'Jugador'
+}
+
+const obtenirNomCurt = (nom) => {
+    if (!nom) return 'Jugador'
+
+    const parts = nom.split(' ')
+
+    if (parts.length === 1) {
+        return parts[0]
+    }
+
+    return parts[0]
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default Alineacio
