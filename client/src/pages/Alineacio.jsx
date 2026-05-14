@@ -36,7 +36,8 @@ function Alineacio() {
 
     useEffect(() => {
         const lliga = lligaActivaService.obtenir()
-        const jugadors = equipFantasyLocalService.getJugadorsFitxats()
+        const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
+        const jugadors = equipInicial.jugadors
 
         setLligaActiva(lliga)
         setJugadorsFitxats(jugadors)
@@ -305,7 +306,10 @@ function renderFilaJugadors(jugadors, total, placeholder) {
                         <span>{normalitzarTextPosicio(jugador.posicio)}</span>
                     </div>
                 ) : (
-                    <div className="alineacio-player-chip empty" key={`empty-${placeholder}-${index}`}>
+                    <div
+                        className="alineacio-player-chip empty"
+                        key={`empty-${placeholder}-${index}`}
+                    >
                         {placeholder}
                     </div>
                 )
@@ -371,13 +375,16 @@ const normalitzarTextPosicio = (posicio) => {
 const obtenirNomCurt = (nom) => {
     if (!nom) return 'Jugador'
 
-    const parts = nom.split(' ')
+    const parts = nom.trim().split(/\s+/)
 
     if (parts.length === 1) {
         return parts[0]
     }
 
-    return parts[0]
+    const inicialNom = parts[0].charAt(0).toUpperCase()
+    const cognom = parts.slice(1).join(' ')
+
+    return `${inicialNom}. ${cognom}`
 }
 
 const formatMoney = (value) => {

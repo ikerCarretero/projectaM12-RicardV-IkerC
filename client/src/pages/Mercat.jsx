@@ -39,8 +39,9 @@ function Mercat() {
                 const data = await mercatService.getJugadorsMercat()
 
                 const jugadors = normalitzarRespostaMercat(data)
-                const fitxats = equipFantasyLocalService.getJugadorsFitxats()
-                const pressupostActual = equipFantasyLocalService.getPressupost()
+                const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
+                const fitxats = equipInicial.jugadors
+                const pressupostActual = equipInicial.pressupost()
 
                 setJugadorsMercat(jugadors)
                 setJugadorsFitxats(fitxats)
