@@ -1,121 +1,198 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { puntuacioJugadorService } from '../services/puntuacioJugadorService'
+import { lligaActivaService } from '../services/lligaActivaService'
+import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
+import { puntuacionsLocalService } from '../services/puntuacionsLocalService'
 import './AdminPuntuacions.css'
 
 function AdminPuntuacions() {
-    const [jugadors, setJugadors] = useState([])
-    const [editValues, setEditValues] = useState({})
-    const [loading, setLoading] = useState(true)
-    const [savingId, setSavingId] = useState(null)
-    const [modeDemo, setModeDemo] = useState(false)
-    const [missatge, setMissatge] = useState('')
-    const [cerca, setCerca] = useState('')
-    const [posicio, setPosicio] = useState('totes')
-
     const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
-    const rol = (usuari?.rol || '').toLowerCase()
-    const esAdmin = rol === 'admin'
+    const rol = String(usuari?.rol || '').toLowerCase()
+    const esAdmin = rol === 'admin' || rol === 'administrador'
+
+    const [lligaActiva, setLligaActiva] = useState(null)
+    const [jornades, setJornades] = useState([])
+    const [jornadaId, setJornadaId] = useState('')
+    const [jornadaNom, setJornadaNom] = useState('')
+    const [jugadors, setJugadors] = useState([])
+    const [puntuacions, setPuntuacions] = useState([])
+    const [missatge, setMissatge] = useState('')
+    const [error, setError] = useState('')
 
     useEffect(() => {
-        const carregarJugadors = async () => {
-            try {
-                setLoading(true)
+        const lliga = lligaActivaService.obtenir()
+        setLligaActiva(lliga)
 
-                const response = await puntuacioJugadorService.getJugadors()
-                setJugadors(response.data)
-                setModeDemo(response.modeDemo)
-
-                const initialValues = {}
-
-                response.data.forEach((jugador) => {
-                    initialValues[jugador.id] = {
-                        valor_mercat: jugador.valor_mercat || 0,
-                        puntuacio_total: jugador.puntuacio_total || 0,
-                        puntuacio_jornada: jugador.puntuacio_jornada || 0,
-                    }
-                })
-
-                setEditValues(initialValues)
-            } finally {
-                setLoading(false)
-            }
+        if (!lliga || !esAdmin) {
+            return
         }
 
-        carregarJugadors()
-    }, [])
+        const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
+        const jugadorsEquip = equipInicial.jugadors
+        const jornadesGuardades = puntuacionsLocalService.getJornades()
 
-    const jugadorsFiltrats = useMemo(() => {
-        return jugadors.filter((jugador) => {
-            const text = `${jugador.nom} ${jugador.equip} ${jugador.posicio}`.toLowerCase()
-            const coincideixText = text.includes(cerca.toLowerCase())
-            const coincideixPosicio = posicio === 'totes' || jugador.posicio === posicio
+        setJugadors(jugadorsEquip)
+        setJornades(jornadesGuardades)
 
-            return coincideixText && coincideixPosicio
-        })
-    }, [jugadors, cerca, posicio])
+        if (jornadesGuardades.length > 0) {
+            setJornadaId(String(jornadesGuardades[0].id))
+            setPuntuacions(
+                puntuacionsLocalService.getPuntuacionsJornada(
+                    jornadesGuardades[0].id,
+                    jugadorsEquip
+                )
+            )
+        }
+    }, [esAdmin])
 
-    const formatMoney = (value) => {
-        return Number(value || 0).toLocaleString('ca-ES') + ' €'
+    useEffect(() => {
+        if (!jornadaId || jugadors.length === 0) {
+            return
+        }
+
+        setPuntuacions(
+            puntuacionsLocalService.getPuntuacionsJornada(jornadaId, jugadors)
+        )
+    }, [jornadaId, jugadors])
+
+    const jornadaActual = jornades.find(
+        (jornada) => String(jornada.id) === String(jornadaId)
+    )
+
+    const resum = useMemo(() => {
+        const puntsTotals = puntuacions.reduce(
+            (total, item) => total + Number(item.punts || 0),
+            0
+        )
+
+        const jugadorsPuntuats = puntuacions.filter(
+            (item) => Number(item.punts || 0) !== 0
+        ).length
+
+        return {
+            puntsTotals,
+            jugadorsPuntuats,
+            totalJugadors: puntuacions.length,
+        }
+    }, [puntuacions])
+
+    const actualitzarPuntuacio = (jugadorId, camp, valor) => {
+        setPuntuacions((prev) =>
+            prev.map((item) =>
+                String(item.jugador_id) === String(jugadorId)
+                    ? {
+                        ...item,
+                        [camp]: camp === 'punts' ? Number(valor) : valor,
+                    }
+                    : item
+            )
+        )
     }
 
-    const handleChange = (jugadorId, field, value) => {
-        setEditValues((prev) => ({
-            ...prev,
-            [jugadorId]: {
-                ...prev[jugadorId],
-                [field]: value,
-            },
-        }))
-    }
-
-    const handleGuardar = async (jugador) => {
-        const values = editValues[jugador.id]
-
-        const payload = {
-            valor_mercat: Number(values.valor_mercat || 0),
-            puntuacio_total: Number(values.puntuacio_total || 0),
-            puntuacio_jornada: Number(values.puntuacio_jornada || 0),
+    const guardarPuntuacions = () => {
+        if (!jornadaId) {
+            setError('Has de seleccionar una jornada.')
+            return
         }
 
         try {
-            setSavingId(jugador.id)
-            setMissatge('')
-
-            await puntuacioJugadorService.updatePuntuacio(jugador.id, payload)
-
-            setJugadors((prev) =>
-                prev.map((item) =>
-                    item.id === jugador.id
-                        ? {
-                            ...item,
-                            ...payload,
-                        }
-                        : item
+            const puntuacionsActualitzades =
+                puntuacionsLocalService.guardarPuntuacionsJornada(
+                    jornadaId,
+                    puntuacions
                 )
-            )
 
-            setMissatge(`Puntuació actualitzada per a ${jugador.nom}.`)
-        } catch (error) {
-            setMissatge('No s’ha pogut guardar la puntuació.')
-        } finally {
-            setSavingId(null)
+            const jugadorsActualitzats = equipFantasyLocalService.getJugadorsFitxats()
+
+            setPuntuacions(puntuacionsActualitzades)
+            setJugadors(jugadorsActualitzats)
+            setMissatge('Puntuacions guardades correctament.')
+            setError('')
+
+            setTimeout(() => {
+                setMissatge('')
+            }, 2200)
+        } catch (err) {
+            setError(err.message || 'No s’han pogut guardar les puntuacions.')
+            setMissatge('')
         }
+    }
+
+    const crearJornada = () => {
+        try {
+            const novesJornades = puntuacionsLocalService.crearJornada(jornadaNom)
+
+            setJornades(novesJornades)
+            setJornadaNom('')
+
+            if (novesJornades.length > 0) {
+                const ultima = novesJornades[novesJornades.length - 1]
+                setJornadaId(String(ultima.id))
+            }
+
+            setMissatge('Jornada creada correctament.')
+            setError('')
+
+            setTimeout(() => {
+                setMissatge('')
+            }, 2200)
+        } catch (err) {
+            setError(err.message || 'No s’ha pogut crear la jornada.')
+        }
+    }
+
+    const canviarEstatJornada = () => {
+        if (!jornadaId) {
+            return
+        }
+
+        const jornadesActualitzades =
+            puntuacionsLocalService.canviarEstatJornada(jornadaId)
+
+        setJornades(jornadesActualitzades)
+        setMissatge('Estat de la jornada actualitzat.')
+
+        setTimeout(() => {
+            setMissatge('')
+        }, 2200)
     }
 
     if (!esAdmin) {
         return (
             <main className="app-page admin-puntuacions-page">
-                <section className="admin-puntuacions-denied">
+                <section className="admin-puntuacions-empty">
                     <span className="admin-puntuacions-kicker">Accés restringit</span>
-                    <h1>Només administradors</h1>
+
+                    <h1>No tens permisos d’administrador</h1>
+
                     <p>
-                        Aquesta secció està pensada perquè l’admin pugui modificar
-                        puntuacions, valor de mercat i rendiment dels jugadors.
+                        Només els administradors poden gestionar les puntuacions de
+                        les jornades.
                     </p>
 
-                    <Link to="/dashboard" className="admin-puntuacions-back">
+                    <Link to="/dashboard" className="admin-puntuacions-secondary-btn">
                         Tornar al dashboard
+                    </Link>
+                </section>
+            </main>
+        )
+    }
+
+    if (!lligaActiva) {
+        return (
+            <main className="app-page admin-puntuacions-page">
+                <section className="admin-puntuacions-empty">
+                    <span className="admin-puntuacions-kicker">Puntuacions</span>
+
+                    <h1>Abans has d’escollir una lliga</h1>
+
+                    <p>
+                        Per assignar puntuacions has d’entrar primer a una lliga
+                        privada activa.
+                    </p>
+
+                    <Link to="/lligues" className="admin-puntuacions-main-btn">
+                        Anar a lligues
                     </Link>
                 </section>
             </main>
@@ -126,197 +203,202 @@ function AdminPuntuacions() {
         <main className="app-page admin-puntuacions-page">
             <section className="admin-puntuacions-header">
                 <div>
-                    <span className="admin-puntuacions-kicker">Panell d’administració</span>
-                    <h1>Puntuacions dels jugadors</h1>
+                    <span className="admin-puntuacions-kicker">
+                        Puntuacions de jornada
+                    </span>
+
+                    <h1>Gestió de puntuacions</h1>
+
                     <p>
-                        Gestiona els punts totals, la puntuació de l’última jornada i el valor
-                        de mercat dels jugadors.
+                        Assigna punts als jugadors de la lliga activa per jornada.
+                        Aquests punts s’utilitzaran per calcular rankings, equip i
+                        alineació.
                     </p>
                 </div>
 
-                <Link to="/dashboard" className="admin-puntuacions-back">
-                    Tornar al dashboard
-                </Link>
+                <div className="admin-puntuacions-header-card">
+                    <span>Lliga activa</span>
+                    <strong>{lligaActiva.nom}</strong>
+
+                    <Link to="/lligues">Canviar lliga</Link>
+                </div>
             </section>
 
-            {modeDemo && (
-                <div className="admin-puntuacions-alert">
-                    Mode demo actiu: encara no hi ha endpoint de backend connectat per a jugadors.
-                    Els canvis es veuen al frontend però no es guarden a la base de dades.
-                </div>
-            )}
-
             {missatge && (
-                <div className="admin-puntuacions-message">
+                <div className="admin-puntuacions-alert success">
                     {missatge}
                 </div>
             )}
 
-            <section className="admin-puntuacions-toolbar">
-                <div className="admin-puntuacions-search">
-                    <label htmlFor="cerca">Cercar jugador</label>
-                    <input
-                        id="cerca"
-                        type="text"
-                        value={cerca}
-                        onChange={(event) => setCerca(event.target.value)}
-                        placeholder="Nom, equip o posició..."
-                    />
+            {error && (
+                <div className="admin-puntuacions-alert error">
+                    {error}
                 </div>
+            )}
 
-                <div className="admin-puntuacions-filter">
-                    <label htmlFor="posicio">Filtrar per posició</label>
+            <section className="admin-puntuacions-stats-grid">
+                <article>
+                    <span>Jornada</span>
+                    <strong>{jornadaActual?.nom || 'Cap'}</strong>
+                </article>
+
+                <article>
+                    <span>Estat</span>
+                    <strong>{jornadaActual?.estat || '-'}</strong>
+                </article>
+
+                <article>
+                    <span>Jugadors puntuats</span>
+                    <strong>
+                        {resum.jugadorsPuntuats}/{resum.totalJugadors}
+                    </strong>
+                </article>
+
+                <article>
+                    <span>Punts jornada</span>
+                    <strong>{resum.puntsTotals}</strong>
+                </article>
+            </section>
+
+            <section className="admin-puntuacions-toolbar">
+                <div className="admin-puntuacions-field">
+                    <label>Seleccionar jornada</label>
                     <select
-                        id="posicio"
-                        value={posicio}
-                        onChange={(event) => setPosicio(event.target.value)}
+                        value={jornadaId}
+                        onChange={(event) => setJornadaId(event.target.value)}
                     >
-                        <option value="totes">Totes</option>
-                        <option value="PT">Porters</option>
-                        <option value="DEF">Defenses</option>
-                        <option value="MIG">Migcampistes</option>
-                        <option value="DAV">Davanters</option>
+                        {jornades.map((jornada) => (
+                            <option key={jornada.id} value={jornada.id}>
+                                {jornada.nom} - {jornada.estat}
+                            </option>
+                        ))}
                     </select>
                 </div>
+
+                <button
+                    type="button"
+                    className="admin-puntuacions-secondary-btn"
+                    onClick={canviarEstatJornada}
+                    disabled={!jornadaId}
+                >
+                    Obrir / tancar jornada
+                </button>
+
+                <div className="admin-puntuacions-create">
+                    <input
+                        value={jornadaNom}
+                        placeholder="Ex: Jornada 4"
+                        onChange={(event) => setJornadaNom(event.target.value)}
+                    />
+
+                    <button
+                        type="button"
+                        className="admin-puntuacions-main-btn"
+                        onClick={crearJornada}
+                    >
+                        Crear jornada
+                    </button>
+                </div>
             </section>
 
-            <section className="admin-puntuacions-stats">
-                <article>
-                    <span>Jugadors</span>
-                    <strong>{jugadors.length}</strong>
-                </article>
+            <section className="admin-puntuacions-card">
+                <div className="admin-puntuacions-section-title">
+                    <div>
+                        <span className="admin-puntuacions-kicker">
+                            Jugadors
+                        </span>
 
-                <article>
-                    <span>Mitjana punts totals</span>
-                    <strong>
-                        {jugadors.length > 0
-                            ? Math.round(
-                                jugadors.reduce(
-                                    (total, jugador) => total + Number(jugador.puntuacio_total || 0),
-                                    0
-                                ) / jugadors.length
-                            )
-                            : 0}
-                    </strong>
-                </article>
+                        <h2>Punts per jugador</h2>
+                    </div>
 
-                <article>
-                    <span>Valor total mercat</span>
-                    <strong>
-                        {formatMoney(
-                            jugadors.reduce(
-                                (total, jugador) => total + Number(jugador.valor_mercat || 0),
-                                0
-                            )
-                        )}
-                    </strong>
-                </article>
-            </section>
+                    <button
+                        type="button"
+                        className="admin-puntuacions-main-btn"
+                        onClick={guardarPuntuacions}
+                    >
+                        Guardar puntuacions
+                    </button>
+                </div>
 
-            {loading ? (
-                <section className="admin-puntuacions-loading">
-                    Carregant jugadors...
-                </section>
-            ) : (
-                <section className="admin-puntuacions-list">
-                    {jugadorsFiltrats.map((jugador) => (
-                        <article className="admin-jugador-card" key={jugador.id}>
-                            <div className="admin-jugador-info">
-                                <div className="admin-jugador-avatar">
-                                    {jugador.nom.charAt(0).toUpperCase()}
+                <div className="admin-puntuacions-table">
+                    <div className="admin-puntuacions-table-head">
+                        <span>Jugador</span>
+                        <span>Posició</span>
+                        <span>Valor</span>
+                        <span>Punts</span>
+                        <span>Observacions</span>
+                    </div>
+
+                    {puntuacions.map((item) => (
+                        <div
+                            className="admin-puntuacions-row"
+                            key={item.jugador_id}
+                        >
+                            <div className="admin-puntuacions-player">
+                                <div className="admin-puntuacions-avatar">
+                                    {item.nom.charAt(0).toUpperCase()}
                                 </div>
 
                                 <div>
-                                    <h2>{jugador.nom}</h2>
-                                    <p>{jugador.equip}</p>
-                                    <span>{jugador.posicio}</span>
+                                    <strong>{item.nom}</strong>
+                                    <small>{item.equip}</small>
                                 </div>
                             </div>
 
-                            <div className="admin-jugador-current">
-                                <div>
-                                    <span>Valor actual</span>
-                                    <strong>{formatMoney(jugador.valor_mercat)}</strong>
-                                </div>
+                            <span>{normalitzarTextPosicio(item.posicio)}</span>
 
-                                <div>
-                                    <span>Total</span>
-                                    <strong>{jugador.puntuacio_total}</strong>
-                                </div>
+                            <span>{formatMoney(item.valor_mercat)}</span>
 
-                                <div>
-                                    <span>Jornada</span>
-                                    <strong>{jugador.puntuacio_jornada}</strong>
-                                </div>
-                            </div>
+                            <input
+                                type="number"
+                                value={item.punts}
+                                onChange={(event) =>
+                                    actualitzarPuntuacio(
+                                        item.jugador_id,
+                                        'punts',
+                                        event.target.value
+                                    )
+                                }
+                            />
 
-                            <div className="admin-jugador-form">
-                                <label>
-                                    Valor mercat
-                                    <input
-                                        type="number"
-                                        min="0"
-                                        value={editValues[jugador.id]?.valor_mercat ?? 0}
-                                        onChange={(event) =>
-                                            handleChange(
-                                                jugador.id,
-                                                'valor_mercat',
-                                                event.target.value
-                                            )
-                                        }
-                                    />
-                                </label>
-
-                                <label>
-                                    Punts totals
-                                    <input
-                                        type="number"
-                                        value={editValues[jugador.id]?.puntuacio_total ?? 0}
-                                        onChange={(event) =>
-                                            handleChange(
-                                                jugador.id,
-                                                'puntuacio_total',
-                                                event.target.value
-                                            )
-                                        }
-                                    />
-                                </label>
-
-                                <label>
-                                    Última jornada
-                                    <input
-                                        type="number"
-                                        value={editValues[jugador.id]?.puntuacio_jornada ?? 0}
-                                        onChange={(event) =>
-                                            handleChange(
-                                                jugador.id,
-                                                'puntuacio_jornada',
-                                                event.target.value
-                                            )
-                                        }
-                                    />
-                                </label>
-
-                                <button
-                                    type="button"
-                                    onClick={() => handleGuardar(jugador)}
-                                    disabled={savingId === jugador.id}
-                                >
-                                    {savingId === jugador.id ? 'Guardant...' : 'Guardar'}
-                                </button>
-                            </div>
-                        </article>
-                    ))}
-
-                    {jugadorsFiltrats.length === 0 && (
-                        <div className="admin-puntuacions-empty">
-                            No s’ha trobat cap jugador amb aquests filtres.
+                            <input
+                                value={item.observacions}
+                                placeholder="Ex: gol, assistència..."
+                                onChange={(event) =>
+                                    actualitzarPuntuacio(
+                                        item.jugador_id,
+                                        'observacions',
+                                        event.target.value
+                                    )
+                                }
+                            />
                         </div>
-                    )}
-                </section>
-            )}
+                    ))}
+                </div>
+            </section>
         </main>
     )
+}
+
+const normalitzarTextPosicio = (posicio) => {
+    const value = String(posicio || '').toLowerCase()
+
+    if (value.includes('porter') || value.includes('portero')) return 'Porter'
+    if (value.includes('def')) return 'Defensa'
+    if (value.includes('mig') || value.includes('centro')) return 'Migcampista'
+    if (value.includes('dav') || value.includes('delantero')) return 'Davanter'
+
+    return posicio || 'Jugador'
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default AdminPuntuacions

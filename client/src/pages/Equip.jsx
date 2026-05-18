@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
+import { puntuacionsLocalService } from '../services/puntuacionsLocalService'
 import './Equip.css'
 
 function Equip() {
@@ -21,20 +22,25 @@ function Equip() {
             return
         }
 
-        const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
+        equipFantasyLocalService.assegurarEquipInicial()
 
-        setJugadors(equipInicial.jugadors)
-        setPressupost(equipInicial.pressupost)
+        const jugadorsActualitzats =
+            puntuacionsLocalService.actualitzarPuntsTotalsPlantilla()
+
+        setJugadors(jugadorsActualitzats)
+        setPressupost(equipFantasyLocalService.getPressupost())
     }, [])
 
     const dadesEquip = useMemo(() => {
         const porters = filtrarPerPosicio(jugadors, ['porter', 'portero', 'pt'])
         const defenses = filtrarPerPosicio(jugadors, ['defensa', 'def'])
+
         const migcampistes = filtrarPerPosicio(jugadors, [
             'migcampista',
             'mig',
             'centrocampista',
         ])
+
         const davanters = filtrarPerPosicio(jugadors, [
             'davanter',
             'delantero',
@@ -51,6 +57,15 @@ function Equip() {
             (a, b) => Number(b.valor_mercat || 0) - Number(a.valor_mercat || 0)
         )[0]
 
+        const millorJugador = [...jugadors].sort(
+            (a, b) => Number(b.punts || 0) - Number(a.punts || 0)
+        )[0]
+
+        const puntsTotals = jugadors.reduce(
+            (total, jugador) => total + Number(jugador.punts || 0),
+            0
+        )
+
         return {
             porters,
             defenses,
@@ -58,6 +73,8 @@ function Equip() {
             davanters,
             valorPlantilla,
             jugadorMesCar,
+            millorJugador,
+            puntsTotals,
         }
     }, [jugadors])
 
@@ -123,8 +140,8 @@ function Equip() {
                     <h1>El meu equip</h1>
 
                     <p>
-                        Consulta la plantilla de la lliga activa, el valor total de l’equip
-                        i la distribució per posicions.
+                        Consulta la plantilla de la lliga activa, el valor total de l’equip,
+                        els punts acumulats i la distribució per posicions.
                     </p>
                 </div>
 
@@ -153,12 +170,8 @@ function Equip() {
                 </article>
 
                 <article>
-                    <span>Jugador més car</span>
-                    <strong>
-                        {dadesEquip.jugadorMesCar
-                            ? obtenirNomCurt(dadesEquip.jugadorMesCar.nom)
-                            : 'Cap'}
-                    </strong>
+                    <span>Punts totals</span>
+                    <strong>{dadesEquip.puntsTotals}</strong>
                 </article>
             </section>
 
@@ -214,28 +227,29 @@ function Equip() {
                 </article>
 
                 <article className="equip-card equip-league-card">
-                    <span className="equip-kicker">Estat de la lliga</span>
+                    <span className="equip-kicker">Rendiment</span>
 
-                    <h2>{lligaActiva.nom}</h2>
+                    <h2>Estat de puntuació</h2>
 
                     <p>
-                        Aquesta plantilla pertany només a aquesta lliga. Si participes en una
-                        altra lliga, tindràs un equip i un mercat separats.
+                        Els punts venen de les jornades guardades per l’admin a la pantalla
+                        de puntuacions.
                     </p>
 
                     <div className="equip-league-info">
                         <div>
-                            <span>Codi</span>
+                            <span>Millor jugador</span>
                             <strong>
-                                {lligaActiva.codi ||
-                                    lligaActiva.codi_invitacio ||
-                                    'Sense codi'}
+                                {dadesEquip.millorJugador &&
+                                    Number(dadesEquip.millorJugador.punts || 0) > 0
+                                    ? obtenirNomCurt(dadesEquip.millorJugador.nom)
+                                    : 'Sense punts'}
                             </strong>
                         </div>
 
                         <div>
-                            <span>Mode</span>
-                            <strong>Fantasy privat</strong>
+                            <span>Punts totals</span>
+                            <strong>{dadesEquip.puntsTotals}</strong>
                         </div>
                     </div>
                 </article>
@@ -364,7 +378,9 @@ function BlocPosicio({ titol, jugadors, onVendre }) {
 
                             <div>
                                 <strong>{jugador.nom}</strong>
-                                <span>{jugador.equip || 'Sense equip'}</span>
+                                <span>
+                                    {jugador.equip || 'Sense equip'} · {jugador.punts || 0} pts
+                                </span>
                             </div>
 
                             <em>{formatMoney(jugador.valor_mercat)}</em>

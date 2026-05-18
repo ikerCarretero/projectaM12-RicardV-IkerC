@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
+import { puntuacionsLocalService } from '../services/puntuacionsLocalService'
 import './DashboardHome.css'
 
 function DashboardHome() {
@@ -8,16 +9,26 @@ function DashboardHome() {
     const esGuest = localStorage.getItem('ffe_guest') === 'true'
 
     const lligaActiva = lligaActivaService.obtenir()
+
     const jugadorsFitxats = lligaActiva
-        ? equipFantasyLocalService.getJugadorsFitxats()
+        ? puntuacionsLocalService.actualitzarPuntsTotalsPlantilla()
         : []
 
     const pressupost = lligaActiva
         ? equipFantasyLocalService.getPressupost()
         : 0
 
+    const jornades = lligaActiva
+        ? puntuacionsLocalService.getJornades()
+        : []
+
     const valorPlantilla = jugadorsFitxats.reduce(
         (total, jugador) => total + Number(jugador.valor_mercat || 0),
+        0
+    )
+
+    const puntsTotals = jugadorsFitxats.reduce(
+        (total, jugador) => total + Number(jugador.punts || 0),
         0
     )
 
@@ -35,6 +46,43 @@ function DashboardHome() {
         'forward',
     ])
 
+    const historialJornades = jornades.map((jornada) => {
+        const puntuacionsJornada =
+            puntuacionsLocalService.getPuntuacionsJornada(
+                jornada.id,
+                jugadorsFitxats
+            )
+
+        const punts = puntuacionsJornada.reduce(
+            (total, item) => total + Number(item.punts || 0),
+            0
+        )
+
+        const jugadorsPuntuats = puntuacionsJornada.filter(
+            (item) => Number(item.punts || 0) !== 0
+        ).length
+
+        return {
+            ...jornada,
+            punts,
+            jugadorsPuntuats,
+            totalJugadors: puntuacionsJornada.length,
+        }
+    })
+
+    const ultimaJornada =
+        historialJornades.length > 0
+            ? historialJornades[historialJornades.length - 1]
+            : null
+
+    const millorJugador = [...jugadorsFitxats].sort(
+        (a, b) => Number(b.punts || 0) - Number(a.punts || 0)
+    )[0]
+
+    const jugadorsPuntuatsTotals = jugadorsFitxats.filter(
+        (jugador) => Number(jugador.punts || 0) !== 0
+    ).length
+
     const nomUsuari =
         usuari?.nom ||
         usuari?.name ||
@@ -50,7 +98,8 @@ function DashboardHome() {
                     <h1>Dashboard</h1>
 
                     <p>
-                        Visió ràpida del teu estat fantasy, equip, pressupost i lliga activa.
+                        Visió ràpida del teu estat fantasy, equip, pressupost,
+                        puntuacions i lliga activa.
                     </p>
                 </div>
 
@@ -72,8 +121,8 @@ function DashboardHome() {
                 </article>
 
                 <article className="dashboard-stat-card">
-                    <span>Valor plantilla</span>
-                    <strong>{formatMoney(valorPlantilla)}</strong>
+                    <span>Punts totals</span>
+                    <strong>{puntsTotals}</strong>
                 </article>
 
                 <article className="dashboard-stat-card">
@@ -89,8 +138,8 @@ function DashboardHome() {
                     <h2>Encara no tens cap lliga activa</h2>
 
                     <p>
-                        Selecciona una lliga privada o crea’n una de nova per activar el teu
-                        mercat, plantilla i alineació.
+                        Selecciona una lliga privada o crea’n una de nova per activar
+                        el teu mercat, plantilla, puntuacions i alineació.
                     </p>
 
                     <div className="dashboard-actions">
@@ -122,18 +171,20 @@ function DashboardHome() {
                                 </div>
 
                                 <div>
-                                    <span>Usuari</span>
-                                    <strong>{nomUsuari}</strong>
+                                    <span>Punts acumulats</span>
+                                    <strong>{puntsTotals}</strong>
                                 </div>
 
                                 <div>
-                                    <span>Esquema actual</span>
-                                    <strong>4-3-3</strong>
+                                    <span>Valor plantilla</span>
+                                    <strong>{formatMoney(valorPlantilla)}</strong>
                                 </div>
 
                                 <div>
-                                    <span>Backend</span>
-                                    <strong>Connectat / demo local</strong>
+                                    <span>Jugadors puntuats</span>
+                                    <strong>
+                                        {jugadorsPuntuatsTotals}/{jugadorsFitxats.length}
+                                    </strong>
                                 </div>
                             </div>
 
@@ -154,8 +205,9 @@ function DashboardHome() {
                             <h2>{lligaActiva.nom}</h2>
 
                             <p>
-                                Aquesta és la lliga que s’està utilitzant per calcular el teu
-                                pressupost, plantilla, mercat i alineació.
+                                Aquesta és la lliga que s’està utilitzant per calcular
+                                el teu pressupost, plantilla, mercat, puntuacions i
+                                alineació.
                             </p>
 
                             <div className="dashboard-league-code">
@@ -170,6 +222,100 @@ function DashboardHome() {
                             <Link to="/lligues" className="dashboard-secondary-btn">
                                 Canviar lliga
                             </Link>
+                        </article>
+                    </section>
+
+                    <section className="dashboard-main-grid">
+                        <article className="dashboard-card">
+                            <span className="dashboard-kicker">Puntuacions</span>
+
+                            <h2>Resum de rendiment</h2>
+
+                            <div className="dashboard-info-list">
+                                <div>
+                                    <span>Millor jugador</span>
+                                    <strong>
+                                        {millorJugador && Number(millorJugador.punts || 0) > 0
+                                            ? `${obtenirNomCurt(millorJugador.nom)} · ${millorJugador.punts} pts`
+                                            : 'Encara sense punts'}
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <span>Última jornada</span>
+                                    <strong>
+                                        {ultimaJornada
+                                            ? `${ultimaJornada.nom} · ${ultimaJornada.punts} pts`
+                                            : 'Sense jornades'}
+                                    </strong>
+                                </div>
+
+                                <div>
+                                    <span>Jornades creades</span>
+                                    <strong>{historialJornades.length}</strong>
+                                </div>
+
+                                <div>
+                                    <span>Mitjana de punts</span>
+                                    <strong>
+                                        {historialJornades.length > 0
+                                            ? Math.round(puntsTotals / historialJornades.length)
+                                            : 0}
+                                    </strong>
+                                </div>
+                            </div>
+
+                            <div className="dashboard-actions">
+                                <Link to="/rankings" className="dashboard-main-btn">
+                                    Veure rankings
+                                </Link>
+
+                                <Link
+                                    to="/admin/puntuacions"
+                                    className="dashboard-secondary-btn"
+                                >
+                                    Gestionar punts
+                                </Link>
+                            </div>
+                        </article>
+
+                        <article className="dashboard-card">
+                            <span className="dashboard-kicker">Jornades</span>
+
+                            <h2>Últimes puntuacions</h2>
+
+                            <div className="dashboard-round-list">
+                                {historialJornades.length > 0 ? (
+                                    historialJornades
+                                        .slice()
+                                        .reverse()
+                                        .slice(0, 3)
+                                        .map((jornada) => (
+                                            <div key={jornada.id}>
+                                                <div>
+                                                    <strong>{jornada.nom}</strong>
+                                                    <span>
+                                                        {jornada.jugadorsPuntuats}/
+                                                        {jornada.totalJugadors} jugadors puntuats
+                                                    </span>
+                                                </div>
+
+                                                <em>{jornada.punts} pts</em>
+                                            </div>
+                                        ))
+                                ) : (
+                                    <div>
+                                        <div>
+                                            <strong>Sense jornades</strong>
+                                            <span>
+                                                Encara no hi ha puntuacions guardades.
+                                            </span>
+                                        </div>
+
+                                        <em>0 pts</em>
+                                    </div>
+                                )}
+                            </div>
                         </article>
                     </section>
 
@@ -227,6 +373,18 @@ const comptarPerPosicio = (jugadors, valors) => {
 
         return valors.some((valor) => posicio.includes(valor))
     }).length
+}
+
+const obtenirNomCurt = (nom) => {
+    if (!nom) return 'Cap'
+
+    const parts = nom.trim().split(/\s+/)
+
+    if (parts.length === 1) {
+        return parts[0]
+    }
+
+    return `${parts[0].charAt(0).toUpperCase()}. ${parts.slice(1).join(' ')}`
 }
 
 const formatMoney = (value) => {

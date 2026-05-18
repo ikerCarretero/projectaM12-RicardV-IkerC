@@ -139,9 +139,15 @@ function Sidebar() {
                     </NavLink>
 
                     {esAdmin && !esGuest && (
-                        <NavLink to="/puntuacions" className={getLinkClass}>
-                            Puntuacions
-                        </NavLink>
+                        <>
+                            <NavLink to="/admin" className={getLinkClass}>
+                                Admin
+                            </NavLink>
+
+                            <NavLink to="/puntuacions" className={getLinkClass}>
+                                Puntuacions
+                            </NavLink>
+                        </>
                     )}
 
                     <div className="sidebar-nav-separator"></div>

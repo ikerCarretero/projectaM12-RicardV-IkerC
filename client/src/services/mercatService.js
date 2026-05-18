@@ -1,28 +1,6 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 
-const PRESSUPOST_INICIAL = 250000000
-
 const getToken = () => localStorage.getItem('ffe_token')
-
-const getUsuari = () => {
-    try {
-        return JSON.parse(localStorage.getItem('ffe_user') || 'null')
-    } catch (error) {
-        return null
-    }
-}
-
-const getLligaActivaId = () => {
-    return localStorage.getItem('ffe_lliga_activa_id') || 'demo'
-}
-
-const getMercatStorageKey = () => {
-    const usuari = getUsuari()
-    const usuariKey = usuari?.id || usuari?.email || usuari?.nom || 'usuari_demo'
-    const lligaId = getLligaActivaId()
-
-    return `ffe_mercat_${usuariKey}_${lligaId}`
-}
 
 const headers = () => {
     const token = getToken()
@@ -89,69 +67,153 @@ const jugadorsDemo = [
         punts: 0,
         estat: 'Disponible',
     },
+    {
+        id: 7,
+        nom: 'Bukayo Saka',
+        equip: 'Arsenal FC',
+        posicio: 'Davanter',
+        valor_mercat: 140000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 8,
+        nom: 'Florian Wirtz',
+        equip: 'Bayer Leverkusen',
+        posicio: 'Migcampista',
+        valor_mercat: 130000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 9,
+        nom: 'Erling Haaland',
+        equip: 'Manchester City',
+        posicio: 'Davanter',
+        valor_mercat: 180000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 10,
+        nom: 'Rodri',
+        equip: 'Manchester City',
+        posicio: 'Migcampista',
+        valor_mercat: 110000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 11,
+        nom: 'Rúben Dias',
+        equip: 'Manchester City',
+        posicio: 'Defensa',
+        valor_mercat: 80000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 12,
+        nom: 'Thibaut Courtois',
+        equip: 'Real Madrid',
+        posicio: 'Porter',
+        valor_mercat: 25000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 13,
+        nom: 'Nicolò Barella',
+        equip: 'Inter Milan',
+        posicio: 'Migcampista',
+        valor_mercat: 80000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 14,
+        nom: 'Achraf Hakimi',
+        equip: 'Paris Saint-Germain',
+        posicio: 'Defensa',
+        valor_mercat: 65000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 15,
+        nom: 'Ousmane Dembélé',
+        equip: 'Paris Saint-Germain',
+        posicio: 'Davanter',
+        valor_mercat: 75000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 16,
+        nom: 'Rafael Leão',
+        equip: 'AC Milan',
+        posicio: 'Davanter',
+        valor_mercat: 75000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 17,
+        nom: 'Joshua Kimmich',
+        equip: 'Bayern München',
+        posicio: 'Migcampista',
+        valor_mercat: 50000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
+    {
+        id: 18,
+        nom: 'Manuel Neuer',
+        equip: 'Bayern München',
+        posicio: 'Porter',
+        valor_mercat: 4000000,
+        punts: 0,
+        estat: 'Disponible',
+    },
 ]
 
-const getEstatLocal = () => {
-    const key = getMercatStorageKey()
+const normalitzarJugadors = (data) => {
+    let jugadors = []
 
-    try {
-        const stored = localStorage.getItem(key)
-
-        if (!stored) {
-            return {
-                pressupost: PRESSUPOST_INICIAL,
-                jugadorsFitxats: [],
-            }
-        }
-
-        const parsed = JSON.parse(stored)
-
-        return {
-            pressupost: parsed.pressupost ?? PRESSUPOST_INICIAL,
-            jugadorsFitxats: Array.isArray(parsed.jugadorsFitxats)
-                ? parsed.jugadorsFitxats
-                : [],
-        }
-    } catch (error) {
-        return {
-            pressupost: PRESSUPOST_INICIAL,
-            jugadorsFitxats: [],
-        }
+    if (Array.isArray(data)) {
+        jugadors = data
+    } else if (Array.isArray(data?.jugadors)) {
+        jugadors = data.jugadors
+    } else if (Array.isArray(data?.data)) {
+        jugadors = data.data
     }
-}
 
-const guardarEstatLocal = (estat) => {
-    const key = getMercatStorageKey()
-    localStorage.setItem(key, JSON.stringify(estat))
-}
-
-const aplicarEstatLocalAlsJugadors = (jugadors) => {
-    const estat = getEstatLocal()
-
-    return jugadors.map((jugador) => {
-        const estaFitxat = estat.jugadorsFitxats.includes(jugador.id)
-
-        return {
-            ...jugador,
-            fitxat: estaFitxat,
-            estat: estaFitxat ? 'Fitxat' : jugador.estat || 'Disponible',
-        }
-    })
+    return jugadors.map((jugador) => ({
+        id: jugador.id,
+        nom: jugador.nom || jugador.name || 'Jugador',
+        equip:
+            jugador.equip ||
+            jugador.equip_real?.nom ||
+            jugador.equipReal?.nom ||
+            'Sense equip',
+        posicio:
+            jugador.posicio ||
+            jugador.posicio_base ||
+            jugador.position ||
+            'Jugador',
+        valor_mercat: Number(
+            jugador.valor_mercat ||
+            jugador.valorMercat ||
+            jugador.valor ||
+            0
+        ),
+        punts: Number(jugador.punts || jugador.puntuacio_total || 0),
+        estat: jugador.estat || 'Disponible',
+        foto: jugador.foto || jugador.imatge || '',
+    }))
 }
 
 export const mercatService = {
-    getPressupostInicial() {
-        return PRESSUPOST_INICIAL
-    },
-
-    getPressupostActual() {
-        return getEstatLocal().pressupost
-    },
-
-    getEstatMercatLocal() {
-        return getEstatLocal()
-    },
-
     async getJugadorsMercat() {
         try {
             const response = await fetch(`${API_URL}/mercat`, {
@@ -164,68 +226,41 @@ export const mercatService = {
             }
 
             const data = await response.json()
+            const jugadors = normalitzarJugadors(data)
 
-            const jugadors = Array.isArray(data)
-                ? data
-                : data.jugadors || data.data || []
+            if (jugadors.length === 0) {
+                console.warn('Mercat buit al backend. Es fa servir mode demo.')
+                return jugadorsDemo
+            }
 
-            return aplicarEstatLocalAlsJugadors(jugadors)
+            return jugadors
         } catch (error) {
             console.warn('Mercat en mode demo:', error.message)
-            return aplicarEstatLocalAlsJugadors(jugadorsDemo)
+            return jugadorsDemo
         }
     },
 
-    async fitxarJugador(jugador) {
-        const estatActual = getEstatLocal()
-
-        if (estatActual.jugadorsFitxats.includes(jugador.id)) {
-            return {
-                ok: true,
-                mode: 'local',
-                message: 'Jugador ja fitxat',
-            }
-        }
-
-        const valorJugador = Number(jugador.valor_mercat || 0)
-
-        if (valorJugador > estatActual.pressupost) {
-            throw new Error('No tens pressupost suficient')
-        }
-
+    async fitxarJugador(jugadorId) {
         try {
-            await fetch(`${API_URL}/mercat/${jugador.id}/fitxar`, {
+            const response = await fetch(`${API_URL}/mercat/${jugadorId}/fitxar`, {
                 method: 'POST',
                 headers: headers(),
             })
+
+            if (!response.ok) {
+                throw new Error('No s’ha pogut fitxar el jugador')
+            }
+
+            return await response.json()
         } catch (error) {
-            console.warn('Fitxatge guardat només en mode demo:', error.message)
+            console.warn('Fitxatge en mode local/demo:', error.message)
+
+            return {
+                success: true,
+                message: 'Fitxatge gestionat en mode local.',
+            }
         }
-
-        const nouEstat = {
-            pressupost: estatActual.pressupost - valorJugador,
-            jugadorsFitxats: [...estatActual.jugadorsFitxats, jugador.id],
-        }
-
-        guardarEstatLocal(nouEstat)
-
-        return {
-            ok: true,
-            mode: 'local',
-            pressupost: nouEstat.pressupost,
-            jugadorsFitxats: nouEstat.jugadorsFitxats,
-        }
-    },
-
-    async getJugadorsFitxats() {
-        const jugadors = await this.getJugadorsMercat()
-        return jugadors.filter((jugador) => jugador.fitxat)
-    },
-
-    resetMercatDemo() {
-        guardarEstatLocal({
-            pressupost: PRESSUPOST_INICIAL,
-            jugadorsFitxats: [],
-        })
     },
 }
+
+export default mercatService

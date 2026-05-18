@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
+import { puntuacionsLocalService } from '../services/puntuacionsLocalService'
 import './Alineacio.css'
 
 const formacions = {
@@ -36,8 +37,8 @@ function Alineacio() {
 
     useEffect(() => {
         const lliga = lligaActivaService.obtenir()
-        const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
-        const jugadors = equipInicial.jugadors
+        equipFantasyLocalService.assegurarEquipInicial()
+        const jugadors = puntuacionsLocalService.actualitzarPuntsTotalsPlantilla()
 
         setLligaActiva(lliga)
         setJugadorsFitxats(jugadors)
@@ -304,6 +305,7 @@ function renderFilaJugadors(jugadors, total, placeholder) {
                     <div className="alineacio-player-chip" key={`${jugador.id}-${index}`}>
                         <strong>{obtenirNomCurt(jugador.nom)}</strong>
                         <span>{normalitzarTextPosicio(jugador.posicio)}</span>
+                        <em>{jugador.punts || 0} pts</em>
                     </div>
                 ) : (
                     <div

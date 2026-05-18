@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import PublicLayout from './layouts/PublicLayout.jsx'
 import DashboardLayout from './layouts/DashboardLayout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+
 import DashboardHome from './pages/DashboardHome.jsx'
 import Competicions from './pages/Competicions.jsx'
 import CompeticioDetail from './pages/CompeticioDetail.jsx'
@@ -59,15 +60,23 @@ function App() {
         <Route path="/lligues/unir" element={<UnirLliga />} />
         <Route path="/lligues/:id" element={<LligaPrivadaDetail />} />
 
+        {/* Alias per si algun botó antic encara apunta aquí */}
+        <Route path="/crear-lliga" element={<CrearLliga />} />
+        <Route path="/unir-lliga" element={<UnirLliga />} />
+
         <Route path="/equip" element={<Equip />} />
         <Route path="/plantilla" element={<Plantilla />} />
         <Route path="/alineacio" element={<Alineacio />} />
         <Route path="/mercat" element={<Mercat />} />
         <Route path="/configuracio" element={<Configuracio />} />
+
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/puntuacions" element={<AdminPuntuacions />} />
+
+        {/* Alias per compatibilitat amb Sidebar/Rankings/AdminPanel */}
+        <Route path="/puntuacions" element={<AdminPuntuacions />} />
       </Route>
-    </Routes >
+    </Routes>
   )
 }
 
