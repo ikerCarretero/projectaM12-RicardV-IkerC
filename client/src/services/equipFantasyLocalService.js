@@ -3,13 +3,11 @@ import { lligaActivaService } from './lligaActivaService'
 const PRESSUPOST_INICIAL = 250000000
 
 const jugadorsInicialsDemo = [
-    // Porters
     { id: 1001, nom: 'Unai Simón', equip: 'Athletic Club', posicio: 'Porter', valor_mercat: 30000000, punts: 0 },
     { id: 1002, nom: 'Diogo Costa', equip: 'FC Porto', posicio: 'Porter', valor_mercat: 45000000, punts: 0 },
     { id: 1003, nom: 'David Raya', equip: 'Arsenal FC', posicio: 'Porter', valor_mercat: 40000000, punts: 0 },
     { id: 1004, nom: 'Gregor Kobel', equip: 'Borussia Dortmund', posicio: 'Porter', valor_mercat: 40000000, punts: 0 },
 
-    // Defenses
     { id: 1011, nom: 'Pau Cubarsí', equip: 'FC Barcelona', posicio: 'Defensa', valor_mercat: 70000000, punts: 0 },
     { id: 1012, nom: 'Jules Koundé', equip: 'FC Barcelona', posicio: 'Defensa', valor_mercat: 55000000, punts: 0 },
     { id: 1013, nom: 'Alejandro Grimaldo', equip: 'Bayer Leverkusen', posicio: 'Defensa', valor_mercat: 45000000, punts: 0 },
@@ -17,7 +15,6 @@ const jugadorsInicialsDemo = [
     { id: 1015, nom: 'Alessandro Bastoni', equip: 'Inter Milan', posicio: 'Defensa', valor_mercat: 80000000, punts: 0 },
     { id: 1016, nom: 'Nuno Mendes', equip: 'Paris Saint-Germain', posicio: 'Defensa', valor_mercat: 70000000, punts: 0 },
 
-    // Migcampistes
     { id: 1021, nom: 'Pedri', equip: 'FC Barcelona', posicio: 'Migcampista', valor_mercat: 80000000, punts: 0 },
     { id: 1022, nom: 'Frenkie de Jong', equip: 'FC Barcelona', posicio: 'Migcampista', valor_mercat: 60000000, punts: 0 },
     { id: 1023, nom: 'Vitinha', equip: 'Paris Saint-Germain', posicio: 'Migcampista', valor_mercat: 70000000, punts: 0 },
@@ -25,7 +22,6 @@ const jugadorsInicialsDemo = [
     { id: 1025, nom: 'Bruno Guimarães', equip: 'Newcastle United', posicio: 'Migcampista', valor_mercat: 75000000, punts: 0 },
     { id: 1026, nom: 'Martin Ødegaard', equip: 'Arsenal FC', posicio: 'Migcampista', valor_mercat: 80000000, punts: 0 },
 
-    // Davanters
     { id: 1031, nom: 'Ferran Torres', equip: 'FC Barcelona', posicio: 'Davanter', valor_mercat: 30000000, punts: 0 },
     { id: 1032, nom: 'Álvaro Morata', equip: 'AC Milan', posicio: 'Davanter', valor_mercat: 16000000, punts: 0 },
     { id: 1033, nom: 'Darwin Núñez', equip: 'Liverpool FC', posicio: 'Davanter', valor_mercat: 70000000, punts: 0 },
@@ -46,6 +42,10 @@ const getPressupostKey = () => {
     return `ffe_pressupost_lliga_${getLligaId()}`
 }
 
+const getEquipInicialKey = () => {
+    return `ffe_equip_inicial_generat_lliga_${getLligaId()}`
+}
+
 const normalitzarJugador = (jugador) => {
     return {
         id: jugador.id,
@@ -55,6 +55,7 @@ const normalitzarJugador = (jugador) => {
         valor_mercat: Number(jugador.valor_mercat || jugador.valorMercat || 0),
         punts: Number(jugador.punts || jugador.puntuacio_total || 0),
         estat: jugador.estat || 'Fitxat',
+        origen: jugador.origen || 'Mercat',
     }
 }
 
@@ -139,7 +140,16 @@ export const equipFantasyLocalService = {
     },
 
     assegurarEquipInicial() {
+        const jaGenerat = localStorage.getItem(getEquipInicialKey()) === 'true'
         const jugadorsActuals = this.getJugadorsFitxats()
+
+        if (jaGenerat) {
+            return {
+                jugadors: jugadorsActuals,
+                pressupost: this.getPressupost(),
+            }
+        }
+
         const idsExclosos = jugadorsActuals.map((jugador) => String(jugador.id))
 
         const objectiu = {
@@ -167,6 +177,7 @@ export const equipFantasyLocalService = {
         })
 
         this.setJugadorsFitxats(nousJugadors)
+        localStorage.setItem(getEquipInicialKey(), 'true')
 
         return {
             jugadors: nousJugadors,
@@ -213,8 +224,37 @@ export const equipFantasyLocalService = {
         }
     },
 
+    vendreJugador(jugadorId) {
+        const jugadorsFitxats = this.getJugadorsFitxats()
+
+        const jugadorVenut = jugadorsFitxats.find(
+            (jugador) => String(jugador.id) === String(jugadorId)
+        )
+
+        if (!jugadorVenut) {
+            throw new Error('No s’ha trobat aquest jugador a la plantilla.')
+        }
+
+        const nousJugadors = jugadorsFitxats.filter(
+            (jugador) => String(jugador.id) !== String(jugadorId)
+        )
+
+        const valorJugador = Number(jugadorVenut.valor_mercat || 0)
+        const nouPressupost = this.getPressupost() + valorJugador
+
+        this.setJugadorsFitxats(nousJugadors)
+        this.setPressupost(nouPressupost)
+
+        return {
+            jugador: jugadorVenut,
+            jugadors: nousJugadors,
+            pressupost: nouPressupost,
+        }
+    },
+
     reiniciarLligaActual() {
         localStorage.removeItem(getJugadorsKey())
         localStorage.removeItem(getPressupostKey())
+        localStorage.removeItem(getEquipInicialKey())
     },
 }

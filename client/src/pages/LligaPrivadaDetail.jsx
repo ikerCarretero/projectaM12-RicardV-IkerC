@@ -5,168 +5,147 @@ import {
     getLligaPrivada,
     eliminarLligaPrivada,
 } from '../services/lligaPrivadaService'
+import { lligaActivaService } from '../services/lligaActivaService'
 import './Lligues.css'
 
 function LligaPrivadaDetail() {
-    const { id } = useParams()
     const navigate = useNavigate()
+    const { id } = useParams()
 
     const [lliga, setLliga] = useState(null)
     const [loading, setLoading] = useState(true)
-    const [deleting, setDeleting] = useState(false)
     const [error, setError] = useState('')
+    const [copiat, setCopiat] = useState(false)
+    const [eliminant, setEliminant] = useState(false)
 
     const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
-    const rol = (usuari?.rol || '').toLowerCase()
+    const rol = String(usuari?.rol || '').toLowerCase()
     const esAdmin = rol === 'admin'
 
+    const esLligaActiva = lliga ? lligaActivaService.esActiva(lliga.id) : false
+
     useEffect(() => {
+        const carregarLliga = async () => {
+            try {
+                setLoading(true)
+                setError('')
+
+                const data = await getLligaPrivada(id)
+                const lligaData = data?.lliga || data?.data || data
+
+                setLliga(lligaData)
+            } catch (err) {
+                setError(err.message || 'No s’ha pogut carregar la lliga.')
+            } finally {
+                setLoading(false)
+            }
+        }
+
         carregarLliga()
     }, [id])
 
-    const carregarLliga = async () => {
-        setLoading(true)
-        setError('')
-
-        try {
-            const data = await getLligaPrivada(id)
-            const lligaData = data?.lliga || data?.data || data
-
-            setLliga(lligaData)
-        } catch (error) {
-            setError(error.message)
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    const handleEliminarLliga = async () => {
-        const confirmacio = window.confirm(
-            'Segur que vols eliminar aquesta lliga? Aquesta acció no es pot desfer.'
-        )
-
-        if (!confirmacio) {
+    const entrarALliga = () => {
+        if (!lliga) {
             return
         }
 
-        setDeleting(true)
-        setError('')
+        lligaActivaService.guardar(lliga)
+        navigate('/dashboard')
+    }
 
-        try {
-            await eliminarLligaPrivada(id)
-
-            alert('Lliga eliminada correctament.')
-            navigate('/lligues')
-        } catch (error) {
-            setError(error.message)
-        } finally {
-            setDeleting(false)
+    const anarAlMercat = () => {
+        if (!lliga) {
+            return
         }
+
+        lligaActivaService.guardar(lliga)
+        navigate('/mercat')
     }
 
     const copiarCodi = async () => {
-        const codi =
-            lliga?.codi ||
-            lliga?.codi_invitacio ||
-            lliga?.codi_acces ||
-            lliga?.invite_code
+        const codi = obtenirCodiLliga(lliga)
 
         if (!codi) {
             return
         }
 
-        await navigator.clipboard.writeText(codi)
-        alert('Codi copiat al porta-retalls.')
+        try {
+            await navigator.clipboard.writeText(codi)
+            setCopiat(true)
+
+            setTimeout(() => {
+                setCopiat(false)
+            }, 1600)
+        } catch (err) {
+            setCopiat(false)
+        }
     }
 
-    const getNomLliga = () => {
-        return lliga?.nom || lliga?.name || 'Lliga privada'
-    }
+    const eliminarLliga = async () => {
+        if (!lliga) {
+            return
+        }
 
-    const getCodiLliga = () => {
-        return (
-            lliga?.codi ||
-            lliga?.codi_invitacio ||
-            lliga?.codi_acces ||
-            lliga?.invite_code ||
-            'Pendent'
+        const confirmar = window.confirm(
+            `Segur que vols eliminar la lliga "${lliga.nom}"? Aquesta acció no es pot desfer.`
         )
-    }
 
-    const getMembres = () => {
-        if (Array.isArray(lliga?.membres)) {
-            return lliga.membres.length
+        if (!confirmar) {
+            return
         }
 
-        if (Array.isArray(lliga?.usuaris)) {
-            return lliga.usuaris.length
+        try {
+            setEliminant(true)
+            await eliminarLligaPrivada(lliga.id)
+
+            if (lligaActivaService.esActiva(lliga.id)) {
+                lligaActivaService.eliminar()
+            }
+
+            navigate('/lligues')
+        } catch (err) {
+            setError(err.message || 'No s’ha pogut eliminar la lliga.')
+        } finally {
+            setEliminant(false)
         }
-
-        if (Array.isArray(lliga?.participants)) {
-            return lliga.participants.length
-        }
-
-        return (
-            lliga?.membres_count ||
-            lliga?.participants_count ||
-            lliga?.num_membres ||
-            0
-        )
-    }
-
-    const getEquipsFantasy = () => {
-        if (Array.isArray(lliga?.equips_fantasy)) {
-            return lliga.equips_fantasy.length
-        }
-
-        if (Array.isArray(lliga?.equipsFantasy)) {
-            return lliga.equipsFantasy.length
-        }
-
-        if (Array.isArray(lliga?.equips)) {
-            return lliga.equips.length
-        }
-
-        return lliga?.equips_fantasy_count || lliga?.equips_count || 0
-    }
-
-    const getPressupost = () => {
-        const pressupost = lliga?.pressupost_inicial || lliga?.pressupost
-
-        if (!pressupost) {
-            return 'Pendent de definir'
-        }
-
-        return new Intl.NumberFormat('ca-ES', {
-            style: 'currency',
-            currency: 'EUR',
-            maximumFractionDigits: 0,
-        }).format(pressupost)
     }
 
     if (loading) {
         return (
             <main className="app-page lligues-page">
-                <section className="app-card">
-                    <p>Carregant la lliga...</p>
+                <div className="lliga-loading-box">
+                    Carregant informació de la lliga...
+                </div>
+            </main>
+        )
+    }
+
+    if (error) {
+        return (
+            <main className="app-page lligues-page">
+                <section className="lligues-empty-card">
+                    <h2>No s’ha pogut carregar la lliga</h2>
+                    <p>{error}</p>
+
+                    <Link to="/lligues" className="lligues-secondary-btn">
+                        Tornar a lligues
+                    </Link>
                 </section>
             </main>
         )
     }
 
-    if (error && !lliga) {
+    if (!lliga) {
         return (
             <main className="app-page lligues-page">
-                <PageHeader
-                    kicker="Detall de lliga"
-                    title="No s’ha pogut carregar la lliga"
-                    subtitle={error}
-                    actions={
-                        <Link to="/lligues" className="app-btn app-btn-secondary">
-                            Tornar a lligues
-                        </Link>
-                    }
-                />
+                <section className="lligues-empty-card">
+                    <h2>Lliga no trobada</h2>
+                    <p>No hem pogut trobar la informació d’aquesta lliga.</p>
+
+                    <Link to="/lligues" className="lligues-secondary-btn">
+                        Tornar a lligues
+                    </Link>
+                </section>
             </main>
         )
     }
@@ -175,11 +154,27 @@ function LligaPrivadaDetail() {
         <main className="app-page lligues-page">
             <PageHeader
                 kicker="Detall de lliga"
-                title={getNomLliga()}
+                title={lliga.nom || 'Lliga privada'}
                 subtitle="Aquí es mostrarà la informació de la lliga, membres, equips fantasy i classificació."
                 actions={
                     <div className="lliga-header-actions">
-                        <Link to="/lligues" className="app-btn app-btn-secondary">
+                        <button
+                            type="button"
+                            className="lligues-main-btn"
+                            onClick={entrarALliga}
+                        >
+                            {esLligaActiva ? 'Lliga activa' : 'Entrar a la lliga'}
+                        </button>
+
+                        <button
+                            type="button"
+                            className="lligues-secondary-btn"
+                            onClick={anarAlMercat}
+                        >
+                            Anar al mercat
+                        </button>
+
+                        <Link to="/lligues" className="lligues-secondary-btn">
                             Tornar a lligues
                         </Link>
 
@@ -187,27 +182,22 @@ function LligaPrivadaDetail() {
                             <button
                                 type="button"
                                 className="app-btn app-btn-danger"
-                                onClick={handleEliminarLliga}
-                                disabled={deleting}
+                                onClick={eliminarLliga}
+                                disabled={eliminant}
                             >
-                                {deleting ? 'Eliminant...' : 'Eliminar lliga'}
+                                {eliminant ? 'Eliminant...' : 'Eliminar lliga'}
                             </button>
                         )}
                     </div>
                 }
             />
 
-            {error && (
-                <div className="lliga-error">
-                    {error}
-                </div>
-            )}
-
-            {esAdmin && (
-                <section className="lliga-admin-warning">
-                    <strong>Zona d’administrador</strong>
+            {esLligaActiva && (
+                <section className="lliga-active-banner">
+                    <strong>Aquesta és la teva lliga activa.</strong>
                     <span>
-                        Pots eliminar aquesta lliga perquè el teu compte té rol d’admin.
+                        El mercat, la plantilla, el pressupost i l’alineació es calcularan amb
+                        aquesta lliga.
                     </span>
                 </section>
             )}
@@ -220,28 +210,34 @@ function LligaPrivadaDetail() {
                     <div className="app-info-grid">
                         <div className="app-info-box">
                             <strong>Membres</strong>
-                            <span>{getMembres()}</span>
+                            <span>{lliga.membres_count || lliga.membres?.length || 1}</span>
                         </div>
 
                         <div className="app-info-box">
                             <strong>Equips fantasy</strong>
                             <span>
-                                {getEquipsFantasy() > 0
-                                    ? getEquipsFantasy()
-                                    : 'Encara no hi ha equips'}
+                                {lliga.equips_fantasy_count ||
+                                    lliga.equips_fantasy?.length ||
+                                    'Encara no hi ha equips'}
                             </span>
                         </div>
 
                         <div className="app-info-box">
                             <strong>Pressupost inicial</strong>
-                            <span>{getPressupost()}</span>
+                            <span>
+                                {formatMoney(
+                                    lliga.pressupost_inicial ||
+                                    lliga.pressupost ||
+                                    250000000
+                                )}
+                            </span>
                         </div>
                     </div>
 
                     <div className="lliga-code-banner">
                         <div>
                             <strong>Codi d’invitació</strong>
-                            <span>{getCodiLliga()}</span>
+                            <span>{obtenirCodiLliga(lliga)}</span>
                         </div>
 
                         <button
@@ -249,7 +245,7 @@ function LligaPrivadaDetail() {
                             className="lliga-copy-btn"
                             onClick={copiarCodi}
                         >
-                            Copiar codi
+                            {copiat ? 'Copiat!' : 'Copiar codi'}
                         </button>
                     </div>
                 </article>
@@ -265,21 +261,40 @@ function LligaPrivadaDetail() {
                         </span>
                     </div>
                 </article>
-            </section>
 
-            <section className="app-card mt-4">
-                <p className="app-page-kicker">Classificació</p>
-                <h2 className="mb-3">Rànquing de la lliga</h2>
+                <article className="app-card lliga-ranking-card">
+                    <p className="app-page-kicker">Classificació</p>
+                    <h2 className="mb-3">Rànquing de la lliga</h2>
 
-                <div className="app-info-box">
-                    <strong>Encara no hi ha dades</strong>
-                    <span>
-                        Quan hi hagi equips i jornades, aquí es mostrarà la classificació.
-                    </span>
-                </div>
+                    <div className="app-info-box">
+                        <strong>Encara no hi ha dades</strong>
+                        <span>
+                            Quan hi hagi equips i jornades, aquí es mostrarà la classificació.
+                        </span>
+                    </div>
+                </article>
             </section>
         </main>
     )
+}
+
+const obtenirCodiLliga = (lliga) => {
+    return (
+        lliga?.codi ||
+        lliga?.codi_invitacio ||
+        lliga?.invitation_code ||
+        'Pendent'
+    )
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default LligaPrivadaDetail

@@ -1,230 +1,428 @@
 import { useEffect, useMemo, useState } from 'react'
-import { api } from '../services/api'
+import { Link } from 'react-router-dom'
+import { lligaActivaService } from '../services/lligaActivaService'
+import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import './Equip.css'
 
 function Equip() {
-    const [loading, setLoading] = useState(true)
+    const [lligaActiva, setLligaActiva] = useState(null)
+    const [jugadors, setJugadors] = useState([])
+    const [pressupost, setPressupost] = useState(0)
+    const [missatge, setMissatge] = useState('')
     const [error, setError] = useState('')
-    const [meuEquip, setMeuEquip] = useState(null)
-    const [usuari, setUsuari] = useState(null)
 
     useEffect(() => {
-        const carregarEquip = async () => {
-            try {
-                setLoading(true)
-                setError('')
+        const lliga = lligaActivaService.obtenir()
+        setLligaActiva(lliga)
 
-                const user = await api.getMe()
-                const equips = await api.getEquipsFantasy()
-
-                const equipTrobat =
-                    equips.find((equip) => equip.usuari_id === user?.id) ||
-                    equips.find((equip) => equip.usuari?.id === user?.id) ||
-                    null
-
-                setUsuari(user)
-                setMeuEquip(equipTrobat)
-            } catch (err) {
-                console.error(err)
-                setError('No s’ha pogut carregar la pàgina del teu equip.')
-            } finally {
-                setLoading(false)
-            }
+        if (!lliga) {
+            setJugadors([])
+            setPressupost(0)
+            return
         }
 
-        carregarEquip()
+        const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
+
+        setJugadors(equipInicial.jugadors)
+        setPressupost(equipInicial.pressupost)
     }, [])
 
-    const jugadors = meuEquip?.jugadors || []
+    const dadesEquip = useMemo(() => {
+        const porters = filtrarPerPosicio(jugadors, ['porter', 'portero', 'pt'])
+        const defenses = filtrarPerPosicio(jugadors, ['defensa', 'def'])
+        const migcampistes = filtrarPerPosicio(jugadors, [
+            'migcampista',
+            'mig',
+            'centrocampista',
+        ])
+        const davanters = filtrarPerPosicio(jugadors, [
+            'davanter',
+            'delantero',
+            'dav',
+            'forward',
+        ])
 
-    const grups = useMemo(() => {
+        const valorPlantilla = jugadors.reduce(
+            (total, jugador) => total + Number(jugador.valor_mercat || 0),
+            0
+        )
+
+        const jugadorMesCar = [...jugadors].sort(
+            (a, b) => Number(b.valor_mercat || 0) - Number(a.valor_mercat || 0)
+        )[0]
+
         return {
-            porters: jugadors.filter((j) => normalitzarPosicio(j.posicio_base) === 'PORTER'),
-            defenses: jugadors.filter((j) => normalitzarPosicio(j.posicio_base) === 'DEFENSA'),
-            migcampistes: jugadors.filter((j) => normalitzarPosicio(j.posicio_base) === 'MIGCAMPISTA'),
-            davanters: jugadors.filter((j) => normalitzarPosicio(j.posicio_base) === 'DAVANTER')
+            porters,
+            defenses,
+            migcampistes,
+            davanters,
+            valorPlantilla,
+            jugadorMesCar,
         }
     }, [jugadors])
 
-    if (loading) {
-        return <p>Carregant equip...</p>
+    const vendreJugador = (jugador) => {
+        const confirmar = window.confirm(
+            `Vols vendre ${jugador.nom} per ${formatMoney(jugador.valor_mercat)}?`
+        )
+
+        if (!confirmar) {
+            return
+        }
+
+        try {
+            const resultat = equipFantasyLocalService.vendreJugador(jugador.id)
+
+            setJugadors(resultat.jugadors)
+            setPressupost(resultat.pressupost)
+            setMissatge(`${jugador.nom} venut correctament.`)
+            setError('')
+
+            setTimeout(() => {
+                setMissatge('')
+            }, 2200)
+        } catch (err) {
+            setError(err.message || 'No s’ha pogut vendre el jugador.')
+            setMissatge('')
+        }
     }
 
-    if (error) {
-        return <div className="alert alert-danger">{error}</div>
-    }
-
-    if (!meuEquip) {
+    if (!lligaActiva) {
         return (
-            <div className="equip-page">
-                <div className="equip-empty-card">
-                    <h1 className="equip-title">El meu equip</h1>
-                    <p className="equip-subtitle">
-                        Encara no tens cap equip fantasy creat o associat a una lliga.
+            <main className="app-page equip-page">
+                <section className="equip-empty">
+                    <span className="equip-kicker">Plantilla fantasy</span>
+
+                    <h1>Encara no tens cap lliga activa</h1>
+
+                    <p>
+                        Per veure la teva plantilla has de seleccionar una lliga privada.
+                        Cada lliga tindrà els seus propis jugadors, pressupost i mercat.
                     </p>
 
-                    <div className="equip-empty-box">
-                        <h3>Equip no disponible</h3>
-                        <p>
-                            Quan la part de lligues fantasy estigui connectada, aquí veuràs el teu equip,
-                            la plantilla, el pressupost i els punts acumulats.
-                        </p>
+                    <div className="equip-actions">
+                        <Link to="/lligues" className="equip-main-btn">
+                            Anar a lligues
+                        </Link>
 
-                        <div className="equip-empty-info">
-                            <div className="equip-empty-mini">
-                                <strong>Usuari</strong>
-                                <span>{usuari?.nom || usuari?.name || '-'}</span>
-                            </div>
-
-                            <div className="equip-empty-mini">
-                                <strong>Estat</strong>
-                                <span>Pendent de creació</span>
-                            </div>
-
-                            <div className="equip-empty-mini">
-                                <strong>Mòdul</strong>
-                                <span>Preparat visualment</span>
-                            </div>
-                        </div>
+                        <Link to="/crear-lliga" className="equip-secondary-btn">
+                            Crear lliga
+                        </Link>
                     </div>
-                </div>
-            </div>
+                </section>
+            </main>
         )
     }
 
     return (
-        <div className="equip-page">
-            <div className="equip-header">
+        <main className="app-page equip-page">
+            <section className="equip-header">
                 <div>
-                    <h1 className="equip-title">{meuEquip.nom_equip || 'El meu equip'}</h1>
-                    <p className="equip-subtitle">
-                        Vista general del teu equip fantasy i de la plantilla disponible.
+                    <span className="equip-kicker">Plantilla fantasy</span>
+
+                    <h1>El meu equip</h1>
+
+                    <p>
+                        Consulta la plantilla de la lliga activa, el valor total de l’equip
+                        i la distribució per posicions.
                     </p>
                 </div>
-            </div>
 
-            <div className="equip-stats-grid">
-                <div className="equip-stat-card">
-                    <span>Pressupost</span>
-                    <strong>{formatEuros(meuEquip.pressupost)}</strong>
+                <div className="equip-header-card">
+                    <span>Lliga activa</span>
+                    <strong>{lligaActiva.nom}</strong>
+
+                    <Link to="/lligues">Canviar lliga</Link>
                 </div>
+            </section>
 
-                <div className="equip-stat-card">
-                    <span>Punts totals</span>
-                    <strong>{Number(meuEquip.punts_totals || meuEquip.puntuacio_total || 0)}</strong>
-                </div>
-
-                <div className="equip-stat-card">
+            <section className="equip-stats-grid">
+                <article>
                     <span>Jugadors</span>
                     <strong>{jugadors.length}</strong>
+                </article>
+
+                <article>
+                    <span>Pressupost</span>
+                    <strong>{formatMoney(pressupost)}</strong>
+                </article>
+
+                <article>
+                    <span>Valor plantilla</span>
+                    <strong>{formatMoney(dadesEquip.valorPlantilla)}</strong>
+                </article>
+
+                <article>
+                    <span>Jugador més car</span>
+                    <strong>
+                        {dadesEquip.jugadorMesCar
+                            ? obtenirNomCurt(dadesEquip.jugadorMesCar.nom)
+                            : 'Cap'}
+                    </strong>
+                </article>
+            </section>
+
+            {missatge && (
+                <div className="equip-alert equip-alert-success">
+                    {missatge}
                 </div>
+            )}
 
-                <div className="equip-stat-card">
-                    <span>Usuari</span>
-                    <strong>{usuari?.nom || usuari?.name || '-'}</strong>
+            {error && (
+                <div className="equip-alert equip-alert-error">
+                    {error}
                 </div>
-            </div>
+            )}
 
-            <div className="equip-block">
-                <h2 className="equip-block-title">Plantilla del teu equip</h2>
+            <section className="equip-main-grid">
+                <article className="equip-card equip-summary-card">
+                    <span className="equip-kicker">Distribució</span>
 
-                <div className="equip-position-section">
-                    <h3 className="equip-position-title porter">Porters</h3>
-                    <div className="row">
-                        {grups.porters.map((jugador) => (
-                            <JugadorCard key={jugador.id} jugador={jugador} />
-                        ))}
+                    <h2>Equip per posicions</h2>
+
+                    <div className="equip-position-grid">
+                        <div>
+                            <span>Porters</span>
+                            <strong>{dadesEquip.porters.length}</strong>
+                        </div>
+
+                        <div>
+                            <span>Defenses</span>
+                            <strong>{dadesEquip.defenses.length}</strong>
+                        </div>
+
+                        <div>
+                            <span>Migcampistes</span>
+                            <strong>{dadesEquip.migcampistes.length}</strong>
+                        </div>
+
+                        <div>
+                            <span>Davanters</span>
+                            <strong>{dadesEquip.davanters.length}</strong>
+                        </div>
                     </div>
+
+                    <div className="equip-actions">
+                        <Link to="/mercat" className="equip-main-btn">
+                            Anar al mercat
+                        </Link>
+
+                        <Link to="/alineacio" className="equip-secondary-btn">
+                            Preparar alineació
+                        </Link>
+                    </div>
+                </article>
+
+                <article className="equip-card equip-league-card">
+                    <span className="equip-kicker">Estat de la lliga</span>
+
+                    <h2>{lligaActiva.nom}</h2>
+
+                    <p>
+                        Aquesta plantilla pertany només a aquesta lliga. Si participes en una
+                        altra lliga, tindràs un equip i un mercat separats.
+                    </p>
+
+                    <div className="equip-league-info">
+                        <div>
+                            <span>Codi</span>
+                            <strong>
+                                {lligaActiva.codi ||
+                                    lligaActiva.codi_invitacio ||
+                                    'Sense codi'}
+                            </strong>
+                        </div>
+
+                        <div>
+                            <span>Mode</span>
+                            <strong>Fantasy privat</strong>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <section className="equip-card">
+                <div className="equip-section-title">
+                    <div>
+                        <span className="equip-kicker">Plantilla actual</span>
+                        <h2>Jugadors fitxats</h2>
+                    </div>
+
+                    <Link to="/mercat" className="equip-small-link">
+                        Fitxar més
+                    </Link>
                 </div>
 
-                <div className="equip-position-section">
-                    <h3 className="equip-position-title defensa">Defenses</h3>
-                    <div className="row">
-                        {grups.defenses.map((jugador) => (
-                            <JugadorCard key={jugador.id} jugador={jugador} />
-                        ))}
-                    </div>
+                <div className="equip-players-grid">
+                    {jugadors.map((jugador) => (
+                        <JugadorCard
+                            jugador={jugador}
+                            key={jugador.id}
+                            onVendre={vendreJugador}
+                        />
+                    ))}
                 </div>
+            </section>
 
-                <div className="equip-position-section">
-                    <h3 className="equip-position-title migcampista">Migcampistes</h3>
-                    <div className="row">
-                        {grups.migcampistes.map((jugador) => (
-                            <JugadorCard key={jugador.id} jugador={jugador} />
-                        ))}
-                    </div>
-                </div>
+            <section className="equip-positions-list">
+                <BlocPosicio
+                    titol="Porters"
+                    jugadors={dadesEquip.porters}
+                    onVendre={vendreJugador}
+                />
 
-                <div className="equip-position-section">
-                    <h3 className="equip-position-title davanter">Davanters</h3>
-                    <div className="row">
-                        {grups.davanters.map((jugador) => (
-                            <JugadorCard key={jugador.id} jugador={jugador} />
-                        ))}
-                    </div>
-                </div>
+                <BlocPosicio
+                    titol="Defenses"
+                    jugadors={dadesEquip.defenses}
+                    onVendre={vendreJugador}
+                />
 
-                {jugadors.length === 0 && (
-                    <div className="alert alert-info mt-3">
-                        Aquest equip encara no té jugadors assignats.
-                    </div>
-                )}
-            </div>
-        </div>
+                <BlocPosicio
+                    titol="Migcampistes"
+                    jugadors={dadesEquip.migcampistes}
+                    onVendre={vendreJugador}
+                />
+
+                <BlocPosicio
+                    titol="Davanters"
+                    jugadors={dadesEquip.davanters}
+                    onVendre={vendreJugador}
+                />
+            </section>
+        </main>
     )
 }
 
-function JugadorCard({ jugador }) {
-    const posicio = normalitzarPosicio(jugador.posicio_base)
-    const posClass = obtenirClassePosicio(posicio)
-
+function JugadorCard({ jugador, onVendre }) {
     return (
-        <div className="col-md-6 col-lg-4 mb-4">
-            <div className={`card h-100 shadow-sm equip-jugador-card ${posClass}`}>
-                <div className="card-body">
-                    <h5 className="card-title">{jugador.nom}</h5>
+        <article className="equip-player-card">
+            <div className="equip-player-top">
+                <div className="equip-player-avatar">
+                    {jugador.nom?.charAt(0)?.toUpperCase() || 'J'}
+                </div>
 
-                    <p className="mb-1">
-                        <strong>Posició:</strong>{' '}
-                        <span className={`equip-player-position ${posClass}`}>
-                            {posicio}
-                        </span>
-                    </p>
-
-                    <p className="mb-1">
-                        <strong>Valor:</strong> {formatEuros(jugador.valor_mercat)}
-                    </p>
-
-                    <p className="mb-0">
-                        <strong>Punts:</strong> {Number(jugador.puntuacio_total || 0)}
-                    </p>
+                <div>
+                    <h3>{jugador.nom}</h3>
+                    <p>{jugador.equip || 'Sense equip'}</p>
                 </div>
             </div>
-        </div>
+
+            <div className="equip-player-info">
+                <div>
+                    <span>Posició</span>
+                    <strong>{normalitzarTextPosicio(jugador.posicio)}</strong>
+                </div>
+
+                <div>
+                    <span>Valor</span>
+                    <strong>{formatMoney(jugador.valor_mercat)}</strong>
+                </div>
+
+                <div>
+                    <span>Punts</span>
+                    <strong>{jugador.punts || 0}</strong>
+                </div>
+
+                <div>
+                    <span>Origen</span>
+                    <strong>{jugador.origen || 'Plantilla'}</strong>
+                </div>
+            </div>
+
+            <button
+                type="button"
+                className="equip-sell-btn"
+                onClick={() => onVendre(jugador)}
+            >
+                Vendre jugador
+            </button>
+        </article>
     )
 }
 
-function normalitzarPosicio(posicio) {
-    const valor = (posicio || '').toLowerCase()
+function BlocPosicio({ titol, jugadors, onVendre }) {
+    return (
+        <article className="equip-card">
+            <div className="equip-section-title">
+                <div>
+                    <span className="equip-kicker">Posició</span>
+                    <h2>{titol}</h2>
+                </div>
 
-    if (valor.includes('porter')) return 'PORTER'
-    if (valor.includes('defensa')) return 'DEFENSA'
-    if (valor.includes('mig')) return 'MIGCAMPISTA'
-    if (valor.includes('davanter')) return 'DAVANTER'
+                <strong className="equip-position-count">{jugadors.length}</strong>
+            </div>
 
-    return posicio?.toUpperCase() || 'DESCONEGUDA'
+            {jugadors.length === 0 ? (
+                <p className="equip-empty-text">Cap jugador en aquesta posició.</p>
+            ) : (
+                <div className="equip-position-player-list">
+                    {jugadors.map((jugador) => (
+                        <div className="equip-position-player" key={jugador.id}>
+                            <div className="equip-player-avatar small">
+                                {jugador.nom?.charAt(0)?.toUpperCase() || 'J'}
+                            </div>
+
+                            <div>
+                                <strong>{jugador.nom}</strong>
+                                <span>{jugador.equip || 'Sense equip'}</span>
+                            </div>
+
+                            <em>{formatMoney(jugador.valor_mercat)}</em>
+
+                            <button
+                                type="button"
+                                className="equip-position-sell-btn"
+                                onClick={() => onVendre(jugador)}
+                            >
+                                Vendre
+                            </button>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </article>
+    )
 }
 
-function obtenirClassePosicio(posicio) {
-    if (posicio === 'PORTER') return 'pos-porter'
-    if (posicio === 'DEFENSA') return 'pos-defensa'
-    if (posicio === 'MIGCAMPISTA') return 'pos-migcampista'
-    if (posicio === 'DAVANTER') return 'pos-davanter'
-    return ''
+const filtrarPerPosicio = (jugadors, valors) => {
+    return jugadors.filter((jugador) => {
+        const posicio = String(jugador.posicio || '').toLowerCase()
+
+        return valors.some((valor) => posicio.includes(valor))
+    })
 }
 
-function formatEuros(valor) {
-    return `${(Number(valor || 0) / 1000000).toFixed(1)} M€`
+const normalitzarTextPosicio = (posicio) => {
+    const value = String(posicio || '').toLowerCase()
+
+    if (value.includes('porter') || value.includes('portero')) return 'Porter'
+    if (value.includes('def')) return 'Defensa'
+    if (value.includes('mig') || value.includes('centro')) return 'Migcampista'
+    if (value.includes('dav') || value.includes('delantero')) return 'Davanter'
+
+    return posicio || 'Jugador'
+}
+
+const obtenirNomCurt = (nom) => {
+    if (!nom) return 'Cap'
+
+    const parts = nom.trim().split(/\s+/)
+
+    if (parts.length === 1) {
+        return parts[0]
+    }
+
+    return `${parts[0].charAt(0).toUpperCase()}. ${parts.slice(1).join(' ')}`
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default Equip

@@ -1,169 +1,242 @@
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { api } from '../services/api'
-import PageHeader from '../components/ui/PageHeader'
-import StatCard from '../components/ui/StatCard'
+import { lligaActivaService } from '../services/lligaActivaService'
+import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import './DashboardHome.css'
 
 function DashboardHome() {
-    const [resum, setResum] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState('')
+    const usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
+    const esGuest = localStorage.getItem('ffe_guest') === 'true'
 
-    useEffect(() => {
-        const carregarDashboard = async () => {
-            try {
-                setLoading(true)
-                setError('')
+    const lligaActiva = lligaActivaService.obtenir()
+    const jugadorsFitxats = lligaActiva
+        ? equipFantasyLocalService.getJugadorsFitxats()
+        : []
 
-                const user = await api.getMe()
-                const equips = await api.getEquipsFantasy()
-                const partits = await api.getPartits()
+    const pressupost = lligaActiva
+        ? equipFantasyLocalService.getPressupost()
+        : 0
 
-                const llistaEquips = Array.isArray(equips) ? equips : []
-                const llistaPartits = Array.isArray(partits) ? partits : []
+    const valorPlantilla = jugadorsFitxats.reduce(
+        (total, jugador) => total + Number(jugador.valor_mercat || 0),
+        0
+    )
 
-                const meuEquip =
-                    llistaEquips.find((equip) => equip.usuari_id === user?.id) ||
-                    llistaEquips.find((equip) => equip.usuari?.id === user?.id) ||
-                    null
+    const porters = comptarPerPosicio(jugadorsFitxats, ['porter', 'portero', 'pt'])
+    const defenses = comptarPerPosicio(jugadorsFitxats, ['defensa', 'def'])
+    const migcampistes = comptarPerPosicio(jugadorsFitxats, [
+        'migcampista',
+        'mig',
+        'centrocampista',
+    ])
+    const davanters = comptarPerPosicio(jugadorsFitxats, [
+        'davanter',
+        'delantero',
+        'dav',
+        'forward',
+    ])
 
-                setResum({
-                    user,
-                    equip: meuEquip,
-                    partits: llistaPartits,
-                    alineacio: null,
-                })
-            } catch (err) {
-                console.error(err)
-                setError(err.message || 'No s’ha pogut carregar el dashboard.')
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        carregarDashboard()
-    }, [])
-
-    if (loading) {
-        return (
-            <main className="app-page dashboard-page">
-                <div className="app-card">
-                    Carregant dashboard...
-                </div>
-            </main>
-        )
-    }
-
-    if (error) {
-        return (
-            <main className="app-page dashboard-page">
-                <div className="alert alert-danger">{error}</div>
-            </main>
-        )
-    }
-
-    const equip = resum?.equip
-    const alineacio = resum?.alineacio
-    const jugadors = equip?.jugadors || []
+    const nomUsuari =
+        usuari?.nom ||
+        usuari?.name ||
+        usuari?.email?.split('@')[0] ||
+        (esGuest ? 'Guest' : 'Usuari')
 
     return (
         <main className="app-page dashboard-page">
-            <PageHeader
-                title="Dashboard"
-                subtitle="Visió ràpida del teu estat fantasy, equip, pressupost i accions principals."
-            />
+            <section className="dashboard-hero">
+                <div>
+                    <span className="dashboard-kicker">Panell principal</span>
 
-            <section className="app-stat-grid">
-                <StatCard label="Punts totals" value={equip?.punts_totals ?? 0} />
-                <StatCard label="Pressupost" value={`${equip?.pressupost ?? 0} €`} />
-                <StatCard label="Jugadors" value={jugadors.length} />
-                <StatCard label="Partits" value={resum?.partits?.length ?? 0} />
+                    <h1>Dashboard</h1>
+
+                    <p>
+                        Visió ràpida del teu estat fantasy, equip, pressupost i lliga activa.
+                    </p>
+                </div>
+
+                <div className="dashboard-user-pill">
+                    <span>Usuari</span>
+                    <strong>{nomUsuari}</strong>
+                </div>
             </section>
 
-            <section className="dashboard-grid">
-                <article className="app-card dashboard-summary-card">
-                    <div className="dashboard-card-title-row">
-                        <div>
-                            <p className="app-page-kicker">Resum ràpid</p>
-                            <h2>El teu estat actual</h2>
-                        </div>
-
-                        <span className="app-badge app-badge-purple">
-                            Connectat
-                        </span>
-                    </div>
-
-                    <div className="dashboard-summary-list">
-                        <div className="dashboard-summary-item">
-                            <span>Equip</span>
-                            <strong>{equip?.nom_equip || 'Sense equip fantasy'}</strong>
-                        </div>
-
-                        <div className="dashboard-summary-item">
-                            <span>Usuari</span>
-                            <strong>{resum?.user?.nom || resum?.user?.name || '-'}</strong>
-                        </div>
-
-                        <div className="dashboard-summary-item">
-                            <span>Esquema actual</span>
-                            <strong>{alineacio?.esquema || 'Sense alineació'}</strong>
-                        </div>
-
-                        <div className="dashboard-summary-item">
-                            <span>Backend</span>
-                            <strong>Connectat</strong>
-                        </div>
-                    </div>
+            <section className="dashboard-stats-grid">
+                <article className="dashboard-stat-card">
+                    <span>Pressupost</span>
+                    <strong>{formatMoney(pressupost)}</strong>
                 </article>
 
-                <article className="app-card dashboard-actions-card">
-                    <p className="app-page-kicker">Accions ràpides</p>
-                    <h2>Què vols fer ara?</h2>
+                <article className="dashboard-stat-card">
+                    <span>Jugadors fitxats</span>
+                    <strong>{jugadorsFitxats.length}</strong>
+                </article>
 
-                    <div className="dashboard-actions-grid">
-                        <Link to="/lligues" className="app-btn app-btn-primary">
+                <article className="dashboard-stat-card">
+                    <span>Valor plantilla</span>
+                    <strong>{formatMoney(valorPlantilla)}</strong>
+                </article>
+
+                <article className="dashboard-stat-card">
+                    <span>Lliga activa</span>
+                    <strong>{lligaActiva ? lligaActiva.nom : 'Cap'}</strong>
+                </article>
+            </section>
+
+            {!lligaActiva ? (
+                <section className="dashboard-empty-card">
+                    <span className="dashboard-kicker">Fantasy privat</span>
+
+                    <h2>Encara no tens cap lliga activa</h2>
+
+                    <p>
+                        Selecciona una lliga privada o crea’n una de nova per activar el teu
+                        mercat, plantilla i alineació.
+                    </p>
+
+                    <div className="dashboard-actions">
+                        <Link to="/lligues" className="dashboard-main-btn">
                             Veure lligues
                         </Link>
 
-                        <Link to="/lligues/crear" className="app-btn app-btn-secondary">
+                        <Link to="/crear-lliga" className="dashboard-secondary-btn">
                             Crear lliga
                         </Link>
-
-                        <Link to="/equip" className="app-btn app-btn-secondary">
-                            El meu equip
-                        </Link>
-
-                        <Link to="/alineacio" className="app-btn app-btn-secondary">
-                            Alineació
-                        </Link>
                     </div>
-                </article>
-            </section>
+                </section>
+            ) : (
+                <>
+                    <section className="dashboard-main-grid">
+                        <article className="dashboard-card dashboard-summary-card">
+                            <span className="dashboard-kicker">Resum ràpid</span>
 
-            <section className="app-card dashboard-project-card">
-                <p className="app-page-kicker">Fantasy privat</p>
-                <h2>Projecte preparat per lligues d’amics</h2>
+                            <h2>El teu estat actual</h2>
 
-                <div className="app-info-grid">
-                    <div className="app-info-box">
-                        <strong>Lligues privades</strong>
-                        <span>El sistema està pensat perquè només hi entrin usuaris amb codi.</span>
-                    </div>
+                            <div className="dashboard-info-list">
+                                <div>
+                                    <span>Equip</span>
+                                    <strong>
+                                        {jugadorsFitxats.length > 0
+                                            ? `${jugadorsFitxats.length} jugadors`
+                                            : 'Sense plantilla'}
+                                    </strong>
+                                </div>
 
-                    <div className="app-info-box">
-                        <strong>Equips fantasy</strong>
-                        <span>Cada usuari podrà gestionar el seu equip dins de la lliga.</span>
-                    </div>
+                                <div>
+                                    <span>Usuari</span>
+                                    <strong>{nomUsuari}</strong>
+                                </div>
 
-                    <div className="app-info-box">
-                        <strong>Rànquing</strong>
-                        <span>La classificació es podrà calcular segons punts i jornades.</span>
-                    </div>
-                </div>
-            </section>
+                                <div>
+                                    <span>Esquema actual</span>
+                                    <strong>4-3-3</strong>
+                                </div>
+
+                                <div>
+                                    <span>Backend</span>
+                                    <strong>Connectat / demo local</strong>
+                                </div>
+                            </div>
+
+                            <div className="dashboard-actions">
+                                <Link to="/mercat" className="dashboard-main-btn">
+                                    Anar al mercat
+                                </Link>
+
+                                <Link to="/alineacio" className="dashboard-secondary-btn">
+                                    Preparar alineació
+                                </Link>
+                            </div>
+                        </article>
+
+                        <article className="dashboard-card dashboard-league-card">
+                            <span className="dashboard-kicker">Lliga activa</span>
+
+                            <h2>{lligaActiva.nom}</h2>
+
+                            <p>
+                                Aquesta és la lliga que s’està utilitzant per calcular el teu
+                                pressupost, plantilla, mercat i alineació.
+                            </p>
+
+                            <div className="dashboard-league-code">
+                                <span>Codi</span>
+                                <strong>
+                                    {lligaActiva.codi ||
+                                        lligaActiva.codi_invitacio ||
+                                        'Sense codi'}
+                                </strong>
+                            </div>
+
+                            <Link to="/lligues" className="dashboard-secondary-btn">
+                                Canviar lliga
+                            </Link>
+                        </article>
+                    </section>
+
+                    <section className="dashboard-main-grid">
+                        <article className="dashboard-card">
+                            <span className="dashboard-kicker">Distribució</span>
+
+                            <h2>Plantilla per posicions</h2>
+
+                            <div className="dashboard-position-grid">
+                                <div>
+                                    <span>Porters</span>
+                                    <strong>{porters}</strong>
+                                </div>
+
+                                <div>
+                                    <span>Defenses</span>
+                                    <strong>{defenses}</strong>
+                                </div>
+
+                                <div>
+                                    <span>Migcampistes</span>
+                                    <strong>{migcampistes}</strong>
+                                </div>
+
+                                <div>
+                                    <span>Davanters</span>
+                                    <strong>{davanters}</strong>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article className="dashboard-card">
+                            <span className="dashboard-kicker">Accions ràpides</span>
+
+                            <h2>Continua la gestió</h2>
+
+                            <div className="dashboard-quick-actions">
+                                <Link to="/equip">Veure plantilla</Link>
+                                <Link to="/mercat">Fitxar jugadors</Link>
+                                <Link to="/alineacio">Editar alineació</Link>
+                                <Link to="/rankings">Consultar rànquings</Link>
+                            </div>
+                        </article>
+                    </section>
+                </>
+            )}
         </main>
     )
+}
+
+const comptarPerPosicio = (jugadors, valors) => {
+    return jugadors.filter((jugador) => {
+        const posicio = String(jugador.posicio || '').toLowerCase()
+
+        return valors.some((valor) => posicio.includes(valor))
+    }).length
+}
+
+const formatMoney = (value) => {
+    const numberValue = Number(value || 0)
+
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(numberValue)
 }
 
 export default DashboardHome
