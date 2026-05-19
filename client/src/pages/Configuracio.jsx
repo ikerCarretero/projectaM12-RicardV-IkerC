@@ -1,289 +1,358 @@
 import { useEffect, useMemo, useState } from 'react'
-import { api } from '../services/api'
+import { Link } from 'react-router-dom'
+import { lligaActivaService } from '../services/lligaActivaService'
+import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import './Configuracio.css'
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
 
 function Configuracio() {
     const [usuari, setUsuari] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState('')
+    const [lligaActiva, setLligaActiva] = useState(null)
     const [missatge, setMissatge] = useState('')
-
-    const [form, setForm] = useState({
-        nom: '',
-        email: '',
-        foto: '',
-        passwordActual: '',
-        passwordNova: '',
-        passwordNovaConfirmacio: ''
+    const [error, setError] = useState('')
+    const [resumLocal, setResumLocal] = useState({
+        clausDemo: 0,
+        clausAlineacio: 0,
+        clausEquip: 0,
     })
 
     useEffect(() => {
-        const carregarUsuari = async () => {
-            try {
-                setLoading(true)
-                setError('')
-
-                const data = await api.getMe()
-                setUsuari(data)
-
-                setForm((prev) => ({
-                    ...prev,
-                    nom: data?.nom || data?.name || '',
-                    email: data?.email || '',
-                    foto: data?.foto_perfil || data?.img || ''
-                }))
-            } catch (err) {
-                console.error(err)
-                setError('No s’ha pogut carregar la configuració de l’usuari.')
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        carregarUsuari()
+        carregarDades()
     }, [])
 
-    const rolNormalitzat = useMemo(() => {
-        return (usuari?.rol || 'usuari').toLowerCase()
+    const carregarDades = () => {
+        setUsuari(obtenirUsuariActual())
+        setLligaActiva(lligaActivaService.obtenir())
+        setResumLocal(obtenirResumLocalStorage())
+    }
+
+    const inicialUsuari = useMemo(() => {
+        return usuari?.name?.charAt(0)?.toUpperCase()
+            || usuari?.nom?.charAt(0)?.toUpperCase()
+            || usuari?.email?.charAt(0)?.toUpperCase()
+            || 'U'
     }, [usuari])
 
-    const inicial = useMemo(() => {
-        return (form.nom || usuari?.nom || usuari?.name || 'U').charAt(0).toUpperCase()
-    }, [form.nom, usuari])
+    const nomUsuari = usuari?.name || usuari?.nom || 'Usuari'
+    const emailUsuari = usuari?.email || 'Sense correu'
+    const rolUsuari = usuari?.rol || usuari?.role || 'usuari'
 
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setForm((prev) => ({
-            ...prev,
-            [name]: value
-        }))
+    const mostrarMissatge = (text) => {
+        setError('')
+        setMissatge(text)
+
+        setTimeout(() => {
+            setMissatge('')
+        }, 2600)
     }
 
-    const handleGuardarPerfil = (e) => {
-        e.preventDefault()
-        setMissatge('La interfície ja està preparada. Quan el backend tingui l’endpoint d’actualització, aquí es guardaran els canvis del perfil.')
+    const mostrarError = (text) => {
+        setMissatge('')
+        setError(text)
+
+        setTimeout(() => {
+            setError('')
+        }, 3000)
     }
 
-    const handleCanviarPassword = (e) => {
-        e.preventDefault()
+    const reiniciarEquipActual = () => {
+        try {
+            const lliga = lligaActivaService.obtenir()
 
-        if (form.passwordNova !== form.passwordNovaConfirmacio) {
-            setMissatge('La nova contrasenya i la confirmació no coincideixen.')
-            return
+            if (!lliga) {
+                mostrarError('No hi ha cap lliga activa per reiniciar.')
+                return
+            }
+
+            equipFantasyLocalService.reiniciarEquipLligaActual()
+            netejarAlineacionsLliga(lliga.id)
+
+            carregarDades()
+            mostrarMissatge('Equip i alineació de la lliga activa reiniciats.')
+        } catch (err) {
+            mostrarError(err.message || 'No s’ha pogut reiniciar l’equip.')
+        }
+    }
+
+    const netejarDadesDemo = () => {
+        const clausEliminades = []
+
+        Object.keys(localStorage).forEach((key) => {
+            const esClauDemo =
+                key.startsWith('ffe_jugadors_fitxats_lliga_') ||
+                key.startsWith('ffe_pressupost_lliga_') ||
+                key.startsWith('ffe_alineacio_') ||
+                key.startsWith('ffe_puntuacions') ||
+                key.startsWith('ffe_admin') ||
+                key === 'ffe_jugadors_fitxats' ||
+                key === 'ffe_pressupost'
+
+            if (esClauDemo) {
+                localStorage.removeItem(key)
+                clausEliminades.push(key)
+            }
+        })
+
+        carregarDades()
+        mostrarMissatge(`Dades demo netejades (${clausEliminades.length} claus).`)
+    }
+
+    const copiarInfoDemo = async () => {
+        const info = {
+            api_url: API_URL,
+            usuari: {
+                nom: nomUsuari,
+                email: emailUsuari,
+                rol: rolUsuari,
+            },
+            lliga_activa: lligaActiva || null,
+            resum_local_storage: resumLocal,
         }
 
-        setMissatge('La zona de canvi de contrasenya ja està preparada. Falta connectar-la a backend.')
-    }
-
-    if (loading) {
-        return <p>Carregant configuració...</p>
-    }
-
-    if (error) {
-        return <div className="alert alert-danger">{error}</div>
+        try {
+            await navigator.clipboard.writeText(JSON.stringify(info, null, 2))
+            mostrarMissatge('Informació de demo copiada al porta-retalls.')
+        } catch {
+            mostrarError('No s’ha pogut copiar la informació.')
+        }
     }
 
     return (
-        <div className="config-page">
-            <div className="config-header">
+        <main className="app-page configuracio-page">
+            <section className="configuracio-header">
                 <div>
-                    <h1 className="config-title">Configuració</h1>
-                    <p className="config-subtitle">
-                        Gestiona el teu perfil, la seguretat del compte i la configuració general.
+                    <span className="configuracio-kicker">Configuració</span>
+
+                    <h1>Configuració del compte</h1>
+
+                    <p>
+                        Revisa l’estat de la sessió, la lliga activa i les dades locals
+                        utilitzades durant la demo.
                     </p>
                 </div>
-            </div>
+
+                <div className="configuracio-header-card">
+                    <span>Mode actual</span>
+                    <strong>Client + fallback local</strong>
+                </div>
+            </section>
 
             {missatge && (
-                <div className="alert alert-info">{missatge}</div>
+                <div className="configuracio-alert configuracio-alert-success">
+                    {missatge}
+                </div>
             )}
 
-            <div className="config-grid">
-                <section className="config-card config-profile-card">
-                    <div className="config-profile-top">
-                        <div className="config-avatar">
-                            {inicial}
+            {error && (
+                <div className="configuracio-alert configuracio-alert-error">
+                    {error}
+                </div>
+            )}
+
+            <section className="configuracio-grid">
+                <article className="configuracio-card configuracio-profile-card">
+                    <span className="configuracio-kicker">Usuari</span>
+
+                    <div className="configuracio-user-box">
+                        <div className="configuracio-avatar">{inicialUsuari}</div>
+
+                        <div>
+                            <h2>{nomUsuari}</h2>
+                            <p>{emailUsuari}</p>
+                        </div>
+                    </div>
+
+                    <div className="configuracio-info-list">
+                        <div>
+                            <span>Rol</span>
+                            <strong>{normalitzarRol(rolUsuari)}</strong>
                         </div>
 
                         <div>
-                            <h2 className="config-section-title mb-1">
-                                {form.nom || 'Usuari'}
-                            </h2>
-                            <p className="config-muted mb-1">{form.email || '-'}</p>
-                            <span className={`config-role-badge ${rolNormalitzat === 'admin' ? 'is-admin' : 'is-user'}`}>
-                                {rolNormalitzat}
-                            </span>
+                            <span>Estat sessió</span>
+                            <strong>{usuari ? 'Sessió iniciada' : 'Sense sessió'}</strong>
                         </div>
                     </div>
+                </article>
 
-                    <div className="config-divider" />
+                <article className="configuracio-card">
+                    <span className="configuracio-kicker">Lliga activa</span>
 
-                    <form onSubmit={handleGuardarPerfil}>
-                        <h3 className="config-block-title">Perfil</h3>
+                    <h2>{lligaActiva?.nom || 'Cap lliga activa'}</h2>
 
-                        <div className="row">
-                            <div className="col-md-6 mb-3">
-                                <label className="form-label">Nom d’usuari</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="nom"
-                                    value={form.nom}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div className="col-md-6 mb-3">
-                                <label className="form-label">Email</label>
-                                <input
-                                    type="email"
-                                    className="form-control"
-                                    name="email"
-                                    value={form.email}
-                                    onChange={handleChange}
-                                />
-                            </div>
-
-                            <div className="col-12 mb-3">
-                                <label className="form-label">URL foto de perfil</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    name="foto"
-                                    value={form.foto}
-                                    onChange={handleChange}
-                                    placeholder="https://..."
-                                />
-                                <div className="form-text">
-                                    De moment ho deixem preparat com a camp d’URL.
-                                </div>
-                            </div>
-
-                            <div className="col-md-6 mb-3">
-                                <label className="form-label">Rol</label>
-                                <input
-                                    type="text"
-                                    className="form-control"
-                                    value={rolNormalitzat}
-                                    disabled
-                                />
-                                <div className="form-text">
-                                    El sistema llegeix el rol en minúscula: <strong>usuari</strong> o <strong>admin</strong>.
-                                </div>
-                            </div>
-                        </div>
-
-                        <button type="submit" className="btn btn-dark">
-                            Guardar perfil
-                        </button>
-                    </form>
-                </section>
-
-                <section className="config-card">
-                    <h2 className="config-section-title">Seguretat</h2>
-                    <p className="config-muted">
-                        Prepara el canvi de contrasenya del teu compte.
+                    <p>
+                        Aquesta és la lliga que utilitzen actualment el mercat, la
+                        plantilla i l’alineació.
                     </p>
 
-                    <form onSubmit={handleCanviarPassword}>
-                        <div className="mb-3">
-                            <label className="form-label">Contrasenya actual</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                name="passwordActual"
-                                value={form.passwordActual}
-                                onChange={handleChange}
-                            />
+                    <div className="configuracio-info-list">
+                        <div>
+                            <span>ID / Codi</span>
+                            <strong>
+                                {lligaActiva?.id ||
+                                    lligaActiva?.codi ||
+                                    lligaActiva?.codi_acces ||
+                                    '—'}
+                            </strong>
                         </div>
 
-                        <div className="mb-3">
-                            <label className="form-label">Nova contrasenya</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                name="passwordNova"
-                                value={form.passwordNova}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <div className="mb-3">
-                            <label className="form-label">Confirmar nova contrasenya</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                name="passwordNovaConfirmacio"
-                                value={form.passwordNovaConfirmacio}
-                                onChange={handleChange}
-                            />
-                        </div>
-
-                        <button type="submit" className="btn btn-outline-dark">
-                            Canviar contrasenya
-                        </button>
-                    </form>
-                </section>
-
-                <section className="config-card">
-                    <h2 className="config-section-title">Estat del compte</h2>
-
-                    <div className="config-status-list">
-                        <div className="config-status-item">
-                            <span>Usuari</span>
-                            <strong>{form.nom || '-'}</strong>
-                        </div>
-
-                        <div className="config-status-item">
-                            <span>Email</span>
-                            <strong>{form.email || '-'}</strong>
-                        </div>
-
-                        <div className="config-status-item">
-                            <span>Rol detectat</span>
-                            <strong>{rolNormalitzat}</strong>
-                        </div>
-
-                        <div className="config-status-item">
-                            <span>Mode</span>
-                            <strong>{rolNormalitzat === 'admin' ? 'Administrador' : 'Usuari normal'}</strong>
+                        <div>
+                            <span>Pressupost actual</span>
+                            <strong>
+                                {formatMoney(equipFantasyLocalService.getPressupost())}
+                            </strong>
                         </div>
                     </div>
-                </section>
 
-                {rolNormalitzat === 'admin' && (
-                    <section className="config-card config-admin-card">
-                        <h2 className="config-section-title">Panell d’administració</h2>
-                        <p className="config-muted">
-                            Aquesta zona només es mostra si el rol és <strong>admin</strong>.
-                        </p>
+                    <div className="configuracio-actions">
+                        <Link to="/lligues" className="configuracio-secondary-btn">
+                            Canviar lliga
+                        </Link>
 
-                        <div className="config-admin-grid">
-                            <div className="config-admin-box">
-                                <h4>Gestió d’usuaris</h4>
-                                <p>Crear, editar o eliminar usuaris del sistema.</p>
-                            </div>
+                        <Link to="/mercat" className="configuracio-secondary-btn">
+                            Anar al mercat
+                        </Link>
+                    </div>
+                </article>
 
-                            <div className="config-admin-box">
-                                <h4>Gestió de competicions</h4>
-                                <p>Control de lligues, equips, jornades i partits.</p>
-                            </div>
+                <article className="configuracio-card">
+                    <span className="configuracio-kicker">Backend</span>
 
-                            <div className="config-admin-box">
-                                <h4>Gestió de plantilles</h4>
-                                <p>Control de jugadors, valors de mercat i alineacions base.</p>
-                            </div>
+                    <h2>Connexió API</h2>
 
-                            <div className="config-admin-box">
-                                <h4>Backend pendent</h4>
-                                <p>Aquesta estructura ja està preparada per connectar-se més endavant.</p>
-                            </div>
+                    <p>
+                        El client està preparat per connectar-se al backend. Si alguna
+                        ruta encara no existeix, es manté el mode local per poder fer demo.
+                    </p>
+
+                    <div className="configuracio-api-box">
+                        <span>URL API</span>
+                        <strong>{API_URL}</strong>
+                    </div>
+
+                    <div className="configuracio-status-row">
+                        <span className="configuracio-status-dot"></span>
+                        <strong>Fallback local activat</strong>
+                    </div>
+                </article>
+
+                <article className="configuracio-card">
+                    <span className="configuracio-kicker">Dades locals</span>
+
+                    <h2>Mode demo</h2>
+
+                    <p>
+                        Control ràpid del localStorage per reiniciar proves sense haver
+                        d’entrar a les eines del navegador.
+                    </p>
+
+                    <div className="configuracio-local-grid">
+                        <div>
+                            <span>Claus demo</span>
+                            <strong>{resumLocal.clausDemo}</strong>
                         </div>
-                    </section>
-                )}
-            </div>
-        </div>
+
+                        <div>
+                            <span>Equips</span>
+                            <strong>{resumLocal.clausEquip}</strong>
+                        </div>
+
+                        <div>
+                            <span>Alineacions</span>
+                            <strong>{resumLocal.clausAlineacio}</strong>
+                        </div>
+                    </div>
+
+                    <div className="configuracio-actions">
+                        <button
+                            type="button"
+                            className="configuracio-main-btn"
+                            onClick={reiniciarEquipActual}
+                        >
+                            Reiniciar equip actual
+                        </button>
+
+                        <button
+                            type="button"
+                            className="configuracio-danger-btn"
+                            onClick={netejarDadesDemo}
+                        >
+                            Netejar dades demo
+                        </button>
+                    </div>
+                </article>
+            </section>
+
+            <section className="configuracio-card configuracio-wide-card">
+                <div>
+                    <span className="configuracio-kicker">Diagnòstic</span>
+                    <h2>Informació per proves</h2>
+                    <p>
+                        Pots copiar un resum de la configuració actual per compartir-lo
+                        amb el teu company quan reviseu la connexió amb l’API.
+                    </p>
+                </div>
+
+                <button
+                    type="button"
+                    className="configuracio-main-btn"
+                    onClick={copiarInfoDemo}
+                >
+                    Copiar informació
+                </button>
+            </section>
+        </main>
     )
+}
+
+const obtenirUsuariActual = () => {
+    try {
+        return JSON.parse(localStorage.getItem('ffe_user') || 'null')
+    } catch {
+        return null
+    }
+}
+
+const obtenirResumLocalStorage = () => {
+    const keys = Object.keys(localStorage)
+
+    return {
+        clausDemo: keys.filter((key) => key.startsWith('ffe_')).length,
+        clausAlineacio: keys.filter((key) => key.startsWith('ffe_alineacio_')).length,
+        clausEquip: keys.filter((key) =>
+            key.startsWith('ffe_jugadors_fitxats_lliga_')
+        ).length,
+    }
+}
+
+const netejarAlineacionsLliga = (lligaId) => {
+    Object.keys(localStorage).forEach((key) => {
+        if (
+            key.startsWith(`ffe_alineacio_formacio_lliga_${lligaId}`) ||
+            key.startsWith(`ffe_alineacio_titulars_lliga_${lligaId}`)
+        ) {
+            localStorage.removeItem(key)
+        }
+    })
+}
+
+const normalitzarRol = (rol) => {
+    const value = String(rol || '').toLowerCase()
+
+    if (value === 'admin') return 'Administrador'
+    if (value === 'administrador') return 'Administrador'
+    if (value === 'guest') return 'Convidat'
+
+    return 'Usuari registrat'
+}
+
+const formatMoney = (value) => {
+    return new Intl.NumberFormat('ca-ES', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+    }).format(Number(value || 0))
 }
 
 export default Configuracio

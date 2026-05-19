@@ -1,164 +1,303 @@
-.config-page {
-    padding-bottom: 30px;
+.configuracio-page {
+    padding-bottom: 34px;
 }
 
-.config-header {
+.configuracio-header {
     margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 22px;
 }
 
-.config-title {
-    font-size: 2.7rem;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 6px;
+.configuracio-kicker {
+    display: inline-flex;
+    margin: 0 0 10px;
+    padding: 7px 13px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.1);
+    color: #6d28d9;
+    font-size: 0.8rem;
+    font-weight: 900;
 }
 
-.config-subtitle {
-    color: #6b7280;
-    font-size: 1.05rem;
-    margin-bottom: 0;
+.configuracio-header h1 {
+    margin: 0 0 8px;
+    color: #0f172a;
+    font-size: 2.2rem;
+    font-weight: 900;
+    line-height: 1.1;
 }
 
-.config-grid {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 20px;
+.configuracio-header p {
+    margin: 0;
+    max-width: 760px;
+    color: #64748b;
+    line-height: 1.55;
 }
 
-.config-card {
+.configuracio-header-card {
+    min-width: 230px;
+    padding: 18px;
+    border-radius: 20px;
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    border-radius: 22px;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
+}
+
+.configuracio-header-card span {
+    display: block;
+    margin-bottom: 6px;
+    color: #64748b;
+    font-size: 0.9rem;
+    font-weight: 800;
+}
+
+.configuracio-header-card strong {
+    color: #0f172a;
+    font-size: 1.08rem;
+    font-weight: 900;
+}
+
+.configuracio-alert {
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    font-weight: 900;
+}
+
+.configuracio-alert-success {
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+}
+
+.configuracio-alert-error {
+    background: #fee2e2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+.configuracio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.configuracio-card {
     padding: 24px;
-    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    border-radius: 24px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.07);
 }
 
-.config-profile-card {
-    grid-column: span 2;
+.configuracio-card h2 {
+    margin: 0 0 10px;
+    color: #0f172a;
+    font-size: 1.45rem;
+    font-weight: 900;
 }
 
-.config-profile-top {
+.configuracio-card p {
+    margin: 0 0 18px;
+    color: #64748b;
+    line-height: 1.55;
+}
+
+.configuracio-user-box {
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 14px;
+    gap: 16px;
+    margin-bottom: 20px;
 }
 
-.config-avatar {
-    width: 78px;
-    height: 78px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #d946ef 0%, #38bdf8 100%);
-    color: white;
+.configuracio-avatar {
+    width: 62px;
+    height: 62px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #d946ef 0%, #22d3ee 100%);
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
-    font-weight: 800;
-    flex-shrink: 0;
 }
 
-.config-divider {
-    height: 1px;
-    background: #e5e7eb;
-    margin: 18px 0 20px;
+.configuracio-user-box h2 {
+    margin-bottom: 4px;
 }
 
-.config-section-title {
-    font-size: 1.8rem;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 6px;
+.configuracio-user-box p {
+    margin: 0;
 }
 
-.config-block-title {
-    font-size: 1.15rem;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 16px;
-}
-
-.config-muted {
-    color: #6b7280;
-}
-
-.config-role-badge {
-    display: inline-block;
-    padding: 6px 12px;
-    border-radius: 999px;
-    font-size: 0.85rem;
-    font-weight: 800;
-    text-transform: lowercase;
-}
-
-.config-role-badge.is-admin {
-    background: rgba(239, 68, 68, 0.12);
-    color: #b91c1c;
-}
-
-.config-role-badge.is-user {
-    background: rgba(37, 99, 235, 0.12);
-    color: #1d4ed8;
-}
-
-.config-status-list {
-    display: flex;
-    flex-direction: column;
+.configuracio-info-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 12px;
 }
 
-.config-status-item {
+.configuracio-info-list div,
+.configuracio-local-grid div {
+    padding: 14px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+}
+
+.configuracio-info-list span,
+.configuracio-local-grid span,
+.configuracio-api-box span {
+    display: block;
+    margin-bottom: 5px;
+    color: #64748b;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.configuracio-info-list strong,
+.configuracio-local-grid strong,
+.configuracio-api-box strong {
+    color: #0f172a;
+    font-weight: 900;
+    word-break: break-word;
+}
+
+.configuracio-api-box {
+    padding: 15px;
+    border-radius: 16px;
+    background: #f8fafc;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 14px;
+}
+
+.configuracio-status-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 10px 13px;
+    border-radius: 999px;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 900;
+}
+
+.configuracio-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #22c55e;
+}
+
+.configuracio-local-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.configuracio-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.configuracio-main-btn,
+.configuracio-secondary-btn,
+.configuracio-danger-btn {
+    min-height: 46px;
+    padding: 0 18px;
+    border-radius: 15px;
+    font-size: 0.95rem;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.configuracio-main-btn {
+    background: linear-gradient(135deg, #5b21b6 0%, #d946ef 100%);
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(168, 85, 247, 0.22);
+}
+
+.configuracio-main-btn:hover {
+    color: #ffffff;
+    filter: brightness(1.04);
+}
+
+.configuracio-secondary-btn {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #d1d5db;
+}
+
+.configuracio-secondary-btn:hover {
+    color: #111827;
+    background: #f8fafc;
+    border-color: #a855f7;
+}
+
+.configuracio-danger-btn {
+    background: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #fecaca;
+}
+
+.configuracio-danger-btn:hover {
+    background: #fecaca;
+}
+
+.configuracio-wide-card {
+    margin-top: 22px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    padding: 14px 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 16px;
-    background: #f9fafb;
+    gap: 18px;
 }
 
-.config-admin-card {
-    grid-column: span 2;
-}
-
-.config-admin-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 14px;
-}
-
-.config-admin-box {
-    border: 1px solid #e5e7eb;
-    border-radius: 18px;
-    padding: 18px;
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-}
-
-.config-admin-box h4 {
-    font-size: 1.05rem;
-    font-weight: 800;
-    margin-bottom: 8px;
-    color: #111827;
-}
-
-.config-admin-box p {
+.configuracio-wide-card p {
     margin-bottom: 0;
-    color: #6b7280;
 }
 
-@media (max-width: 992px) {
-    .config-grid {
+@media (max-width: 1100px) {
+    .configuracio-grid {
         grid-template-columns: 1fr;
     }
 
-    .config-profile-card,
-    .config-admin-card {
-        grid-column: span 1;
+    .configuracio-wide-card {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+@media (max-width: 768px) {
+    .configuracio-header {
+        flex-direction: column;
+        align-items: stretch;
     }
 
-    .config-admin-grid {
+    .configuracio-header h1 {
+        font-size: 1.85rem;
+    }
+
+    .configuracio-info-list,
+    .configuracio-local-grid {
         grid-template-columns: 1fr;
+    }
+
+    .configuracio-actions {
+        flex-direction: column;
+    }
+
+    .configuracio-main-btn,
+    .configuracio-secondary-btn,
+    .configuracio-danger-btn {
+        width: 100%;
     }
 }
