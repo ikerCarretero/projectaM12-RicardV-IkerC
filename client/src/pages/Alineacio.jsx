@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
@@ -92,6 +92,9 @@ function Alineacio() {
     const [jugadors, setJugadors] = useState([])
     const [formacio, setFormacio] = useState('4-3-3')
     const [titulars, setTitulars] = useState({})
+    const [missatgeGuardat, setMissatgeGuardat] = useState('')
+
+    const guardatTimeout = useRef(null)
 
     useEffect(() => {
         const lliga = lligaActivaService.obtenir()
@@ -115,6 +118,14 @@ function Alineacio() {
         setJugadors(jugadorsActualitzats)
         setFormacio(formacioGuardada)
         setTitulars(titularsGuardats)
+    }, [])
+
+    useEffect(() => {
+        return () => {
+            if (guardatTimeout.current) {
+                clearTimeout(guardatTimeout.current)
+            }
+        }
     }, [])
 
     const jugadorsPerPosicio = useMemo(() => {
@@ -160,6 +171,20 @@ function Alineacio() {
         davanters: jugadorsPerPosicio.davanter.length,
     }
 
+    const mostrarMissatgeGuardat = (
+        text = 'Alineació guardada automàticament'
+    ) => {
+        setMissatgeGuardat(text)
+
+        if (guardatTimeout.current) {
+            clearTimeout(guardatTimeout.current)
+        }
+
+        guardatTimeout.current = setTimeout(() => {
+            setMissatgeGuardat('')
+        }, 2200)
+    }
+
     const canviarFormacio = (novaFormacio) => {
         setFormacio(novaFormacio)
 
@@ -171,7 +196,9 @@ function Alineacio() {
         localStorage.setItem(getFormacioKey(lligaActiva.id), novaFormacio)
 
         const titularsGuardats = llegirTitulars(lligaActiva.id, novaFormacio)
+
         setTitulars(titularsGuardats)
+        mostrarMissatgeGuardat('Formació actualitzada')
     }
 
     const seleccionarJugador = (slotId, jugadorId) => {
@@ -184,6 +211,7 @@ function Alineacio() {
 
         if (lligaActiva) {
             guardarTitulars(lligaActiva.id, formacio, nousTitulars)
+            mostrarMissatgeGuardat()
         }
     }
 
@@ -287,6 +315,13 @@ function Alineacio() {
                     ))}
                 </select>
             </section>
+
+            {missatgeGuardat && (
+                <div className="alineacio-autosave-message">
+                    <span>✓</span>
+                    {missatgeGuardat}
+                </div>
+            )}
 
             <section className="alineacio-main-grid">
                 <article className="alineacio-card alineacio-field-card">
