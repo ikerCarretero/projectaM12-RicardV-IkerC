@@ -1,21 +1,24 @@
 import { Navigate } from 'react-router-dom'
 
 function AdminRoute({ children }) {
-    let user = null
+    let usuari = null
 
     try {
-        user = JSON.parse(localStorage.getItem('ffe_user') || 'null')
+        usuari = JSON.parse(localStorage.getItem('ffe_user') || 'null')
     } catch {
-        user = null
+        usuari = null
     }
 
-    const token = localStorage.getItem('ffe_token')
+    const esGuest = localStorage.getItem('ffe_guest') === 'true'
 
-    if (!user || !token) {
+    const rol = String(usuari?.rol || usuari?.role || '').toLowerCase()
+    const esAdmin = rol === 'admin' || rol === 'administrador'
+
+    if (esGuest || !usuari) {
         return <Navigate to="/login" replace />
     }
 
-    if (user.rol !== 'admin') {
+    if (!esAdmin) {
         return <Navigate to="/dashboard" replace />
     }
 

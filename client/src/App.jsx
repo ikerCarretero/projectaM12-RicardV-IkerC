@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import PublicLayout from './layouts/PublicLayout.jsx'
 import DashboardLayout from './layouts/DashboardLayout.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
+import AdminRoute from './components/AdminRoute.jsx'
 
 import DashboardHome from './pages/DashboardHome.jsx'
 import Competicions from './pages/Competicions.jsx'
@@ -23,6 +24,7 @@ import CrearLliga from './pages/CrearLliga.jsx'
 import UnirLliga from './pages/UnirLliga.jsx'
 import LligaPrivadaDetail from './pages/LligaPrivadaDetail.jsx'
 import Mercat from './pages/Mercat.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 function App() {
   return (
@@ -70,12 +72,36 @@ function App() {
         <Route path="/mercat" element={<Mercat />} />
         <Route path="/configuracio" element={<Configuracio />} />
 
-        <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/admin/puntuacions" element={<AdminPuntuacions />} />
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <AdminPanel />
+            </AdminRoute>
+          }
+        />
 
-        {/* Alias per compatibilitat amb Sidebar/Rankings/AdminPanel */}
-        <Route path="/puntuacions" element={<AdminPuntuacions />} />
+        <Route
+          path="/admin/puntuacions"
+          element={
+            <AdminRoute>
+              <AdminPuntuacions />
+            </AdminRoute>
+          }
+        />
+
+        <Route
+          path="/puntuacions"
+          element={
+            <AdminRoute>
+              <AdminPuntuacions />
+            </AdminRoute>
+          }
+        />
       </Route>
+
+      {/* Ruta 404 */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   )
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import { puntuacionsLocalService } from '../services/puntuacionsLocalService'
+import { alineacioService } from '../services/alineacioService'
 import './Alineacio.css'
 
 const FORMACIONS = {
@@ -97,27 +98,32 @@ function Alineacio() {
     const guardatTimeout = useRef(null)
 
     useEffect(() => {
-        const lliga = lligaActivaService.obtenir()
-        setLligaActiva(lliga)
+        const carregarAlineacio = async () => {
+            const lliga = lligaActivaService.obtenir()
+            setLligaActiva(lliga)
 
-        if (!lliga) {
-            setJugadors([])
-            return
+            if (!lliga) {
+                setJugadors([])
+                return
+            }
+
+            equipFantasyLocalService.assegurarEquipInicial()
+
+            const jugadorsActualitzats =
+                puntuacionsLocalService.actualitzarPuntsTotalsPlantilla()
+
+            const formacioGuardada = alineacioService.obtenirFormacio(lliga.id)
+            const alineacioGuardada = await alineacioService.obtenirAlineacio(
+                lliga.id,
+                formacioGuardada
+            )
+
+            setJugadors(jugadorsActualitzats)
+            setFormacio(alineacioGuardada.formacio || formacioGuardada)
+            setTitulars(alineacioGuardada.titulars || {})
         }
 
-        equipFantasyLocalService.assegurarEquipInicial()
-
-        const jugadorsActualitzats =
-            puntuacionsLocalService.actualitzarPuntsTotalsPlantilla()
-
-        const formacioGuardada =
-            localStorage.getItem(getFormacioKey(lliga.id)) || '4-3-3'
-
-        const titularsGuardats = llegirTitulars(lliga.id, formacioGuardada)
-
-        setJugadors(jugadorsActualitzats)
-        setFormacio(formacioGuardada)
-        setTitulars(titularsGuardats)
+        carregarAlineacio()
     }, [])
 
     useEffect(() => {
@@ -185,7 +191,7 @@ function Alineacio() {
         }, 2200)
     }
 
-    const canviarFormacio = (novaFormacio) => {
+    const canviarFormacio = async (novaFormacio) => {
         setFormacio(novaFormacio)
 
         if (!lligaActiva) {
@@ -193,15 +199,18 @@ function Alineacio() {
             return
         }
 
-        localStorage.setItem(getFormacioKey(lligaActiva.id), novaFormacio)
+        await alineacioService.guardarFormacio(lligaActiva.id, novaFormacio)
 
-        const titularsGuardats = llegirTitulars(lligaActiva.id, novaFormacio)
+        const alineacioGuardada = await alineacioService.obtenirAlineacio(
+            lligaActiva.id,
+            novaFormacio
+        )
 
-        setTitulars(titularsGuardats)
+        setTitulars(alineacioGuardada.titulars || {})
         mostrarMissatgeGuardat('Formació actualitzada')
     }
 
-    const seleccionarJugador = (slotId, jugadorId) => {
+    const seleccionarJugador = async (slotId, jugadorId) => {
         const nousTitulars = {
             ...titulars,
             [slotId]: jugadorId ? Number(jugadorId) : '',
@@ -210,7 +219,12 @@ function Alineacio() {
         setTitulars(nousTitulars)
 
         if (lligaActiva) {
-            guardarTitulars(lligaActiva.id, formacio, nousTitulars)
+            await alineacioService.guardarAlineacio({
+                lligaId: lligaActiva.id,
+                formacio,
+                titulars: nousTitulars,
+            })
+
             mostrarMissatgeGuardat()
         }
     }
@@ -563,27 +577,6 @@ function BlocPosicio({ titol, jugadors }) {
             )}
         </div>
     )
-}
-
-const getFormacioKey = (lligaId) => {
-    return `ffe_alineacio_formacio_lliga_${lligaId}`
-}
-
-const getTitularsKey = (lligaId, formacio) => {
-    return `ffe_alineacio_titulars_lliga_${lligaId}_${formacio}`
-}
-
-const llegirTitulars = (lligaId, formacio) => {
-    try {
-        const data = localStorage.getItem(getTitularsKey(lligaId, formacio))
-        return data ? JSON.parse(data) : {}
-    } catch {
-        return {}
-    }
-}
-
-const guardarTitulars = (lligaId, formacio, titulars) => {
-    localStorage.setItem(getTitularsKey(lligaId, formacio), JSON.stringify(titulars))
 }
 
 const filtrarPerPosicio = (jugadors, valors) => {

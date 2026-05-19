@@ -1,0 +1,114 @@
+.notfound-page {
+    min-height: calc(100vh - 80px);
+    padding: 48px 24px;
+    background:
+        radial-gradient(circle at top left, rgba(217, 70, 239, 0.12), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(34, 211, 238, 0.14), transparent 34%),
+        #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notfound-card {
+    width: 100%;
+    max-width: 720px;
+    padding: 42px;
+    border-radius: 30px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1);
+    text-align: center;
+}
+
+.notfound-kicker {
+    display: inline-flex;
+    margin-bottom: 14px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(124, 58, 237, 0.1);
+    color: #6d28d9;
+    font-size: 0.82rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.notfound-card h1 {
+    margin: 0 0 12px;
+    color: #0f172a;
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.08;
+}
+
+.notfound-card p {
+    margin: 0 auto 28px;
+    max-width: 560px;
+    color: #64748b;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.notfound-actions {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.notfound-main-btn,
+.notfound-secondary-btn {
+    min-height: 50px;
+    padding: 0 24px;
+    border-radius: 16px;
+    font-size: 0.98rem;
+    font-weight: 900;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notfound-main-btn {
+    background: linear-gradient(135deg, #5b21b6 0%, #d946ef 100%);
+    color: #ffffff;
+    box-shadow: 0 16px 30px rgba(168, 85, 247, 0.24);
+}
+
+.notfound-main-btn:hover {
+    color: #ffffff;
+    filter: brightness(1.04);
+}
+
+.notfound-secondary-btn {
+    background: #ffffff;
+    color: #111827;
+    border: 1px solid #d1d5db;
+}
+
+.notfound-secondary-btn:hover {
+    color: #111827;
+    background: #f8fafc;
+    border-color: #a855f7;
+}
+
+@media (max-width: 640px) {
+    .notfound-card {
+        padding: 32px 22px;
+        border-radius: 24px;
+    }
+
+    .notfound-card h1 {
+        font-size: 2rem;
+    }
+
+    .notfound-actions {
+        flex-direction: column;
+    }
+
+    .notfound-main-btn,
+    .notfound-secondary-btn {
+        width: 100%;
+    }
+}
