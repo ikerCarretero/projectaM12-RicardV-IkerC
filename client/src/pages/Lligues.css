@@ -2,10 +2,6 @@
     padding-bottom: 32px;
 }
 
-/* =========================
-   Header antic / pàgines crear i unir
-========================= */
-
 .lligues-header {
     margin-bottom: 26px;
     display: flex;
@@ -291,10 +287,6 @@
     font-weight: 800;
 }
 
-/* =========================
-   Botons
-========================= */
-
 .lligues-main-btn {
     min-height: 52px;
     border: none;
@@ -423,11 +415,6 @@
 .lliga-ranking-card {
     grid-column: 1 / -1;
 }
-
-/* Banner del codi d'invitació.
-   Deixem les dues classes per compatibilitat:
-   .lliga-code-card i .lliga-code-banner
-*/
 
 .lliga-code-card,
 .lliga-code-banner {
@@ -567,10 +554,6 @@
     font-weight: 900;
 }
 
-/* =========================
-   Estat buit de lligues
-========================= */
-
 .lligues-empty-card {
     padding: 34px;
     border-radius: 24px;
@@ -604,10 +587,6 @@
     flex-wrap: wrap;
 }
 
-/* =========================
-   Utilitats petites
-========================= */
-
 .mt-4 {
     margin-top: 24px;
 }
@@ -616,9 +595,38 @@
     margin-bottom: 16px;
 }
 
-/* =========================
-   Responsive
-========================= */
+.lligues-page .app-btn,
+.lligues-page a.app-btn,
+.lligues-page button.app-btn {
+    min-width: 150px !important;
+    min-height: 52px !important;
+    padding: 0 24px !important;
+    border-radius: 16px !important;
+    font-size: 0.98rem !important;
+    font-weight: 900 !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.lligues-page .app-btn-primary {
+    min-width: 142px !important;
+}
+
+.lligues-page .app-btn-secondary {
+    min-width: 178px !important;
+}
+
+.lligues-page .app-page-header-actions,
+.lligues-page .page-header-actions,
+.lligues-page .lligues-header-actions {
+    display: flex !important;
+    gap: 14px !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    flex-wrap: wrap !important;
+}
 
 @media (max-width: 992px) {
     .lligues-grid {
@@ -683,6 +691,20 @@
     .lliga-active-banner {
         flex-direction: column;
         align-items: stretch;
+    }
+
+    .lligues-page .app-page-header-actions,
+    .lligues-page .page-header-actions,
+    .lligues-page .lligues-header-actions {
+        width: 100% !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+
+    .lligues-page .app-btn,
+    .lligues-page a.app-btn,
+    .lligues-page button.app-btn {
+        width: 100% !important;
     }
 }
 
