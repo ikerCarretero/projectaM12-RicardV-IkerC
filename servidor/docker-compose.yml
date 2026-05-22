@@ -1,0 +1,60 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: fantasy_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: fantasy_champions
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: fantasy
+      MYSQL_PASSWORD: fantasy
+    ports:
+      - "3336:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - fantasy_net
+
+  api:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: fantasy_api
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    depends_on:
+      - mysql
+    environment:
+      APP_ENV: local
+      APP_DEBUG: "true"
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: fantasy_champions
+      DB_USERNAME: fantasy
+      DB_PASSWORD: fantasy
+    volumes:
+      - .:/var/www/html
+    networks:
+      - fantasy_net
+
+  # client:
+  #   build:
+  #     context: ../client
+  #     dockerfile: Dockerfile
+  #   container_name: fantasy_client
+  #   restart: unless-stopped
+  #   ports:
+  #     - "5173:80"
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - fantasy_net
+
+volumes:
+  mysql_data:
+
+networks:
+  fantasy_net:
+    driver: bridge
