@@ -3552,7 +3552,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => "images/entrenadors/spalleti.jpg",
+            'img' => "images/entrenadors/spalletti.jpg",
             'equip_real_id' => $juve->id,
         ]);
         // ───────────────────────────────────────────────
@@ -9030,7 +9030,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => "images/entrenadors/scmitt.jpg",
+            'img' => "images/entrenadors/schmitt.jpg",
             'equip_real_id' => $eintracht->id,
         ]);
         // ───────────────────────────────────────────────
