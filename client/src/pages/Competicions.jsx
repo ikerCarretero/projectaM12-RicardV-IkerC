@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { api } from '../services/api'
+import { api, getImageUrl } from '../services/api'
 import './Competicions.css'
 
 function Competicions() {
@@ -93,7 +93,7 @@ function Competicions() {
                     {competicions.map((competicio) => {
                         const totalEquips = competicio.equips_reals?.length || 0
                         const totalJornades = competicio.jornades?.length || 0
-                        const visualUrl = obtenirImatgeCompeticio(competicio)
+                        const visualUrl = obtenirBanderaCompeticio(competicio)
 
                         return (
                             <div className="competicio-card" key={competicio.id}>
@@ -156,15 +156,14 @@ function Competicions() {
     )
 }
 
-function obtenirImatgeCompeticio(competicio) {
-    return (
-        competicio.logo_url ||
-        competicio.logo ||
+const obtenirBanderaCompeticio = (competicio) => {
+    const path =
         competicio.bandera_url ||
         competicio.bandera ||
         competicio.img ||
         ''
-    )
+
+    return getImageUrl(path)
 }
 
 function obtenirInicials(text = '') {

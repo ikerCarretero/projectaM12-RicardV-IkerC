@@ -1,4 +1,17 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000/api'
+const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:8000/api').replace(/\/+$/, '')
+
+export const API_URL = API_BASE_URL
+export const API_ORIGIN = API_BASE_URL.replace(/\/api$/, '')
+
+export function getImageUrl(path) {
+  if (!path) return ''
+
+  if (path.startsWith('http://') || path.startsWith('https://')) {
+    return path
+  }
+
+  return `${API_ORIGIN}/${path.replace(/^\/+/, '')}`
+}
 
 async function apiRequest(endpoint, options = {}) {
   const token = localStorage.getItem('ffe_token')

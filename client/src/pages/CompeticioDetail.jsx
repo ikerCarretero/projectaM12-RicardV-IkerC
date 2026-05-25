@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { api } from '../services/api'
+import { api, getImageUrl } from '../services/api'
 import './CompeticioDetail.css'
 
 function CompeticioDetail() {
@@ -55,7 +55,7 @@ function CompeticioDetail() {
 
     const equips = competicio.equips_reals || []
     const jornades = competicio.jornades || []
-    const visualUrl = obtenirImatgeCompeticio(competicio)
+    const visualUrl = obtenirBanderaCompeticio(competicio)
 
     return (
         <div className="competicio-detail-page">
@@ -191,26 +191,26 @@ function formatData(dataIso) {
     })
 }
 
-function obtenirImatgeCompeticio(competicio) {
-    return (
-        competicio.logo_url ||
-        competicio.logo ||
+const obtenirBanderaCompeticio = (competicio) => {
+    const path =
         competicio.bandera_url ||
         competicio.bandera ||
         competicio.img ||
         ''
-    )
+
+    return getImageUrl(path)
 }
 
-function obtenirEscutEquip(equip) {
-    return (
+const obtenirEscutEquip = (equip) => {
+    const path =
         equip.escut_url ||
         equip.escut ||
         equip.logo_url ||
         equip.logo ||
         equip.img ||
         ''
-    )
+
+    return getImageUrl(path)
 }
 
 function obtenirInicials(text = '') {
