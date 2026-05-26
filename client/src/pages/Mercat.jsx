@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { mercatService } from '../services/mercatService'
 import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
+import { getImageUrl } from '../services/api'
 import './Mercat.css'
 
 const PRESSUPOST_INICIAL = 250000000
@@ -242,11 +243,21 @@ function Mercat() {
                         const noHiHaPressupost =
                             Number(jugador.valor_mercat || 0) > Number(pressupost || 0)
 
+                        const imatgeJugador = obtenirImatgeJugador(jugador)
+
                         return (
                             <article className="mercat-card" key={jugador.id}>
                                 <div className="mercat-card-top">
                                     <div className="mercat-player-avatar">
-                                        {jugador.nom?.charAt(0)?.toUpperCase() || 'J'}
+                                        {imatgeJugador ? (
+                                            <img
+                                                src={imatgeJugador}
+                                                alt={jugador.nom}
+                                                className="mercat-player-img"
+                                            />
+                                        ) : (
+                                            jugador.nom?.charAt(0)?.toUpperCase() || 'J'
+                                        )}
                                     </div>
 
                                     <div>
@@ -330,8 +341,19 @@ const normalitzarRespostaMercat = (data) => {
         ),
         punts: Number(jugador.punts || jugador.puntuacio_total || 0),
         estat: jugador.estat || 'Disponible',
-        img: jugador.img || jugador.foto || '',
+        img: jugador.img || jugador.foto || jugador.imatge || jugador.avatar || '',
     }))
+}
+
+const obtenirImatgeJugador = (jugador) => {
+    const path =
+        jugador.img ||
+        jugador.foto ||
+        jugador.imatge ||
+        jugador.avatar ||
+        ''
+
+    return getImageUrl(path)
 }
 
 const obtenirPressupostEquip = (equip, fallback = PRESSUPOST_INICIAL) => {
