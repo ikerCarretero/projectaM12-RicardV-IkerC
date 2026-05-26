@@ -25,22 +25,21 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 3,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250171278.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/arsenal/david-raya.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
         Jugador::create([
             'nom' => 'Kepa Arrizabalaga',
-            'nacionalitat' => 'ESP',
-            'posicio_base' => 'Porter',
+            'nacionalitat' => 'ESP','posicio_base' => 'Porter',
             'dorsal' => 13,
             'partits_jugats' => 1,
             'gols_marcats' => 0,
             'gols_rebuts' => 2,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250039900.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/arsenal/kepa-arrizabalaga.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -54,8 +53,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250131901.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/arsenal/gabriel.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -68,8 +67,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250156002.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/arsenal/ben-white.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -82,8 +81,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127439.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/arsenal/william-saliba.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -96,8 +95,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250129972.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/arsenal/cristhian-mosquera.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -110,8 +109,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101728.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/arsenal/jurrien-timber.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -124,8 +123,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163454.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/arsenal/piero-hincapie.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -139,8 +138,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134376.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/arsenal/eberechi-eze.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -153,8 +152,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 120000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250083732.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/arsenal/declan-rice.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -167,8 +166,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 80000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250143679.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/arsenal/martin-zubimendi.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -181,8 +180,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250023009.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/arsenal/leandro-trossard.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -195,8 +194,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181082.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/arsenal/myles-lewis-skelly.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -210,8 +209,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134304.jpg',
+            'puntuacio_total' => 52,
+            'img' => 'images/jugadors/arsenal/gabriel-martinelli.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -224,8 +223,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105927.jpg',
+            'puntuacio_total' => 40,
+            'img' => 'images/jugadors/arsenal/viktor-gyokeres.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -238,8 +237,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 120000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106939.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/arsenal/bukayo-saka.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -252,8 +251,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106649.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/arsenal/gabriel-jesus.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -267,7 +266,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250189246.jpg',
+            'img' => 'images/jugadors/arsenal/sebastian-ferdinand.jpg',
             'equip_real_id' => $arsenal->id,
         ]);
 
@@ -281,9 +280,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 15000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/arteta.jpg",
             'equip_real_id' => $arsenal->id,
         ]);
         // ───────────────────────────────────────────────
@@ -301,8 +300,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 11,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/97923.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/bayern-munchen/manuel-neuer.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -315,8 +314,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 3,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153936.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/bayern-munchen/jonas-urbig.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -330,8 +329,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055660.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/bayern-munchen/jonathan-tah.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -344,8 +343,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250079545.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/bayern-munchen/dayot-upamecano.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -358,8 +357,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250112220.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/bayern-munchen/josip-stanisic.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -372,8 +371,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066156.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/bayern-munchen/raphael-guerreiro.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -386,8 +385,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250162325.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/bayern-munchen/minjae-kim.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -400,8 +399,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181455.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/bayern-munchen/hiroki-ito.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -415,8 +414,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163777.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/bayern-munchen/aleksandar-pavlovic.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -429,8 +428,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 140000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250171184.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/bayern-munchen/michael-olise.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -443,8 +442,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250070417.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/bayern-munchen/joshua-kimmich.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -457,8 +456,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250168211.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/bayern-munchen/tom-bischof.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -471,8 +470,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250041771.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/bayern-munchen/leon-goretzka.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -486,8 +485,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 12,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250016833.jpg',
+            'puntuacio_total' => 82,
+            'img' => 'images/jugadors/bayern-munchen/harry-kane.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -500,8 +499,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250041770.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/bayern-munchen/serge-gnabry.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -514,8 +513,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132811.jpg',
+            'puntuacio_total' => 50,
+            'img' => 'images/jugadors/bayern-munchen/luis-diaz.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -528,8 +527,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163689.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/bayern-munchen/nicolas-jackson.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -542,8 +541,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250201122.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/bayern-munchen/wisdom-mike.jpg',
             'equip_real_id' => $bayern->id,
         ]);
 
@@ -557,9 +556,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 15000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/kompany.jpg",
             'equip_real_id' => $bayern->id,
         ]);
         // ───────────────────────────────────────────────
@@ -577,8 +576,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 10,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101805.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/liverpool/giorgi-mamardashvili.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -591,8 +590,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 3,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250099867.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/liverpool/alisson-becker.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -606,8 +605,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/50327420.jpg',
+            'puntuacio_total' => 34,
+            'img' => 'images/jugadors/liverpool/virgil-van-dijk.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -620,8 +619,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250091013.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/liverpool/ibrahima-konate.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -634,8 +633,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113276.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/liverpool/jeremie-frimpong.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -648,8 +647,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163153.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/liverpool/milos-kerkez.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -662,8 +661,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066157.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/liverpool/andy-robertson.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -676,8 +675,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250058215.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/liverpool/joe-gomez.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -691,8 +690,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 100000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250104066.jpg',
+            'puntuacio_total' => 49,
+            'img' => 'images/jugadors/liverpool/dominik-szoboszlai.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -705,8 +704,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 80000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172672.jpg',
+            'puntuacio_total' => 39,
+            'img' => 'images/jugadors/liverpool/alexis-mac-allister.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -719,8 +718,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113001.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/liverpool/ryan-gravenberch.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -733,8 +732,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 110000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139445.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/liverpool/florian-wirtz.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -747,8 +746,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106935.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/liverpool/curtis-jones.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -762,8 +761,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250144643.jpg',
+            'puntuacio_total' => 39,
+            'img' => 'images/jugadors/liverpool/hugo-ekitike.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -776,8 +775,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250096849.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/liverpool/cody-gakpo.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -790,8 +789,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250052469.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/liverpool/mohamed-salah.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -804,8 +803,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 100000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250089868.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/liverpool/alexander-isak.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -818,8 +817,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250090398.jpg',
+            'puntuacio_total' => 15,
+            'img' => 'images/jugadors/liverpool/federico-chiesa.jpg',
             'equip_real_id' => $liverpool->id,
         ]);
 
@@ -833,9 +832,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 15000000,
             'puntuacio_total' => 0,
-            'img' => 'https://editorial.uefa.com/resources/0291-1bfa16558310-86d956dee6b5-1000/format/wide1/arne_slot_instructs_his_liverpool_players_during_the_win_at_ac_milan.jpeg',
+            'img' => "images/entrenadors/slot.jpg",
             'equip_real_id' => $liverpool->id,
         ]);
         // ───────────────────────────────────────────────
@@ -853,8 +852,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 11,
             'valor_mercat' => 23000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250178594.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/tottenham/guglielmo-vicario.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -867,8 +866,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 3,
             'valor_mercat' => 13000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130778.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/tottenham/antonin-kinsky.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -882,8 +881,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250171293.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/tottenham/djed-spence.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -896,8 +895,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/150562676.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/tottenham/pedro-porro.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -910,8 +909,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/50327427.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/tottenham/micky-van-de-ven.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -924,8 +923,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250144325.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/tottenham/cristian-romero.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -938,8 +937,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250081703.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/tottenham/kevin-danso.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -952,8 +951,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128956.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/tottenham/destiny-udogie.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -967,8 +966,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128451.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/tottenham/xavi-simons.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -981,8 +980,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174777.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/tottenham/pape-sarr.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -995,8 +994,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250067295.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/tottenham/joao-palhinha.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1009,8 +1008,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250171355.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/tottenham/archie-gray.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1023,8 +1022,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153862.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/tottenham/wilson-odobert.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1038,8 +1037,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250146926.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/tottenham/randal-kolo-muani.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1052,8 +1051,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250129539.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/tottenham/richarlison.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1066,8 +1065,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066930.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/tottenham/dominic-solanke.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1080,8 +1079,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250140936.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/tottenham/mathys-tel.jpg',
             'equip_real_id' => $tottenham->id,
         ]);
 
@@ -1095,9 +1094,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 10000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/tudor.jpg",
             'equip_real_id' => $tottenham->id,
         ]);
         // ───────────────────────────────────────────────
@@ -1115,8 +1114,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 14,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118131.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/barcelona/joan-garcia.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1129,8 +1128,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 6,
             'valor_mercat' => 900000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/108501.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/barcelona/wojciech-szczesny.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1144,8 +1143,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250197801.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/barcelona/gerard-martin.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1158,8 +1157,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250103561.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/barcelona/eric-garcia.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1172,8 +1171,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250096309.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/barcelona/jules-kounde.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1186,8 +1185,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134170.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/barcelona/ronald-araujo.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1200,8 +1199,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 80000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250176453.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/barcelona/pau-cubarsi.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1214,8 +1213,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 55000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135416.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/barcelona/alejandro-balde.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1229,8 +1228,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 150000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250143693.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/barcelona/pedri.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1243,8 +1242,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/50327423.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/barcelona/frenkie-de-jong.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1257,8 +1256,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250190383.jpg',
+            'puntuacio_total' => 17,
+            'img' => 'images/jugadors/barcelona/marc-bernal.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1271,8 +1270,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139255.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/barcelona/gavi.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1285,8 +1284,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250190377.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/barcelona/xavi-espart.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1300,8 +1299,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 100000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250164780.jpg',
+            'puntuacio_total' => 52,
+            'img' => 'images/jugadors/barcelona/fermin-lopez.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1314,8 +1313,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088246.jpg',
+            'puntuacio_total' => 47,
+            'img' => 'images/jugadors/barcelona/marcus-rashford.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1328,8 +1327,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250002096.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/barcelona/robert-lewandowski.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1342,8 +1341,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 200000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250176450.jpg',
+            'puntuacio_total' => 50,
+            'img' => 'images/jugadors/barcelona/lamine-yamal.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1356,8 +1355,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088320.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/barcelona/ferran-torres.jpg',
             'equip_real_id' => $barca->id,
         ]);
 
@@ -1371,9 +1370,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 15000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/flick.jpg",
             'equip_real_id' => $barca->id,
         ]);
         // ───────────────────────────────────────────────
@@ -1391,8 +1390,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 12,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250154983.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/chelsea/robert-sanchez.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1406,7 +1405,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 550000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250164895.jpg',
+            'img' => null,
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1420,8 +1419,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076168.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/chelsea/marc-cucurella.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1434,8 +1433,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076233.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/chelsea/trevoh-chalobah.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1448,8 +1447,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250110362.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/chelsea/reece-james.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1462,8 +1461,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134145.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/chelsea/malo-gusto.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1476,8 +1475,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250136472.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/chelsea/wesley-fofana.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1490,8 +1489,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064355.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/chelsea/tosin-adarabioyo.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1505,8 +1504,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174838.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/chelsea/enzo-fernandez.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1519,8 +1518,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 110000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181610.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/chelsea/moises-caicedo.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1533,8 +1532,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153402.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/chelsea/jamie-gittens.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1547,8 +1546,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250182090.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/chelsea/andrey-santos.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1561,8 +1560,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 110000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124282.jpg',
+            'puntuacio_total' => 13,
+            'img' => 'images/jugadors/chelsea/cole-palmer.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1576,8 +1575,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135496.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/chelsea/alejandro-garnacho.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1590,8 +1589,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188541.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/chelsea/joao-pedro.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1604,8 +1603,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106986.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/chelsea/pedro-neto.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1618,8 +1617,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 80000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250209858.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/chelsea/estevao.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1632,8 +1631,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128380.jpg',
+            'puntuacio_total' => 15,
+            'img' => 'images/jugadors/chelsea/liam-delap.jpg',
             'equip_real_id' => $chelsea->id,
         ]);
 
@@ -1647,9 +1646,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 10000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/rosenior.jpg",
             'equip_real_id' => $chelsea->id,
         ]);
         // ───────────────────────────────────────────────
@@ -1667,8 +1666,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 14,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250062141.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/sporting-cp/rui-silva.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1681,8 +1680,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 1,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250089238.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/sporting-cp/joao-virginia.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1696,8 +1695,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250136464.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/sporting-cp/goncalo-inacio.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1710,8 +1709,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250179137.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/sporting-cp/ivan-fresneda.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1724,8 +1723,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169685.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/sporting-cp/ousmane-diomande.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1738,8 +1737,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117415.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/sporting-cp/eduardo-quaresma.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1752,8 +1751,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250121330.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/sporting-cp/matheus-reis.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1766,8 +1765,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 11000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187284.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/sporting-cp/giorgos-vagiannidis.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1781,8 +1780,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250200231.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/sporting-cp/maximiliano-araujo.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1795,8 +1794,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250156457.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/sporting-cp/hidemasa-morita.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1809,8 +1808,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101557.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/sporting-cp/morten-hjulmand.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1823,8 +1822,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250180059.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/sporting-cp/joao-simoes.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1837,8 +1836,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250143328.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/sporting-cp/pedro-goncalves.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1852,8 +1851,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250147458.jpg',
+            'puntuacio_total' => 49,
+            'img' => 'images/jugadors/sporting-cp/luis-suarez.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1866,8 +1865,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250112122.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/sporting-cp/francisco-trincao.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1880,8 +1879,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250145845.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/sporting-cp/geny-catamo.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1894,8 +1893,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 42000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250177497.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/sporting-cp/geovany-quenda.jpg',
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1908,8 +1907,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127400.jpg',
+            'puntuacio_total' => 10,
+            'img' => null,
             'equip_real_id' => $sporting->id,
         ]);
 
@@ -1923,9 +1922,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 15000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/borges.jpg",
             'equip_real_id' => $sporting->id,
         ]);
         // ───────────────────────────────────────────────
@@ -1943,8 +1942,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 12,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250078922.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/manchester-city/gianluigi-donnarumma.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -1957,8 +1956,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 2,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117515.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/manchester-city/james-trafford.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -1972,8 +1971,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250058220.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/manchester-city/ruben-dias.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -1986,8 +1985,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127436.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/manchester-city/rayan-ait-nouri.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2000,8 +1999,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187698.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/manchester-city/abdukodir-khusanov.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2014,8 +2013,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250027008.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/manchester-city/nathan-ake.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2028,8 +2027,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127284.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/manchester-city/josko-gvardiol.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2042,8 +2041,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064233.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/manchester-city/john-stones.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2057,8 +2056,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250121294.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/manchester-city/tijjani-reijnders.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2071,8 +2070,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113142.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/manchester-city/jeremy-doku.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2085,8 +2084,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124063.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/manchester-city/rayan-cherki.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2099,8 +2098,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 27000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250059115.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/manchester-city/bernardo-silva.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2113,8 +2112,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250165221.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/manchester-city/nico-o-reilly.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2128,8 +2127,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 8,
             'gols_rebuts' => 0,
             'valor_mercat' => 200000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250103758.jpg',
+            'puntuacio_total' => 60,
+            'img' => 'images/jugadors/manchester-city/erling-haaland.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2142,8 +2141,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139217.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/manchester-city/omar-marmoush.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2156,8 +2155,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181717.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/manchester-city/antoine-semenyo.jpg',
             'equip_real_id' => $mancity->id,
         ]);
 
@@ -2171,9 +2170,9 @@ class JugadorSeeder extends Seeder
             'partits_jugats' => 0,
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
-            'valor_mercat' => 0,
+            'valor_mercat' => 10000000,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/guardiola.jpg",
             'equip_real_id' => $mancity->id,
         ]);
         // ───────────────────────────────────────────────
@@ -2191,8 +2190,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 11,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250011668.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/real-madrid/thibaut-courtois.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2205,8 +2204,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 9,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250089824.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/real-madrid/andriy-lunin.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2220,8 +2219,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076357.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/real-madrid/trent-alexander-arnold.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2234,8 +2233,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153945.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/real-madrid/alvaro-carreras.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2248,8 +2247,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194474.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/real-madrid/dean-huijsen.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2262,8 +2261,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153617.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/real-madrid/raul-asencio.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2276,8 +2275,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250028211.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/real-madrid/antonio-rudiger.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2290,8 +2289,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250091175.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/real-madrid/fran-garcia.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2305,8 +2304,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250161881.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/real-madrid/arda-guler.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2319,8 +2318,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 120000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101284.jpg',
+            'puntuacio_total' => 41,
+            'img' => 'images/jugadors/real-madrid/federico-valverde.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2333,8 +2332,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105244.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/real-madrid/aurelien-tchouameni.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2347,8 +2346,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128270.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/real-madrid/eduardo-camavinga.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2361,8 +2360,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 140000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128377.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/real-madrid/jude-bellingham.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2376,8 +2375,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 150000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250121533.jpg',
+            'puntuacio_total' => 53,
+            'img' => 'images/jugadors/real-madrid/vinicius-junior.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2390,8 +2389,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088039.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/real-madrid/brahim-diaz.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2404,8 +2403,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 15,
             'gols_rebuts' => 0,
             'valor_mercat' => 200000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076574.jpg',
+            'puntuacio_total' => 97,
+            'img' => 'images/jugadors/real-madrid/kylian-mbappe.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2418,8 +2417,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210290.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/real-madrid/franco-mastantuono.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2432,8 +2431,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132829.jpg',
+            'puntuacio_total' => 15,
+            'img' => 'images/jugadors/real-madrid/rodrygo.jpg',
             'equip_real_id' => $madrid->id,
         ]);
 
@@ -2449,7 +2448,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/arbeloa.jpg",
             'equip_real_id' => $madrid->id,
         ]);
         // ───────────────────────────────────────────────
@@ -2467,8 +2466,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 12,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/97746.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/inter/yann-sommer.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2482,7 +2481,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 300000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250017814.jpg',
+            'img' => 'images/jugadors/inter/raffaele-di-gennaro.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2496,8 +2495,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250085369.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/inter/manuel-akanji.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2510,8 +2509,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250056189.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/inter/federico-dimarco.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2524,8 +2523,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250091199.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/inter/alessandro-bastoni.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2538,8 +2537,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 26000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188223.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/inter/carlos-augusto.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2552,8 +2551,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250116951.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/inter/yann-bisseck.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2566,8 +2565,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250112690.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/inter/denzel-dumfries.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2581,8 +2580,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250024370.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/inter/piotr-zielinski.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2595,8 +2594,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135339.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/inter/petar-sucic.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2609,8 +2608,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066739.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/inter/nicolo-barella.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2623,8 +2622,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088150.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/inter/davide-frattesi.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2637,8 +2636,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250022829.jpg',
+            'puntuacio_total' => 17,
+            'img' => 'images/jugadors/inter/hakan-calhanoglu.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2652,8 +2651,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250173062.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/inter/ange-yoan-bonny.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2666,8 +2665,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250068805.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/inter/marcus-thuram.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2680,8 +2679,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163404.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/inter/pio-esposito.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2694,8 +2693,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 85000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118281.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/inter/lautaro-martinez.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2708,8 +2707,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 23000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250146919.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/inter/luis-henrique.jpg',
             'equip_real_id' => $inter->id,
         ]);
 
@@ -2725,7 +2724,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/chivu.jpg",
             'equip_real_id' => $inter->id,
         ]);
         // ───────────────────────────────────────────────
@@ -2743,8 +2742,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 7,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250090101.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/paris/matvei-safonov.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2757,8 +2756,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 10,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135068.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/paris/lucas-chevalier.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2772,8 +2771,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174126.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/paris/willian-pacho.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2786,8 +2785,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250136465.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/paris/nuno-mendes.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2800,8 +2799,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064064.jpg',
+            'puntuacio_total' => 34,
+            'img' => 'images/jugadors/paris/marquinhos.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2814,8 +2813,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 80000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088061.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/paris/achraf-hakimi.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2828,8 +2827,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250063803.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/paris/lucas-hernandez.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2842,8 +2841,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250119185.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/paris/illia-zabarnyi.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2857,8 +2856,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 110000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101444.jpg',
+            'puntuacio_total' => 58,
+            'img' => 'images/jugadors/paris/vitinha.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2871,8 +2870,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153849.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/paris/warren-zaire-emery.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2885,8 +2884,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 110000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250164991.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/paris/joao-neves.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2899,8 +2898,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250121584.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/paris/kang-in-lee.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2913,8 +2912,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250177597.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/paris/senny-mayulu.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2928,8 +2927,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 8,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101808.jpg',
+            'puntuacio_total' => 66,
+            'img' => 'images/jugadors/paris/khvicha-kvaratskhelia.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2942,8 +2941,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 70000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134138.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/paris/bradley-barcola.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2956,8 +2955,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250162177.jpg',
+            'puntuacio_total' => 45,
+            'img' => 'images/jugadors/paris/desire-doue.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2970,8 +2969,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 100000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066886.jpg',
+            'puntuacio_total' => 40,
+            'img' => 'images/jugadors/paris/ousmane-dembele.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -2984,8 +2983,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250116654.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/paris/goncalo-ramos.jpg',
             'equip_real_id' => $psg->id,
         ]);
 
@@ -3001,7 +3000,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/luis-enrique.jpg",
             'equip_real_id' => $psg->id,
         ]);
         // ───────────────────────────────────────────────
@@ -3019,8 +3018,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 6,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118266.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/newcastle/nick-pope.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3033,8 +3032,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 12,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105912.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/newcastle/aaron-ramsdale.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3048,8 +3047,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250186141.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/newcastle/dan-burn.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3062,8 +3061,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250123978.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/newcastle/malick-thiaw.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3076,8 +3075,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139204.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/newcastle/lewis-hall.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3090,8 +3089,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250000919.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/newcastle/kieran-trippier.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3104,8 +3103,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101719.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/newcastle/sven-botman.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3118,8 +3117,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117508.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/newcastle/tino-livramento.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3133,8 +3132,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 80000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117809.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/newcastle/sandro-tonali.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3147,8 +3146,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250086067.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/newcastle/joelinton.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3161,8 +3160,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 16000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076081.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/newcastle/joe-willock.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3175,8 +3174,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163250.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/newcastle/jacob-ramsey.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3189,8 +3188,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250183854.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/newcastle/lewis-miley.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3204,8 +3203,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 10,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117036.jpg',
+            'puntuacio_total' => 74,
+            'img' => 'images/jugadors/newcastle/anthony-gordon.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3218,8 +3217,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250102497.jpg',
+            'puntuacio_total' => 54,
+            'img' => 'images/jugadors/newcastle/harvey-barnes.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3232,8 +3231,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124269.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/newcastle/anthony-elanga.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3246,8 +3245,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 65000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127360.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/newcastle/nick-woltemade.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3260,8 +3259,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250109276.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/newcastle/jacob-murphy.jpg',
             'equip_real_id' => $newcastle->id,
         ]);
 
@@ -3277,7 +3276,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/howe.jpg",
             'equip_real_id' => $newcastle->id,
         ]);
         // ───────────────────────────────────────────────
@@ -3295,8 +3294,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 11,
             'valor_mercat' => 14000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101201.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/juventus/michele-di-gregorio.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3309,8 +3308,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 6,
             'valor_mercat' => 2000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250007075.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/juventus/mattia-perin.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3324,8 +3323,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250122983.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/juventus/pierre-kalulu.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3338,8 +3337,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130510.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/juventus/lloyd-kelly.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3352,8 +3351,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163623.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/juventus/andrea-cambiaso.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3366,8 +3365,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194564.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/juventus/juan-cabal.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3380,8 +3379,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 16000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172907.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/juventus/federico-gatti.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3394,8 +3393,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132322.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/juventus/bremer.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3409,8 +3408,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250116904.jpg',
+            'puntuacio_total' => 40,
+            'img' => 'images/jugadors/juventus/weston-mckennie.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3423,8 +3422,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250081553.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/juventus/teun-koopmeiners.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3437,8 +3436,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066747.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/juventus/manuel-locatelli.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3451,8 +3450,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106722.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/juventus/khephren-thuram.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3465,8 +3464,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 16000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135575.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/juventus/fabio-miretti.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3480,8 +3479,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250171055.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/juventus/kenan-yildiz.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3494,8 +3493,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250102035.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/juventus/jonathan-david.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3508,8 +3507,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117405.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/juventus/francisco-conceicao.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3522,8 +3521,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250096954.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/juventus/lois-openda.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3536,8 +3535,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 14000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118504.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/juventus/edon-zhegrova.jpg',
             'equip_real_id' => $juve->id,
         ]);
 
@@ -3553,7 +3552,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/spalletti.jpg",
             'equip_real_id' => $juve->id,
         ]);
         // ───────────────────────────────────────────────
@@ -3571,8 +3570,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 20,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250012069.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/atletico-madrid/jan-oblak.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3585,8 +3584,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 6,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250137521.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/atletico-madrid/juan-musso.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3600,8 +3599,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127239.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/atletico-madrid/matteo-ruggeri.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3614,8 +3613,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250112513.jpg',
+            'puntuacio_total' => 34,
+            'img' => 'images/jugadors/atletico-madrid/robin-le-normand.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3628,8 +3627,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250092668.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/atletico-madrid/david-hancko.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3642,8 +3641,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172673.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/atletico-madrid/nahuel-molina.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3656,8 +3655,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194472.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/atletico-madrid/marc-pubill.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3670,8 +3669,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250063505.jpg',
+            'puntuacio_total' => 17,
+            'img' => 'images/jugadors/atletico-madrid/jose-maria-gimenez.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3685,8 +3684,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/1909917.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/atletico-madrid/koke.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3699,8 +3698,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250079670.jpg',
+            'puntuacio_total' => 44,
+            'img' => 'images/jugadors/atletico-madrid/marcos-llorente.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3713,8 +3712,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106963.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/atletico-madrid/alex-baena.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3727,8 +3726,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 60000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139036.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/atletico-madrid/pablo-barrios.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3741,8 +3740,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250150915.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/atletico-madrid/johnny-cardoso.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3756,8 +3755,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 9,
             'gols_rebuts' => 0,
             'valor_mercat' => 90000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172668.jpg',
+            'puntuacio_total' => 71,
+            'img' => 'images/jugadors/atletico-madrid/julian-alvarez.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3770,8 +3769,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250061361.jpg',
+            'puntuacio_total' => 56,
+            'img' => 'images/jugadors/atletico-madrid/alexander-sorloth.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3784,8 +3783,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250019498.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/atletico-madrid/antoine-griezmann.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3798,8 +3797,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153634.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/atletico-madrid/giuliano-simeone.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3812,8 +3811,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 24000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250137525.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/atletico-madrid/nicolas-gonzalez.jpg',
             'equip_real_id' => $atleti->id,
         ]);
 
@@ -3829,7 +3828,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/simeone.jpg",
             'equip_real_id' => $atleti->id,
         ]);
         // ───────────────────────────────────────────────
@@ -3847,8 +3846,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 18,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105612.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/atalanta/marco-carnesecchi.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3861,8 +3860,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 5,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250082738.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/atalanta/marco-sportiello.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3876,8 +3875,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064232.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/atalanta/davide-zappacosta.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3890,8 +3889,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250028715.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/atalanta/berat-djimsiti.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3904,8 +3903,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132810.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/atalanta/odilon-kossounou.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3918,8 +3917,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250138174.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/atalanta/lorenzo-bernasconi.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3932,8 +3931,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174149.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/atalanta/isak-hien.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3946,8 +3945,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250091828.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/atalanta/raoul-bellanova.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3961,8 +3960,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250014709.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/atalanta/marten-de-roon.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3975,8 +3974,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124849.jpg',
+            'puntuacio_total' => 40,
+            'img' => 'images/jugadors/atalanta/lazar-samardzic.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -3989,8 +3988,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250042631.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/atalanta/mario-pasalic.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4003,8 +4002,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188474.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/atalanta/ederson.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4017,8 +4016,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117511.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/atalanta/yunus-musah.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4032,8 +4031,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105227.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/atalanta/nikola-krstovic.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4046,8 +4045,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076743.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/atalanta/gianluca-scamacca.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4060,8 +4059,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210995.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/atalanta/kamaldeen-sulemana.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4074,8 +4073,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117705.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/atalanta/charles-de-ketelaere.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4088,8 +4087,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105617.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/atalanta/giacomo-raspadori.jpg',
             'equip_real_id' => $atalanta->id,
         ]);
 
@@ -4123,8 +4122,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 5,
             'valor_mercat' => 700000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250051291.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/bayer-leverkusen/janis-blaswich.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4138,7 +4137,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250072893.jpg',
+            'img' => 'images/jugadors/bayer-leverkusen/jonas-omlin.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4152,8 +4151,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 24000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250042422.jpg',
+            'puntuacio_total' => 44,
+            'img' => 'images/jugadors/bayer-leverkusen/alejandro-grimaldo.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4166,8 +4165,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128391.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/bayer-leverkusen/jarell-quansah.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4180,8 +4179,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118391.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/bayer-leverkusen/edmond-tapsoba.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4194,8 +4193,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250161164.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/bayer-leverkusen/loic-bade.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4208,8 +4207,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188129.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/bayer-leverkusen/arthur.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4222,8 +4221,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250040521.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/bayer-leverkusen/lucas-vazquez.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4237,8 +4236,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250065301.jpg',
+            'puntuacio_total' => 34,
+            'img' => 'images/jugadors/bayer-leverkusen/aleix-garcia.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4251,8 +4250,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194495.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/bayer-leverkusen/ibrahim-maza.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4265,8 +4264,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250123677.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/bayer-leverkusen/malik-tillman.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4279,8 +4278,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055957.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/bayer-leverkusen/robert-andrich.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4293,8 +4292,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250212325.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/bayer-leverkusen/equi-fernandez.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4308,8 +4307,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139070.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/bayer-leverkusen/ernest-poku.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4322,8 +4321,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210178.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/bayer-leverkusen/christian-kofane.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4336,8 +4335,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055110.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/bayer-leverkusen/patrik-schick.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
@@ -4350,16 +4349,16 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250099459.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/bayer-leverkusen/martin-terrier.jpg',
             'equip_real_id' => $leverkusen->id,
         ]);
 
 
 
         Jugador::create([
-            'nom' => 'Xabi Alonso',
-            'nacionalitat' => 'ESP',
+            'nom' => 'Kasper Hjulmand',
+            'nacionalitat' => 'DNK',
             'posicio_base' => 'Entrenador',
             'dorsal' => 0,
             'partits_jugats' => 0,
@@ -4367,7 +4366,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/hjulmand.jpg",
             'equip_real_id' => $leverkusen->id,
         ]);
         // ───────────────────────────────────────────────
@@ -4385,8 +4384,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 21,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250069832.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/borussia-dortmund/gregor-kobel.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4400,7 +4399,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 800000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174737.jpg',
+            'img' => null,
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4414,8 +4413,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250119677.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/borussia-dortmund/ramy-bensebaini.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4428,8 +4427,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250156423.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/borussia-dortmund/daniel-svensson.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4442,8 +4441,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101238.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/borussia-dortmund/waldemar-anton.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4456,8 +4455,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250092517.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/borussia-dortmund/julian-ryerson.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4470,8 +4469,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163731.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/borussia-dortmund/yan-couto.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4484,8 +4483,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 55000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134856.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/borussia-dortmund/nico-schlotterbeck.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4499,8 +4498,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250112224.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/borussia-dortmund/felix-nmecha.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4513,8 +4512,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250046522.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/borussia-dortmund/julian-brandt.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4527,8 +4526,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169276.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/borussia-dortmund/carney-chukwuemeka.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4541,8 +4540,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250024349.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/borussia-dortmund/marcel-sabitzer.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4556,7 +4555,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250081693.jpg',
+            'img' => 'images/jugadors/borussia-dortmund/salih-ozcan.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4570,8 +4569,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250080553.jpg',
+            'puntuacio_total' => 40,
+            'img' => 'images/jugadors/borussia-dortmund/serhou-guirassy.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4584,8 +4583,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250167832.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/borussia-dortmund/jobe-bellingham.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4598,8 +4597,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127347.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/borussia-dortmund/karim-adeyemi.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4612,8 +4611,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124222.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/borussia-dortmund/maximilian-beier.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4626,8 +4625,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113350.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/borussia-dortmund/fabio-silva.jpg',
             'equip_real_id' => $dortmund->id,
         ]);
 
@@ -4643,7 +4642,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/kovac.jpg",
             'equip_real_id' => $dortmund->id,
         ]);
         // ───────────────────────────────────────────────
@@ -4661,8 +4660,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 16,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250129408.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/olympiacos/kostas-tzolakis.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4675,8 +4674,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 400000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250035377.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/olympiacos/alexandros-paschalakis.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4690,8 +4689,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250189214.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/olympiacos/francisco-ortega.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4704,8 +4703,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250123994.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/olympiacos/lorenzo-pirola.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4718,8 +4717,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076626.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/olympiacos/panagiotis-retsos.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4732,8 +4731,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 900000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187887.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/olympiacos/rodinei.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4746,8 +4745,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127411.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/olympiacos/costinha.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4760,8 +4759,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113291.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/olympiacos/giulian-biancone.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4775,8 +4774,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172102.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/olympiacos/christos-mouzakitis.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4789,8 +4788,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 14000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188565.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/olympiacos/santiago-hezze.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4803,8 +4802,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250086635.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/olympiacos/dani-garcia.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4817,8 +4816,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210516.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/olympiacos/lorenzo-scipioni.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4831,8 +4830,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250216980.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/olympiacos/andre-luiz.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4846,8 +4845,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250097909.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/olympiacos/mehdi-taremi.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4860,8 +4859,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118298.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/olympiacos/ayoub-el-kaabi.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4874,8 +4873,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250131924.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/olympiacos/chiquinho.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4888,8 +4887,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066239.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/olympiacos/gelson-martins.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4902,8 +4901,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250075880.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/olympiacos/daniel-podence.jpg',
             'equip_real_id' => $olympiacos->id,
         ]);
 
@@ -4919,7 +4918,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/mendilibar.jpg",
             'equip_real_id' => $olympiacos->id,
         ]);
         // ───────────────────────────────────────────────
@@ -4937,8 +4936,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 10,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/98078.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/club-brugge/simon-mignolet.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -4951,8 +4950,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 14,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066521.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/club-brugge/nordin-jackers.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -4966,8 +4965,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250053044.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/club-brugge/brandon-mechele.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -4980,8 +4979,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250138985.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/club-brugge/kyriani-sabbe.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -4994,8 +4993,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 33000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250176201.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/club-brugge/joel-ordonez.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5008,8 +5007,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187320.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/club-brugge/bjorn-meijer.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5022,8 +5021,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128898.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/club-brugge/hugo-siquet.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5036,8 +5035,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153677.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/club-brugge/jorne-spileers.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5051,8 +5050,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064188.jpg',
+            'puntuacio_total' => 48,
+            'img' => 'images/jugadors/club-brugge/hans-vanaken.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5065,8 +5064,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163409.jpg',
+            'puntuacio_total' => 43,
+            'img' => 'images/jugadors/club-brugge/aleksandar-stankovic.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5079,8 +5078,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163786.jpg',
+            'puntuacio_total' => 41,
+            'img' => 'images/jugadors/club-brugge/joaquin-seys.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5093,8 +5092,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 23000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135101.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/club-brugge/raphael-onyedika.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5107,8 +5106,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250115134.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/club-brugge/hugo-vetlesen.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5122,8 +5121,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 13000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181849.jpg',
+            'puntuacio_total' => 48,
+            'img' => 'images/jugadors/club-brugge/nicolo-tresoldi.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5136,8 +5135,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124460.jpg',
+            'puntuacio_total' => 41,
+            'img' => 'images/jugadors/club-brugge/christos-tzolis.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5150,8 +5149,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250138957.jpg',
+            'puntuacio_total' => 41,
+            'img' => 'images/jugadors/club-brugge/carlos-forbs.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5164,8 +5163,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 11000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250138982.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/club-brugge/romeo-vermant.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5178,8 +5177,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250192955.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/club-brugge/mamadou-diakhon.jpg',
             'equip_real_id' => $brugge->id,
         ]);
 
@@ -5195,7 +5194,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/leko.jpg",
             'equip_real_id' => $brugge->id,
         ]);
         // ───────────────────────────────────────────────
@@ -5213,8 +5212,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 19,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250078452.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/galatasaray/ugurcan-cakir.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5227,8 +5226,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 1,
             'valor_mercat' => 300000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250073722.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/galatasaray/gunay-guvenc.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5242,8 +5241,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117015.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/galatasaray/ismail-jakobs.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5256,8 +5255,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250099374.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/galatasaray/davinson-sanchez.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5270,8 +5269,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250043129.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/galatasaray/abdulkerim-bardakci.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5284,8 +5283,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163343.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/galatasaray/eren-elmali.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5298,8 +5297,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132323.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/galatasaray/wilfried-singo.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5312,8 +5311,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250136348.jpg',
+            'puntuacio_total' => 13,
+            'img' => 'images/jugadors/galatasaray/sacha-boey.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5327,8 +5326,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250199220.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/galatasaray/gabriel-sara.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5341,8 +5340,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118286.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/galatasaray/lucas-torreira.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5355,8 +5354,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250063984.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/galatasaray/leroy-sane.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5369,8 +5368,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134357.jpg',
+            'puntuacio_total' => 23,
+            'img' => 'images/jugadors/galatasaray/mario-lemina.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5383,8 +5382,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250005335.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/galatasaray/ilkay-gundogan.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5398,8 +5397,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 26000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250158929.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/galatasaray/baris-alper-yilmaz.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5412,8 +5411,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250065179.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/galatasaray/roland-sallai.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5426,8 +5425,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 7,
             'gols_rebuts' => 0,
             'valor_mercat' => 75000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132987.jpg',
+            'puntuacio_total' => 55,
+            'img' => 'images/jugadors/galatasaray/victor-osimhen.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5440,8 +5439,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250074434.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/galatasaray/mauro-icardi.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5454,8 +5453,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250103764.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/galatasaray/yunus-akgun.jpg',
             'equip_real_id' => $galatasaray->id,
         ]);
 
@@ -5489,8 +5488,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 17,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250090955.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/monaco/philipp-kohn.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5503,8 +5502,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 2,
             'valor_mercat' => 1800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/1907188.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/monaco/lukas-hradecky.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5518,8 +5517,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088122.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/monaco/jordan-teze.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5532,8 +5531,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055663.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/monaco/thilo-kehrer.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5546,8 +5545,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101097.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/monaco/caio-henrique.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5560,8 +5559,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169730.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/monaco/vanderson.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5574,8 +5573,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250183510.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/monaco/kassoum-ouattara.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5588,8 +5587,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250050416.jpg',
+            'puntuacio_total' => 11,
+            'img' => 'images/jugadors/monaco/eric-dier.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5603,8 +5602,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250160436.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/monaco/maghnes-akliouche.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5617,8 +5616,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250178062.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/monaco/mamadou-coulibaly.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5631,8 +5630,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250058227.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/monaco/aleksandr-golovin.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5645,8 +5644,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250079677.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/monaco/denis-zakaria.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5659,8 +5658,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250198240.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/monaco/lamine-camara.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5674,8 +5673,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 30000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118797.jpg',
+            'puntuacio_total' => 45,
+            'img' => 'images/jugadors/monaco/folarin-balogun.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5688,8 +5687,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250167111.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/monaco/mika-biereth.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5702,8 +5701,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117471.jpg',
+            'puntuacio_total' => 15,
+            'img' => 'images/jugadors/monaco/ansu-fati.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5716,8 +5715,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174749.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/monaco/simon-adingra.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5731,7 +5730,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250184806.jpg',
+            'img' => 'images/jugadors/monaco/joan-tincres.jpg',
             'equip_real_id' => $monaco->id,
         ]);
 
@@ -5747,7 +5746,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/pocognoli.jpg",
             'equip_real_id' => $monaco->id,
         ]);
         // ───────────────────────────────────────────────
@@ -5765,8 +5764,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 35,
             'valor_mercat' => 2000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250102244.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/qarabag/mateusz-kochalski.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5779,8 +5778,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250089563.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/qarabag/fabijan-buntic.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5794,8 +5793,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127544.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/qarabag/elvin-jafarguliyev.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5808,8 +5807,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188528.jpg',
+            'puntuacio_total' => 37,
+            'img' => 'images/jugadors/qarabag/matheus-silva.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5822,8 +5821,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 450000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250141155.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/qarabag/kevin-medina.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5836,8 +5835,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250065006.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/qarabag/bahlul-mustafazade.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5850,8 +5849,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 900000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250209890.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/qarabag/dani-bolt.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5864,8 +5863,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250073778.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/qarabag/samy-mmaee.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5879,8 +5878,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 400000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250026416.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/qarabag/abdellah-zoubir.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5893,8 +5892,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250209889.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/qarabag/pedro-bicalho.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5907,8 +5906,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169677.jpg',
+            'puntuacio_total' => 60,
+            'img' => 'images/jugadors/qarabag/leandro-andrade.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5921,8 +5920,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250042347.jpg',
+            'puntuacio_total' => 41,
+            'img' => 'images/jugadors/qarabag/marko-jankovic.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5935,8 +5934,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 1800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250092182.jpg',
+            'puntuacio_total' => 34,
+            'img' => 'images/jugadors/qarabag/olexiy-kashchuk.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5950,8 +5949,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250200453.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/qarabag/emmanuel-addai.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5964,8 +5963,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174016.jpg',
+            'puntuacio_total' => 34,
+            'img' => 'images/jugadors/qarabag/nariman-akhundzade.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5978,8 +5977,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 700000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113364.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/qarabag/musa-gurbanli.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -5992,8 +5991,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 750000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250212186.jpg',
+            'puntuacio_total' => 45,
+            'img' => 'images/jugadors/qarabag/camilo-duran.jpg',
             'equip_real_id' => $qarabag->id,
         ]);
 
@@ -6009,7 +6008,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/gurbanov.jpg",
             'equip_real_id' => $qarabag->id,
         ]);
         // ───────────────────────────────────────────────
@@ -6027,8 +6026,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 24,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250141864.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/bodo-glimt/nikita-haikin.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6042,7 +6041,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 300000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250085663.jpg',
+            'img' => 'images/jugadors/bodo-glimt/julian-faye-lund.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6056,8 +6055,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 4500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187215.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/bodo-glimt/odin-bjortuft.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6070,8 +6069,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250104207.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/bodo-glimt/fredrik-andre-bjorkan.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6084,8 +6083,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 250000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250084903.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/bodo-glimt/haitam-aleesami.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6098,8 +6097,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250109274.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/bodo-glimt/jostein-gundersen.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6112,8 +6111,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2300000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250189213.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/bodo-glimt/villads-nielsen.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6127,8 +6126,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250107249.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/bodo-glimt/hakon-evjen.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6141,8 +6140,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250173424.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/bodo-glimt/fredrik-sjovold.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6155,8 +6154,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250065292.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/bodo-glimt/patrick-berg.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6169,8 +6168,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 1800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250141862.jpg',
+            'puntuacio_total' => 44,
+            'img' => 'images/jugadors/bodo-glimt/sondre-brunstad-fet.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6183,8 +6182,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2700000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250129159.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/bodo-glimt/sondre-auklend.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6198,8 +6197,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250193522.jpg',
+            'puntuacio_total' => 58,
+            'img' => 'images/jugadors/bodo-glimt/jens-petter-hauge.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6212,8 +6211,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 6,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126445.jpg',
+            'puntuacio_total' => 58,
+            'img' => 'images/jugadors/bodo-glimt/kasper-hogh.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6226,8 +6225,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250078507.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/bodo-glimt/andreas-helmersen.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6240,8 +6239,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250138384.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/bodo-glimt/isak-dybvik-maatta.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6254,8 +6253,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187645.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/bodo-glimt/ole-didrik-blomberg.jpg',
             'equip_real_id' => $bodo->id,
         ]);
 
@@ -6271,7 +6270,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/knutsen.jpg",
             'equip_real_id' => $bodo->id,
         ]);
         // ───────────────────────────────────────────────
@@ -6289,8 +6288,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 15,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113444.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/benfica/anatoliy-trubin.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6304,7 +6303,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117408.jpg',
+            'img' => 'images/jugadors/benfica/samuel-soares.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6318,8 +6317,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250017040.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/benfica/nicolas-otamendi.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6332,8 +6331,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126449.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/benfica/amar-dedic.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6346,8 +6345,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130428.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/benfica/samuel-dahl.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6360,8 +6359,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128468.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/benfica/antonio-silva.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6374,8 +6373,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117410.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/benfica/tomas-araujo.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6388,8 +6387,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250208952.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/benfica/sidny-lopes-cabral.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6403,8 +6402,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250061027.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/benfica/fredrik-aursnes.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6417,8 +6416,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250089626.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/benfica/leandro-barreiro.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6431,8 +6430,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250139154.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/benfica/enzo-barrenechea.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6445,8 +6444,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194566.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/benfica/richard-rios.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6459,8 +6458,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250119181.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/benfica/georgiy-sudakov.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6474,8 +6473,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250078012.jpg',
+            'puntuacio_total' => 38,
+            'img' => 'images/jugadors/benfica/vangelis-pavlidis.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6488,8 +6487,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169350.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/benfica/franjo-ivanovic.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6502,8 +6501,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250138999.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/benfica/andreas-schjelderup.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6516,8 +6515,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250197866.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/benfica/gianluca-prestianni.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6530,8 +6529,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250067658.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/benfica/dodi-lukebakio.jpg',
             'equip_real_id' => $benfica->id,
         ]);
 
@@ -6547,7 +6546,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/mourinho.jpg",
             'equip_real_id' => $benfica->id,
         ]);
         // ───────────────────────────────────────────────
@@ -6565,8 +6564,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 14,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250073918.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/marseille/geronimo-rulli.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6580,7 +6579,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250079056.jpg',
+            'img' => 'images/jugadors/marseille/jeffrey-de-lange.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6594,8 +6593,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250116910.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/marseille/michael-murillo.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6608,8 +6607,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250081921.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/marseille/benjamin-pavard.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6622,8 +6621,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128118.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/marseille/leonardo-balerdi.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6636,8 +6635,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250100056.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/marseille/emerson.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6650,8 +6649,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101087.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/marseille/nayef-aguerd.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6664,8 +6663,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250186120.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/marseille/facundo-medina.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6679,8 +6678,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250026986.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/marseille/pierre-emile-hojbjerg.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6693,8 +6692,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101472.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/marseille/timothy-weah.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6707,8 +6706,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169725.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/marseille/matt-o-riley.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6721,8 +6720,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250166930.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/marseille/arthur-vermeeren.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6735,8 +6734,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250014009.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/marseille/geoffrey-kondogbia.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6750,8 +6749,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250177886.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/marseille/igor-paixao.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6764,8 +6763,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250011037.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/marseille/pierre-emerick-aubameyang.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6778,8 +6777,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 55000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250116767.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/marseille/mason-greenwood.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6792,8 +6791,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250211049.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/marseille/robino-vaz.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6806,8 +6805,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250101129.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/marseille/amine-gouiri.jpg',
             'equip_real_id' => $marseille->id,
         ]);
 
@@ -6823,7 +6822,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/de-zerbi.jpg",
             'equip_real_id' => $marseille->id,
         ]);
         // ───────────────────────────────────────────────
@@ -6841,8 +6840,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 12,
             'valor_mercat' => 325000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250097265.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/pafos/neofytos-michael.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6855,8 +6854,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 2,
             'valor_mercat' => 700000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250160935.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/pafos/jay-gorter.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6870,8 +6869,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250067337.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/pafos/derrick-luckassen.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6884,8 +6883,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 600000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250079510.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/pafos/kostas-pileas.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6898,8 +6897,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 750000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250195989.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/pafos/david-goldar.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6912,8 +6911,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 750000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250209888.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/pafos/bruno-langa.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6926,8 +6925,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 1200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113790.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/pafos/joao-correia.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6940,8 +6939,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/1900733.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/pafos/david-luiz.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6955,8 +6954,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 2200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066115.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/pafos/pepe.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6969,8 +6968,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 2000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250087668.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/pafos/vlad-dragomir.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6983,8 +6982,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250056080.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/pafos/ivan-sunjic.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -6997,8 +6996,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250110384.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/pafos/ken-sema.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7011,8 +7010,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250090271.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/pafos/quina.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7026,8 +7025,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250024176.jpg',
+            'puntuacio_total' => 43,
+            'img' => 'images/jugadors/pafos/mislav-orsic.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7040,8 +7039,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 1000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174104.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/pafos/anderson.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7054,8 +7053,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 1200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250195986.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/pafos/jaja.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7068,8 +7067,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 750000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250121287.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/pafos/bruno.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7082,8 +7081,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 450000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210292.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/pafos/mons-bassouamina.jpg',
             'equip_real_id' => $pafos->id,
         ]);
 
@@ -7099,7 +7098,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/celades.jpg",
             'equip_real_id' => $pafos->id,
         ]);
         // ───────────────────────────────────────────────
@@ -7117,8 +7116,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 17,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250123304.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/union-sg/kjell-scherpen.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7132,7 +7131,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 700000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130411.jpg',
+            'img' => 'images/jugadors/union-sg/vic-chambaere.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7146,8 +7145,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187843.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/union-sg/kevin-mac-allister.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7160,8 +7159,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174796.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/union-sg/christian-burgess.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7174,8 +7173,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 7500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135600.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/union-sg/kamiel-van-de-perre.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7188,8 +7187,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130416.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/union-sg/fedde-leysen.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7202,8 +7201,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174767.jpg',
+            'puntuacio_total' => 17,
+            'img' => 'images/jugadors/union-sg/ross-sykes.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7216,8 +7215,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250185904.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/union-sg/louis-patris.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7231,8 +7230,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181746.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/union-sg/adem-zorgane.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7245,8 +7244,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250118896.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/union-sg/anouar-ait-el-hadj.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7259,8 +7258,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250056048.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/union-sg/rob-schoofs.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7273,8 +7272,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 7500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250197734.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/union-sg/ousseynou-niang.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7287,8 +7286,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250109217.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/union-sg/mathias-rasmussen.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7302,8 +7301,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153814.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/union-sg/anan-khalaili.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7316,8 +7315,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250197951.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/union-sg/promise-david.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7330,8 +7329,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250181613.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/union-sg/kevin-rodriguez.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7344,8 +7343,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250186489.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/union-sg/raul-florucz.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7358,8 +7357,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174812.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/union-sg/mohammed-fuseini.jpg',
             'equip_real_id' => $usg->id,
         ]);
 
@@ -7375,7 +7374,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/hubert.jpg",
             'equip_real_id' => $usg->id,
         ]);
         // ───────────────────────────────────────────────
@@ -7393,8 +7392,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 16,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117491.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/psv/matej-kovar.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7408,7 +7407,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250046909.jpg',
+            'img' => 'images/jugadors/psv/nick-olij.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7422,8 +7421,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 17000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250122213.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/psv/mauro-junior.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7436,8 +7435,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250117587.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/psv/anass-salah-eddine.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7450,8 +7449,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 16000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250171006.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/psv/yarek-gasiorowski.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7464,8 +7463,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088117.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/psv/armando-obispo.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7478,8 +7477,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250112998.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/psv/sergino-dest.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7492,8 +7491,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 14000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250189506.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/psv/ryan-flamingo.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7507,8 +7506,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250099671.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/psv/guus-til.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7521,8 +7520,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 22000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172787.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/psv/jerdy-schouten.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7535,8 +7534,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 27000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250105890.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/psv/joey-veerman.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7549,8 +7548,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 32000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134320.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/psv/ismael-saibari.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7563,8 +7562,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 18000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163784.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/psv/paul-wanner.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7578,8 +7577,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 13000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250104534.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/psv/dennis-man.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7592,8 +7591,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1300000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/103310.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/psv/ivan-perisic.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7606,8 +7605,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250197264.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/psv/couhaib-driouech.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7620,8 +7619,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187620.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/psv/ricardo-pepi.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7634,8 +7633,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250200525.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/psv/esmir-bajraktarevic.jpg',
             'equip_real_id' => $psv->id,
         ]);
 
@@ -7651,7 +7650,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/bosz.jpg",
             'equip_real_id' => $psv->id,
         ]);
         // ───────────────────────────────────────────────
@@ -7669,8 +7668,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 14,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076116.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/athletic-club/unai-simon.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7684,7 +7683,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250168993.jpg',
+            'img' => 'images/jugadors/athletic-club/alex-padilla.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7698,8 +7697,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064462.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/athletic-club/andoni-gorosabel.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7712,8 +7711,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126271.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/athletic-club/aitor-paredes.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7726,8 +7725,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194503.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/athletic-club/daniel-vivian.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7740,8 +7739,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188504.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/athletic-club/adama-boiro.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7754,8 +7753,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188290.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/athletic-club/jesus-areso.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7768,8 +7767,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/103823.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/athletic-club/yuri-berchiche.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7783,8 +7782,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250202816.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/athletic-club/alejandro-rego.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7797,8 +7796,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250121553.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/athletic-club/robert-navarro.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7811,8 +7810,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250013893.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/athletic-club/inigo-ruiz-de-galarreta.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7825,8 +7824,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250200318.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/athletic-club/mikel-jauregizar.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7839,8 +7838,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250194475.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/athletic-club/unai-gomez.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7854,8 +7853,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 5,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250076101.jpg',
+            'puntuacio_total' => 39,
+            'img' => 'images/jugadors/athletic-club/gorka-guruzeta.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7868,8 +7867,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250136444.jpg',
+            'puntuacio_total' => 15,
+            'img' => 'images/jugadors/athletic-club/nico-serrano.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7882,8 +7881,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250074671.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/athletic-club/inaki-williams.jpg',
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7896,8 +7895,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250202815.jpg',
+            'puntuacio_total' => 6,
+            'img' => null,
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7910,8 +7909,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250212200.jpg',
+            'puntuacio_total' => 6,
+            'img' => null,
             'equip_real_id' => $athletic->id,
         ]);
 
@@ -7927,7 +7926,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/valverde.jpg",
             'equip_real_id' => $athletic->id,
         ]);
         // ───────────────────────────────────────────────
@@ -7945,8 +7944,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 12,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250065792.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/napoli/vanja-milinkovic-savic.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -7959,8 +7958,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 3,
             'valor_mercat' => 14000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250066753.jpg',
+            'puntuacio_total' => 2,
+            'img' => 'images/jugadors/napoli/alex-meret.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -7974,8 +7973,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250045594.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/napoli/juan-jesus.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -7988,8 +7987,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064229.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/napoli/giovanni-di-lorenzo.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8002,8 +8001,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088491.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/napoli/alessandro-buongiorno.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8016,8 +8015,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250020885.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/leonardo-spinazzola.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8030,8 +8029,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134196.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/mathias-olivera.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8044,8 +8043,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250161248.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/sam-beukema.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8059,8 +8058,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088240.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/napoli/scott-mctominay.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8073,8 +8072,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 14000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250091841.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/napoli/eljif-elmas.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8087,8 +8086,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055982.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/stanislav-lobotka.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8101,8 +8100,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250086987.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/napoli/frank-anguissa.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8115,8 +8114,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250107117.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/napoli/billy-gilmour.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8130,8 +8129,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 50000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130221.jpg',
+            'puntuacio_total' => 29,
+            'img' => 'images/jugadors/napoli/rasmus-hojlund.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8144,8 +8143,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250050381.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/matteo-politano.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8158,8 +8157,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106648.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/david-neres.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8172,8 +8171,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250091165.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/napoli/noa-lang.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8186,8 +8185,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 26000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250164476.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/napoli/lorenzo-lucca.jpg',
             'equip_real_id' => $napoli->id,
         ]);
 
@@ -8203,7 +8202,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/conte.jpg",
             'equip_real_id' => $napoli->id,
         ]);
         // ───────────────────────────────────────────────
@@ -8221,8 +8220,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 22,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250096795.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/copenhagen/dominik-kotarski.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8236,7 +8235,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 400000,
             'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250042038.jpg',
+            'img' => 'images/jugadors/copenhagen/runar-runarsson.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8250,8 +8249,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 6500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250198707.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/copenhagen/gabriel-pereira.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8264,8 +8263,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250122937.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/copenhagen/marcos-lopez.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8278,8 +8277,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250085443.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/copenhagen/pantelis-hatzidiakos.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8292,8 +8291,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250082812.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/copenhagen/birger-meling.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8306,8 +8305,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250211189.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/copenhagen/junnosuke-suzuki.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8320,8 +8319,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250182335.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/copenhagen/munashe-garananga.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8335,8 +8334,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250024171.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/copenhagen/viktor-claesson.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8349,8 +8348,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 2200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250198706.jpg',
+            'puntuacio_total' => 42,
+            'img' => 'images/jugadors/copenhagen/robert.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8363,8 +8362,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250059199.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/copenhagen/lukas-lerager.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8377,8 +8376,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250169615.jpg',
+            'puntuacio_total' => 22,
+            'img' => 'images/jugadors/copenhagen/william-clem.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8391,8 +8390,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134853.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/copenhagen/mads-emil-madsen.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8406,8 +8405,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250090718.jpg',
+            'puntuacio_total' => 43,
+            'img' => 'images/jugadors/copenhagen/jordan-larsson.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8420,8 +8419,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 4500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055967.jpg',
+            'puntuacio_total' => 36,
+            'img' => 'images/jugadors/copenhagen/mohamed-elyounoussi.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8434,8 +8433,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250132393.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/copenhagen/elias-achouri.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8448,8 +8447,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134659.jpg',
+            'puntuacio_total' => 27,
+            'img' => 'images/jugadors/copenhagen/youssoufa-moukoko.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8462,8 +8461,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 400000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250041664.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/copenhagen/andreas-cornelius.jpg',
             'equip_real_id' => $copenhagen->id,
         ]);
 
@@ -8479,7 +8478,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/neestrup.jpg",
             'equip_real_id' => $copenhagen->id,
         ]);
         // ───────────────────────────────────────────────
@@ -8497,8 +8496,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 13,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250113263.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/ajax/vitezslav-jaros.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8511,8 +8510,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 8,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/98834.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/ajax/remko-pasveer.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8526,8 +8525,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128433.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/ajax/youri-baas.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8540,8 +8539,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250174052.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/ajax/anton-gaaei.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8554,8 +8553,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250190193.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/ajax/jorthy-mokio.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8568,8 +8567,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250160989.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/ajax/ko-itakura.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8582,8 +8581,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250097317.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/ajax/owen-wijndal.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8596,8 +8595,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250100914.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/ajax/josip-sutalo.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8611,8 +8610,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153349.jpg',
+            'puntuacio_total' => 31,
+            'img' => 'images/jugadors/ajax/oscar-gloukh.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8625,8 +8624,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250013855.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/ajax/davy-klaassen.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8639,8 +8638,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250128449.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/ajax/youri-regeer.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8653,8 +8652,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134945.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/ajax/kian-fitz-jim.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8667,8 +8666,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 5000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250172221.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/ajax/rayane-bounida.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8682,8 +8681,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250154132.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/ajax/mika-godts.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8696,8 +8695,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250177904.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/ajax/kasper-dolberg.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8710,8 +8709,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 2500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250078682.jpg',
+            'puntuacio_total' => 15,
+            'img' => 'images/jugadors/ajax/wout-weghorst.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8724,8 +8723,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250123959.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/ajax/raul-moro.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8738,8 +8737,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250090259.jpg',
+            'puntuacio_total' => 13,
+            'img' => 'images/jugadors/ajax/oliver-edvardsen.jpg',
             'equip_real_id' => $ajax->id,
         ]);
 
@@ -8773,8 +8772,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 11,
             'valor_mercat' => 4500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250211809.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/frankfurt/michael-zetterer.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8787,8 +8786,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 10,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250199364.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/frankfurt/kaua-santos.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8802,8 +8801,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126501.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/frankfurt/robin-koch.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8816,8 +8815,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250127396.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/frankfurt/arthur-theate.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8830,8 +8829,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250190350.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/frankfurt/nathaniel-brown.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8844,8 +8843,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134652.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/frankfurt/nnamdi-collins.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8858,8 +8857,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250135303.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/frankfurt/aurele-amenda.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8872,8 +8871,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250074850.jpg',
+            'puntuacio_total' => 13,
+            'img' => 'images/jugadors/frankfurt/rasmus-kristensen.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8887,8 +8886,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134656.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/frankfurt/ansgar-knauff.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8901,8 +8900,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250119519.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/frankfurt/ellyes-skhiri.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8915,8 +8914,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250164528.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/frankfurt/jean-matteo-bahoya.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8929,8 +8928,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250007605.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/frankfurt/mario-gotze.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8943,8 +8942,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 20000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134309.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/frankfurt/ritsu-doan.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8958,8 +8957,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 15000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188522.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/frankfurt/fares-chaibi.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8972,8 +8971,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 35000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106143.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/frankfurt/jonathan-burkardt.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -8986,8 +8985,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 45000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250166964.jpg',
+            'puntuacio_total' => 20,
+            'img' => 'images/jugadors/frankfurt/can-uzun.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -9000,8 +8999,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126805.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/frankfurt/elye-wahi.jpg',
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -9014,8 +9013,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124846.jpg',
+            'puntuacio_total' => 2,
+            'img' => null,
             'equip_real_id' => $eintracht->id,
         ]);
 
@@ -9031,7 +9030,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/schmitt.jpg",
             'equip_real_id' => $eintracht->id,
         ]);
         // ───────────────────────────────────────────────
@@ -9049,8 +9048,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 16,
             'valor_mercat' => 2800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250055112.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/slavia-praha/jindrich-stanek.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9063,8 +9062,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 3,
             'valor_mercat' => 2800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250115748.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/slavia-praha/jakub-markovic.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9078,8 +9077,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250190353.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/slavia-praha/stepan-chaloupek.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9092,8 +9091,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 7000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250124916.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/slavia-praha/david-zima.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9106,8 +9105,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 1500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250212115.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/slavia-praha/youssoupha-mbodji.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9120,8 +9119,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250134691.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/slavia-praha/david-doudera.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9134,8 +9133,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250109754.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/slavia-praha/murphy-dorley.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9148,8 +9147,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250115749.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/slavia-praha/tomas-vlcek.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9163,8 +9162,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250064811.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/slavia-praha/lukas-provod.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9177,8 +9176,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250077931.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/slavia-praha/michal-sadilek.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9191,8 +9190,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250129653.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/slavia-praha/christos-zafeiris.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9205,8 +9204,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210228.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/slavia-praha/youssoupha-sanyang.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9219,8 +9218,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210225.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/slavia-praha/david-moses.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9234,8 +9233,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 4500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250107463.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/slavia-praha/vasil-kusej.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9248,8 +9247,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250042406.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/slavia-praha/tomas-chory.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9262,8 +9261,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250092161.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/slavia-praha/mojmir-chytil.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9276,8 +9275,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126258.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/slavia-praha/muhammed-cham.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9290,8 +9289,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 750000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250012660.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/slavia-praha/ivan-schranz.jpg',
             'equip_real_id' => $slavia->id,
         ]);
 
@@ -9307,7 +9306,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/trpisovsky.jpg",
             'equip_real_id' => $slavia->id,
         ]);
         // ───────────────────────────────────────────────
@@ -9325,8 +9324,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 11,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210287.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/villarreal/luiz-junior.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9339,8 +9338,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 7,
             'valor_mercat' => 4000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106979.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/villarreal/arnau-tenas.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9354,8 +9353,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 25000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250164935.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/villarreal/renato-veiga.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9368,8 +9367,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 9000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210289.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/villarreal/sergi-cardona.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9382,8 +9381,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188006.jpg',
+            'puntuacio_total' => 12,
+            'img' => 'images/jugadors/villarreal/santiago-mourino.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9396,8 +9395,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250129412.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/villarreal/rafa-marin.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9410,8 +9409,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250147278.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/villarreal/juan-foyth.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9424,8 +9423,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 10000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250210288.jpg',
+            'puntuacio_total' => 6,
+            'img' => 'images/jugadors/villarreal/pau-navarro.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9439,8 +9438,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250188937.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/villarreal/santiago-comesana.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9453,8 +9452,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 2,
             'gols_rebuts' => 0,
             'valor_mercat' => 8000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250195532.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/villarreal/tani-oluwaseyi.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9467,8 +9466,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 1200000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/104033.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/villarreal/daniel-parejo.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9481,8 +9480,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250144229.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/villarreal/pape-gueye.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9495,8 +9494,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 40000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250168991.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/villarreal/alberto-moleiro.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9510,8 +9509,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250106003.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/villarreal/nicolas-pepe.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9524,8 +9523,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 28000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250155025.jpg',
+            'puntuacio_total' => 19,
+            'img' => 'images/jugadors/villarreal/georges-mikautadze.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9538,8 +9537,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 12000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250173127.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/villarreal/tajon-buchanan.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9552,8 +9551,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 6000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250075625.jpg',
+            'puntuacio_total' => 10,
+            'img' => 'images/jugadors/villarreal/ayoze-perez.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9566,8 +9565,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 2800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250074565.jpg',
+            'puntuacio_total' => 4,
+            'img' => 'images/jugadors/villarreal/gerard-moreno.jpg',
             'equip_real_id' => $villarreal->id,
         ]);
 
@@ -9583,7 +9582,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/marcelino.jpg",
             'equip_real_id' => $villarreal->id,
         ]);
         // ───────────────────────────────────────────────
@@ -9601,8 +9600,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 13,
             'valor_mercat' => 400000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250130452.jpg',
+            'puntuacio_total' => 16,
+            'img' => 'images/jugadors/kairat-almaty/temirlan-anarbekov.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9615,8 +9614,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 4,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250071852.jpg',
+            'puntuacio_total' => 14,
+            'img' => 'images/jugadors/kairat-almaty/alexandr-zarutskiy.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9630,8 +9629,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 400000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250165048.jpg',
+            'puntuacio_total' => 37,
+            'img' => 'images/jugadors/kairat-almaty/alexandr-mrynskiy.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9644,8 +9643,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250085597.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/kairat-almaty/egor-sorokin.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9658,8 +9657,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 600000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250126383.jpg',
+            'puntuacio_total' => 30,
+            'img' => 'images/jugadors/kairat-almaty/damir-kassabulat.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9672,8 +9671,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 600000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250057871.jpg',
+            'puntuacio_total' => 28,
+            'img' => 'images/jugadors/kairat-almaty/luis-mata.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9686,8 +9685,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 250000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/74771.jpg',
+            'puntuacio_total' => 26,
+            'img' => 'images/jugadors/kairat-almaty/aleksandr-martynovich.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9700,8 +9699,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250099183.jpg',
+            'puntuacio_total' => 25,
+            'img' => 'images/jugadors/kairat-almaty/ofri-arad.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9715,8 +9714,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250088603.jpg',
+            'puntuacio_total' => 37,
+            'img' => 'images/jugadors/kairat-almaty/valeri-gromyko.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9729,8 +9728,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 300000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250163306.jpg',
+            'puntuacio_total' => 32,
+            'img' => 'images/jugadors/kairat-almaty/yerkin-tapalov.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9743,8 +9742,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 700000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250056097.jpg',
+            'puntuacio_total' => 24,
+            'img' => 'images/jugadors/kairat-almaty/dan-glazer.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9757,8 +9756,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250115168.jpg',
+            'puntuacio_total' => 18,
+            'img' => 'images/jugadors/kairat-almaty/jug-stanojev.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9771,8 +9770,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 500000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250153683.jpg',
+            'puntuacio_total' => 21,
+            'img' => 'images/jugadors/kairat-almaty/adilet-sadybekov.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9786,8 +9785,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 3,
             'gols_rebuts' => 0,
             'valor_mercat' => 800000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250186990.jpg',
+            'puntuacio_total' => 47,
+            'img' => 'images/jugadors/kairat-almaty/jorginho.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9800,8 +9799,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 700000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250186184.jpg',
+            'puntuacio_total' => 35,
+            'img' => 'images/jugadors/kairat-almaty/ricardinho.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9814,8 +9813,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 1,
             'gols_rebuts' => 0,
             'valor_mercat' => 300000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250187405.jpg',
+            'puntuacio_total' => 33,
+            'img' => 'images/jugadors/kairat-almaty/edmilson.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9828,8 +9827,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 4,
             'gols_rebuts' => 0,
             'valor_mercat' => 3000000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250192320.jpg',
+            'puntuacio_total' => 44,
+            'img' => 'images/jugadors/kairat-almaty/dastan-satpayev.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9842,8 +9841,8 @@ class JugadorSeeder extends Seeder
             'gols_marcats' => 0,
             'gols_rebuts' => 0,
             'valor_mercat' => 150000,
-            'puntuacio_total' => 0,
-            'img' => 'https://img.uefa.com/imgml/TP/players/1/2026/75x75/250201523.jpg',
+            'puntuacio_total' => 8,
+            'img' => 'images/jugadors/kairat-almaty/ramazan-bagdat.jpg',
             'equip_real_id' => $kairat->id,
         ]);
 
@@ -9858,7 +9857,7 @@ class JugadorSeeder extends Seeder
             'gols_rebuts' => 0,
             'valor_mercat' => 0,
             'puntuacio_total' => 0,
-            'img' => null,
+            'img' => "images/entrenadors/urazbakhtin.jpg",
             'equip_real_id' => $kairat->id,
         ]);
     }

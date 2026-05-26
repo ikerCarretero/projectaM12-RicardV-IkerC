@@ -6,24 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('equips_fantasy', function (Blueprint $table) {
             $table->id();
             $table->string('nom_equip');
-            $table->decimal('pressupost', 15, 2);
+            $table->decimal('pressupost', 15, 2)->default(250000000);
             $table->foreignId('usuari_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('lliga_privada_id')->constrained('lligues_privades')->onDelete('cascade');
             $table->timestamps();
+
+            $table->unique(['usuari_id', 'lliga_privada_id']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('equips_fantasy');

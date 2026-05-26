@@ -30,15 +30,18 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password'          => 'hashed',
+            'password' => 'hashed',
         ];
     }
-
-    // ── Relacions ─────────────────────────────────────────────────
 
     public function equipFantasy()
     {
         return $this->hasOne(EquipFantasy::class, 'usuari_id');
+    }
+
+    public function equipsFantasy()
+    {
+        return $this->hasMany(EquipFantasy::class, 'usuari_id');
     }
 
     public function lliguesPrivades()
@@ -48,6 +51,6 @@ class User extends Authenticatable
             'usuari_lliga_privada',
             'usuari_id',
             'lliga_privada_id'
-        );
+        )->withTimestamps();
     }
 }

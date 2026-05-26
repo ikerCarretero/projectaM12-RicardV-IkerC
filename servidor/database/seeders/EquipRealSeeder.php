@@ -22,12 +22,15 @@ class EquipRealSeeder extends Seeder
         $superGr    = Competicio::where('nom', 'Super League Greece')->first();
         $cyprus     = Competicio::where('nom', 'Cyprus First Division')->first();
         $kazakh     = Competicio::where('nom', 'Kazakhstan Premier League')->first();
+        $chance     = Competicio::where('nom', 'Chance Liga')->first();
+        $eliteserien = Competicio::where('nom', 'Eliteserien')->first();
+        $liqa     = Competicio::where('nom', 'Premyer Liqa')->first();
 
         // 1. Arsenal
         EquipReal::create([
             'nom'           => 'Arsenal FC',
             'pais'          => 'Anglaterra',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52280.png',
+            'img'           => 'images/escuts/arsenal.png',
             'competicio_id' => $premier->id,
         ]);
 
@@ -35,7 +38,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'FC Bayern München',
             'pais'          => 'Alemanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50037.png',
+            'img'           => 'images/escuts/bayern-munchen.png',
             'competicio_id' => $bundes->id,
         ]);
 
@@ -43,7 +46,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Liverpool FC',
             'pais'          => 'Anglaterra',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/7889.png',
+            'img'           => 'images/escuts/liverpool.png',
             'competicio_id' => $premier->id,
         ]);
 
@@ -51,7 +54,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Tottenham Hotspur FC',
             'pais'          => 'Anglaterra',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/1652.png',
+            'img'           => 'images/escuts/tottenham.png',
             'competicio_id' => $premier->id,
         ]);
 
@@ -59,7 +62,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'FC Barcelona',
             'pais'          => 'Espanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50080.png',
+            'img'           => 'images/escuts/barcelona.png',
             'competicio_id' => $laliga->id,
         ]);
 
@@ -67,7 +70,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Chelsea FC',
             'pais'          => 'Anglaterra',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52914.png',
+            'img'           => 'images/escuts/chelsea.png',
             'competicio_id' => $premier->id,
         ]);
 
@@ -75,7 +78,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Sporting CP',
             'pais'          => 'Portugal',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50149.png',
+            'img'           => 'images/escuts/sporting-cp.png',
             'competicio_id' => $portugal->id,
         ]);
 
@@ -83,7 +86,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Manchester City FC',
             'pais'          => 'Anglaterra',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52919.png',
+            'img'           => 'images/escuts/manchester-city.png',
             'competicio_id' => $premier->id,
         ]);
 
@@ -91,7 +94,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Real Madrid CF',
             'pais'          => 'Espanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50051.png',
+            'img'           => 'images/escuts/real-madrid.png',
             'competicio_id' => $laliga->id,
         ]);
 
@@ -99,7 +102,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'FC Internazionale Milano',
             'pais'          => 'Itàlia',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50138.png',
+            'img'           => 'images/escuts/inter.png',
             'competicio_id' => $serieA->id,
         ]);
 
@@ -107,7 +110,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Paris Saint-Germain',
             'pais'          => 'França',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52747.png',
+            'img'           => 'images/escuts/paris.png',
             'competicio_id' => $ligue1->id,
         ]);
 
@@ -115,7 +118,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Newcastle United FC',
             'pais'          => 'Anglaterra',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/59324.png',
+            'img'           => 'images/escuts/newcastle.png',
             'competicio_id' => $premier->id,
         ]);
 
@@ -123,7 +126,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Juventus FC',
             'pais'          => 'Itàlia',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50139.png',
+            'img'           => 'images/escuts/juventus.png',
             'competicio_id' => $serieA->id,
         ]);
 
@@ -131,7 +134,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Atlético de Madrid',
             'pais'          => 'Espanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50124.png',
+            'img'           => 'images/escuts/atletico-madrid.png',
             'competicio_id' => $laliga->id,
         ]);
 
@@ -139,7 +142,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Atalanta BC',
             'pais'          => 'Itàlia',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52816.png',
+            'img'           => 'images/escuts/atalanta.png',
             'competicio_id' => $serieA->id,
         ]);
 
@@ -147,7 +150,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Bayer 04 Leverkusen',
             'pais'          => 'Alemanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50109.png',
+            'img'           => 'images/escuts/bayer-leverkusen.png',
             'competicio_id' => $bundes->id,
         ]);
 
@@ -155,7 +158,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Borussia Dortmund',
             'pais'          => 'Alemanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52758.png',
+            'img'           => 'images/escuts/borussia-dortmund.png',
             'competicio_id' => $bundes->id,
         ]);
 
@@ -163,7 +166,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Olympiacos FC',
             'pais'          => 'Grècia',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/2610.png',
+            'img'           => 'images/escuts/olympiacos.png',
             'competicio_id' => $superGr->id,
         ]);
 
@@ -171,7 +174,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Club Brugge KV',
             'pais'          => 'Bèlgica',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50043.png',
+            'img'           => 'images/escuts/club-brugge.png',
             'competicio_id' => $belgium->id,
         ]);
 
@@ -179,7 +182,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Galatasaray SK',
             'pais'          => 'Turquia',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50067.png',
+            'img'           => 'images/escuts/galatasaray.png',
             'competicio_id' => $superLig->id,
         ]);
 
@@ -187,7 +190,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'AS Monaco FC',
             'pais'          => 'França',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50023.png',
+            'img'           => 'images/escuts/monaco.png',
             'competicio_id' => $ligue1->id,
         ]);
 
@@ -195,23 +198,23 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Qarabağ FK',
             'pais'          => 'Azerbaidjan',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/60609.png',
-            'competicio_id' => $kazakh->id,
+            'img'           => 'images/escuts/qarabag.png',
+            'competicio_id' => $liqa->id,
         ]);
 
         // 23. Bodø/Glimt
         EquipReal::create([
             'nom'           => 'FK Bodø/Glimt',
             'pais'          => 'Noruega',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/59333.png',
-            'competicio_id' => $eredivisie->id,
+            'img'           => 'images/escuts/bodo-glimt.png',
+            'competicio_id' => $eliteserien->id,
         ]);
 
         // 24. Benfica
         EquipReal::create([
             'nom'           => 'SL Benfica',
             'pais'          => 'Portugal',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50147.png',
+            'img'           => 'images/escuts/benfica.png',
             'competicio_id' => $portugal->id,
         ]);
 
@@ -219,7 +222,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Olympique de Marseille',
             'pais'          => 'França',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52748.png',
+            'img'           => 'images/escuts/marseille.png',
             'competicio_id' => $ligue1->id,
         ]);
 
@@ -227,7 +230,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Pafos FC',
             'pais'          => 'Xipre',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/2609532.png',
+            'img'           => 'images/escuts/pafos.png',
             'competicio_id' => $cyprus->id,
         ]);
 
@@ -235,7 +238,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Royale Union Saint-Gilloise',
             'pais'          => 'Bèlgica',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/64125.png',
+            'img'           => 'images/escuts/union-sg.png',
             'competicio_id' => $belgium->id,
         ]);
 
@@ -243,7 +246,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'PSV Eindhoven',
             'pais'          => 'Països Baixos',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50062.png',
+            'img'           => 'images/escuts/psv.png',
             'competicio_id' => $eredivisie->id,
         ]);
 
@@ -251,7 +254,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Athletic Club',
             'pais'          => 'Espanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50125.png',
+            'img'           => 'images/escuts/athletic-club.png',
             'competicio_id' => $laliga->id,
         ]);
 
@@ -259,7 +262,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'SSC Napoli',
             'pais'          => 'Itàlia',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50136.png',
+            'img'           => 'images/escuts/napoli.png',
             'competicio_id' => $serieA->id,
         ]);
 
@@ -267,7 +270,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'FC København',
             'pais'          => 'Dinamarca',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52709.png',
+            'img'           => 'images/escuts/copenhagen.png',
             'competicio_id' => $eredivisie->id,
         ]);
 
@@ -275,7 +278,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'AFC Ajax',
             'pais'          => 'Països Baixos',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50143.png',
+            'img'           => 'images/escuts/ajax.png',
             'competicio_id' => $eredivisie->id,
         ]);
 
@@ -283,7 +286,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'Eintracht Frankfurt',
             'pais'          => 'Alemanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/50072.png',
+            'img'           => 'images/escuts/frankfurt.png',
             'competicio_id' => $bundes->id,
         ]);
 
@@ -291,15 +294,15 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'SK Slavia Praha',
             'pais'          => 'República Txeca',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/52498.png',
-            'competicio_id' => $bundes->id,
+            'img'           => 'images/escuts/slavia-praha.png',
+            'competicio_id' => $chance->id,
         ]);
 
         // 35. Villarreal
         EquipReal::create([
             'nom'           => 'Villarreal CF',
             'pais'          => 'Espanya',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/70691.png',
+            'img'           => 'images/escuts/villarreal.png',
             'competicio_id' => $laliga->id,
         ]);
 
@@ -307,7 +310,7 @@ class EquipRealSeeder extends Seeder
         EquipReal::create([
             'nom'           => 'FC Kairat Almaty',
             'pais'          => 'Kazakhstan',
-            'img'           => 'https://img.uefa.com/imgml/TP/teams/logos/240x240/79970.png',
+            'img'           => 'images/escuts/kairat-almaty.png',
             'competicio_id' => $kazakh->id,
         ]);
     }

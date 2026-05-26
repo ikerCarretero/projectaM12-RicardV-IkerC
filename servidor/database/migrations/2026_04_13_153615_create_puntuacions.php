@@ -6,24 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('puntuacions', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
             $table->integer('punts_total')->default(0);
-            $table->foreignId('lligues_privada_id')->constrained('lligues_privades')->onDelete('cascade');
-            $table->foreignId('jornada_id')->constrained('jornades')->onDelete('cascade');
+            $table->foreignId('equip_fantasy_id')->constrained('equips_fantasy')->onDelete('cascade');
+            $table->foreignId('lliga_privada_id')->constrained('lligues_privades')->onDelete('cascade');
+            $table->foreignId('jornada_id')->nullable()->constrained('jornades')->nullOnDelete();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('puntuacions');

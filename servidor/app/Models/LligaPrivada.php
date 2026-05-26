@@ -10,24 +10,41 @@ class LligaPrivada extends Model
 
     protected $fillable = [
         'nom',
+        'descripcio',
         'codi_acces',
+        'pressupost_inicial',
+        'maxim_participants',
+        'creador_id',
     ];
 
-    // Una lliga privada té molts equips fantasy
-    public function equipsFanstasy()
+    public function creador()
+    {
+        return $this->belongsTo(User::class, 'creador_id');
+    }
+
+    public function equipsFantasy()
     {
         return $this->hasMany(EquipFantasy::class, 'lliga_privada_id');
     }
 
-    // Una lliga privada té molts usuaris (pivot)
-    public function usuaris()
+    // Alias antic per compatibilitat amb codi existent.
+    public function equipsFanstasy()
     {
-        return $this->belongsToMany(User::class, 'usuari_lliga_privada', 'lliga_privada_id', 'usuari_id');
+        return $this->equipsFantasy();
     }
 
-    // Una lliga privada té moltes puntuacions
+    public function usuaris()
+    {
+        return $this->belongsToMany(
+            User::class,
+            'usuari_lliga_privada',
+            'lliga_privada_id',
+            'usuari_id'
+        )->withTimestamps();
+    }
+
     public function puntuacions()
     {
-        return $this->hasMany(Puntuacio::class, 'lligues_privada_id');
+        return $this->hasMany(Puntuacio::class, 'lliga_privada_id');
     }
 }

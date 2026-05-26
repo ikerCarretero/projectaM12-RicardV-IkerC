@@ -5,6 +5,8 @@ import { lligaActivaService } from '../services/lligaActivaService'
 import { equipFantasyLocalService } from '../services/equipFantasyLocalService'
 import './Mercat.css'
 
+const PRESSUPOST_INICIAL = 250000000
+
 function Mercat() {
     const navigate = useNavigate()
 
@@ -37,11 +39,23 @@ function Mercat() {
                 }
 
                 const data = await mercatService.getJugadorsMercat()
-
                 const jugadors = normalitzarRespostaMercat(data)
-                const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
-                const fitxats = equipInicial.jugadors
-                const pressupostActual = equipInicial.pressupost()
+
+                let fitxats = []
+                let pressupostActual = PRESSUPOST_INICIAL
+
+                try {
+                    const equipInicial = equipFantasyLocalService.assegurarEquipInicial()
+
+                    fitxats = Array.isArray(equipInicial?.jugadors)
+                        ? equipInicial.jugadors
+                        : []
+
+                    pressupostActual = obtenirPressupostEquip(equipInicial, PRESSUPOST_INICIAL)
+                } catch (errorEquipLocal) {
+                    console.warn('No s’ha pogut carregar l’equip local:', errorEquipLocal)
+                    pressupostActual = PRESSUPOST_INICIAL
+                }
 
                 setJugadorsMercat(jugadors)
                 setJugadorsFitxats(fitxats)
@@ -84,10 +98,26 @@ function Mercat() {
             setError('')
             setMissatge('')
 
+            const valorJugador = Number(jugador.valor_mercat || 0)
+
+            if (valorJugador > Number(pressupost || 0)) {
+                setError('Pressupost insuficient per fitxar aquest jugador.')
+                return
+            }
+
             const resultat = equipFantasyLocalService.fitxarJugador(jugador)
 
-            setJugadorsFitxats(resultat.jugadors)
-            setPressupost(resultat.pressupost)
+            const nousFitxats = Array.isArray(resultat?.jugadors)
+                ? resultat.jugadors
+                : [...jugadorsFitxats, jugador]
+
+            const pressupostNou = obtenirPressupostResultatFitxatge(
+                resultat,
+                Number(pressupost || 0) - valorJugador
+            )
+
+            setJugadorsFitxats(nousFitxats)
+            setPressupost(pressupostNou)
 
             setMissatge(`${jugador.nom} fitxat correctament per ${lligaActiva.nom}.`)
         } catch (err) {
@@ -273,29 +303,85 @@ function Mercat() {
 }
 
 const normalitzarRespostaMercat = (data) => {
-    let jugadors = []
-
-    if (Array.isArray(data)) {
-        jugadors = data
-    } else if (Array.isArray(data?.jugadors)) {
-        jugadors = data.jugadors
-    } else if (Array.isArray(data?.data)) {
-        jugadors = data.data
-    }
+    const jugadors = Array.isArray(data)
+        ? data
+        : Array.isArray(data?.jugadors)
+            ? data.jugadors
+            : Array.isArray(data?.data)
+                ? data.data
+                : Array.isArray(data?.mercat)
+                    ? data.mercat
+                    : []
 
     return jugadors.map((jugador) => ({
         id: jugador.id,
-        nom: jugador.nom,
+        nom: jugador.nom || jugador.name || '',
         equip:
             jugador.equip ||
             jugador.equip_real?.nom ||
             jugador.equipReal?.nom ||
             'Sense equip',
-        posicio: jugador.posicio,
-        valor_mercat: Number(jugador.valor_mercat || jugador.valorMercat || 0),
+        posicio: jugador.posicio || jugador.posicio_base || '',
+        valor_mercat: Number(
+            jugador.valor_mercat ||
+            jugador.valorMercat ||
+            jugador.valor ||
+            0
+        ),
         punts: Number(jugador.punts || jugador.puntuacio_total || 0),
         estat: jugador.estat || 'Disponible',
+        img: jugador.img || jugador.foto || '',
     }))
+}
+
+const obtenirPressupostEquip = (equip, fallback = PRESSUPOST_INICIAL) => {
+    const possiblesValors = [
+        equip?.pressupost,
+        equip?.pressupostDisponible,
+        equip?.pressupost_disponible,
+        equip?.diners,
+        equip?.saldo,
+        equip?.budget,
+    ]
+
+    for (const valor of possiblesValors) {
+        if (typeof valor === 'function') {
+            const resultat = Number(valor())
+
+            if (Number.isFinite(resultat) && resultat > 0) {
+                return resultat
+            }
+        } else {
+            const resultat = Number(valor)
+
+            if (Number.isFinite(resultat) && resultat > 0) {
+                return resultat
+            }
+        }
+    }
+
+    return fallback
+}
+
+const obtenirPressupostResultatFitxatge = (resultat, fallback) => {
+    const possiblesValors = [
+        resultat?.pressupost,
+        resultat?.pressupostDisponible,
+        resultat?.pressupost_disponible,
+        resultat?.diners,
+        resultat?.saldo,
+        resultat?.budget,
+    ]
+
+    for (const valor of possiblesValors) {
+        const resultatNumeric = Number(valor)
+
+        if (Number.isFinite(resultatNumeric) && resultatNumeric >= 0) {
+            return resultatNumeric
+        }
+    }
+
+    return fallback
 }
 
 const formatMoney = (value) => {

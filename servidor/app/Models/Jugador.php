@@ -22,30 +22,34 @@ class Jugador extends Model
         'equip_real_id',
     ];
 
-    // Un jugador pertany a un equip real
     public function equipReal()
     {
         return $this->belongsTo(EquipReal::class, 'equip_real_id');
     }
 
-    // Un jugador pertany a molts equips fantasy
-    public function equipsFanstasy()
+    public function equipsFantasy()
     {
         return $this->belongsToMany(
             EquipFantasy::class,
             'jugador_equips_fantasy',
             'jugador_id',
             'equip_fantasy_id'
-        );
+        )->withPivot([
+            'preu_fitxatge',
+        ])->withTimestamps();
     }
 
-    // Un jugador té moltes estadístiques
+    // Alias antic per compatibilitat amb codi existent.
+    public function equipsFanstasy()
+    {
+        return $this->equipsFantasy();
+    }
+
     public function estadistiques()
     {
-        return $this->hasMany(EstadistiqueJugador::class, 'jugador_id');
+        return $this->hasMany(EstadisticaJugador::class, 'jugador_id');
     }
 
-    // Un jugador apareix en moltes alineacions
     public function alineacions()
     {
         return $this->belongsToMany(
@@ -53,6 +57,9 @@ class Jugador extends Model
             'alineacio_jugador',
             'jugador_id',
             'alineacio_id'
-        )->withPivot('posicio_alineacio', 'ordre');
+        )->withPivot([
+            'posicio_alineacio',
+            'ordre',
+        ])->withTimestamps();
     }
 }

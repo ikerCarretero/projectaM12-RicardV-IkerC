@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('alineacio_jugador', function (Blueprint $table) {
@@ -16,14 +13,13 @@ return new class extends Migration
             $table->foreignId('alineacio_id')->constrained('alineacions')->onDelete('cascade');
             $table->foreignId('jugador_id')->constrained('jugadors')->onDelete('cascade');
             $table->enum('posicio_alineacio', ['porter', 'defensa', 'migcampista', 'atacant']);
-            $table->integer('ordre');
+            $table->unsignedSmallInteger('ordre')->default(1);
             $table->timestamps();
+
+            $table->unique(['alineacio_id', 'jugador_id']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('alineacio_jugador');

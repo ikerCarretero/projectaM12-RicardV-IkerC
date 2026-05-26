@@ -6,23 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('alineacions', function (Blueprint $table) {
             $table->id();
             $table->string('esquema');
             $table->foreignId('equip_fantasy_id')->constrained('equips_fantasy')->onDelete('cascade');
-            $table->foreignId('jornada_id')->constrained('jornades')->onDelete('cascade');
+            $table->foreignId('jornada_id')->nullable()->constrained('jornades')->nullOnDelete();
             $table->timestamps();
+
+            $table->unique(['equip_fantasy_id', 'jornada_id']);
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('alineacions');

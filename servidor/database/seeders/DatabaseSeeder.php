@@ -13,31 +13,14 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        /*
-        |--------------------------------------------------------------------------
-        | Seeders principals
-        |--------------------------------------------------------------------------
-        |
-        | Important:
-        | Només cridem seeders que existeixen realment dins de database/seeders.
-        | Ara mateix tenim:
-        | - CompeticioSeeder
-        | - EquipRealSeeder
-        | - JugadorSeeder
-        |
-        */
-
         $this->call([
             CompeticioSeeder::class,
             EquipRealSeeder::class,
             JugadorSeeder::class,
+            JornadaSeeder::class,
+            PartitSeeder::class,
+            EstadisticaJugadorSeeder::class,
         ]);
-
-        /*
-        |--------------------------------------------------------------------------
-        | Usuaris de prova
-        |--------------------------------------------------------------------------
-        */
 
         $admin = User::updateOrCreate(
             ['email' => 'admin@fantasy.com'],
@@ -69,16 +52,14 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        /*
-        |--------------------------------------------------------------------------
-        | Lligues privades de prova
-        |--------------------------------------------------------------------------
-        */
-
         $lligaAmics = LligaPrivada::updateOrCreate(
             ['codi_acces' => 'AMICS123'],
             [
                 'nom' => 'Lliga dels Amics',
+                'descripcio' => 'Lliga privada de prova per a la demo.',
+                'pressupost_inicial' => 250000000,
+                'maxim_participants' => 10,
+                'creador_id' => $ricard->id,
             ]
         );
 
@@ -86,6 +67,10 @@ class DatabaseSeeder extends Seeder
             ['codi_acces' => 'DAW2BEST'],
             [
                 'nom' => 'Lliga DAW2',
+                'descripcio' => 'Lliga de prova del projecte final.',
+                'pressupost_inicial' => 250000000,
+                'maxim_participants' => 12,
+                'creador_id' => $admin->id,
             ]
         );
 
@@ -100,46 +85,36 @@ class DatabaseSeeder extends Seeder
             $admin->id,
         ]);
 
-        /*
-        |--------------------------------------------------------------------------
-        | Equips fantasy de prova
-        |--------------------------------------------------------------------------
-        */
-
         $equipRicard = EquipFantasy::updateOrCreate(
-            ['usuari_id' => $ricard->id],
+            [
+                'usuari_id' => $ricard->id,
+                'lliga_privada_id' => $lligaAmics->id,
+            ],
             [
                 'nom_equip' => 'Els Cracks de Ricard',
                 'pressupost' => 100000000,
-                'lliga_privada_id' => $lligaAmics->id,
             ]
         );
 
         $equipIker = EquipFantasy::updateOrCreate(
-            ['usuari_id' => $iker->id],
+            [
+                'usuari_id' => $iker->id,
+                'lliga_privada_id' => $lligaAmics->id,
+            ],
             [
                 'nom_equip' => 'Iker FC',
                 'pressupost' => 85000000,
-                'lliga_privada_id' => $lligaAmics->id,
             ]
         );
 
-        /*
-        |--------------------------------------------------------------------------
-        | Assignació de jugadors als equips fantasy
-        |--------------------------------------------------------------------------
-        |
-        | Agafem jugadors ja creats pel JugadorSeeder.
-        | Així no depenem de noms concrets i evitem errors si canvia algun jugador.
-        |
-        */
-
-        $jugadorsRicard = Jugador::orderByDesc('valor_mercat')
+        $jugadorsRicard = Jugador::where('posicio_base', '!=', 'Entrenador')
+            ->orderByDesc('valor_mercat')
             ->take(11)
             ->pluck('id')
             ->toArray();
 
-        $jugadorsIker = Jugador::orderByDesc('valor_mercat')
+        $jugadorsIker = Jugador::where('posicio_base', '!=', 'Entrenador')
+            ->orderByDesc('valor_mercat')
             ->skip(11)
             ->take(11)
             ->pluck('id')
