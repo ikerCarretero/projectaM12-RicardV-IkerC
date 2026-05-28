@@ -212,6 +212,38 @@
     text-decoration: underline;
 }
 
+.login-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.login-social-icon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #111827;
+}
+
+.login-social-icon svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+.login-social-text {
+    display: inline-block;
+    line-height: 1.2;
+}
+
 @media (max-width: 520px) {
     .login-page {
         padding: 32px 14px;
